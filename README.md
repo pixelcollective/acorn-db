@@ -1,6 +1,6 @@
 # Acorn Models
 
-Provides Acorn projects with an Eloquent model for use in WordPress.
+Provides Acorn projects with a Eloquent Models for WordPress data.
 
 ## Requirements
 
@@ -27,7 +27,6 @@ wp acorn vendor:publish
 Now anytime you would normally use `get_posts` or `WP_Query` you can instead run eloquent queries on the models:
 
 ```php
-
 use TinyPixel\Models\Post;
 
 /**
