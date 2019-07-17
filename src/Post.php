@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace TinyPixel\Models;
 
-use \App\Helpers\Traits\HasMeta;
-use \App\Models\User;
-use \App\Models\Post\Meta as PostMeta;
-use \App\Models\Term\Taxonomy as TermTaxonomy;
-use \App\Models\Term\Relationships as TermRelationships;
-use \App\Models\Attachment as Attachment;
-use \App\Models\Comment as Comment;
+use \TinyPixel\Models\{
+    User,
+    Attachment,
+    Comment,
+    Post\Meta as PostMeta,
+    Term\Taxonomy as TermTaxonomy,
+    Term\Relationships as TermRelationships,
+    Traits\HasMeta,
+};
 
 use \Illuminate\Database\Eloquent\Model;
 
@@ -37,13 +39,12 @@ class Post extends Model
 
     public function terms()
     {
-        return $this->with('term')
-                    ->hasManyThrough(
-                        TermTaxonomy::class,
-                        TermRelationships::class,
-                        'object_id',
-                        'term_taxonomy_id'
-                    );
+        return $this->with('term')->hasManyThrough(
+            TermTaxonomy::class,
+            TermRelationships::class,
+            'object_id',
+            'term_taxonomy_id'
+        );
     }
 
     public function categories()
@@ -53,10 +54,8 @@ class Post extends Model
 
     public function attachments()
     {
-        return
-            $this
-            ->hasMany(Attachment::class, 'post_parent', 'ID')
-            ->where('post_type', 'attachment');
+        return $this->hasMany(Attachment::class, 'post_parent', 'ID')
+                    ->where('post_type', 'attachment');
     }
 
     public function tags()

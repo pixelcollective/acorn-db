@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Post;
+namespace TinyPixel\Models\Post;
 
-use \App\Models\Post;
+use \TinyPixel\Models\Post;
 use \Illuminate\Database\Eloquent\Model;
 
 class Meta extends Model

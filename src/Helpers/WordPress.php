@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models\Helpers;
+namespace TinyPixel\Models\Helpers;
 
 class WordPressHelper
 {
-    // a copy of wp's is_serialized
+    /**
+     * Checks if data is serialized
+     */
     public static function isSerialized($data, $strict = true)
     {
-        // if it isn't a string, it isn't serialized.
-        if (! is_string($data)) {
+        if (!is_string($data)) {
             return false;
         }
 
@@ -59,12 +60,20 @@ class WordPressHelper
                 } elseif (false === strpos($data, '"')) {
                     return false;
                 }
+
             // or else fall through
             case 'a':
+                // fallthrough
+
             case 'O':
                 return (bool) preg_match("/^{$token}:[0-9]+:/s", $data);
+
             case 'b':
+                // fallthrough
+
             case 'i':
+                // fallthrough
+
             case 'd':
                 $end = $strict ? '$' : '';
                 return (bool) preg_match("/^{$token}:[0-9.E-]+;$end/", $data);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits;
+namespace TinyPixel\Models\Traits;
 
 trait HasRoles
 {

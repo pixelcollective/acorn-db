@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Term;
+namespace TinyPixel\Models\Term;
 
 use \Illuminate\Database\Eloquent\Model;
 

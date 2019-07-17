@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\User;
+namespace TinyPixel\Models\User;
 
-use \App\Models\User;
+use \TinyPixel\Models\User;
 
 use \Illuminate\Database\Eloquent\Model;
 

@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace TinyPixel\Models;
 
-use \App\Helpers\Traits\HasMeta;
+use \TinyPixel\Models\{
+    Traits\HasMeta,
+    TermMeta as TermMeta,
+};
+
 use \Illuminate\Database\Eloquent\Model;
 
 class Term extends Model
@@ -14,7 +18,7 @@ class Term extends Model
 
     public function meta()
     {
-        return $this->hasMany(\App\Models\Term\Meta::class, 'term_id')
+        return $this->hasMany(TermMeta::class, 'term_id')
                     ->select(['term_id', 'meta_key', 'meta_value']);
     }
 }

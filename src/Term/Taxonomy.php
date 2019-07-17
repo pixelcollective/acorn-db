@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Term;
+namespace TinyPixel\Models\Term;
 
-use \App\Models\Term;
+use \TinyPixel\Models\Term;
 use \Illuminate\Database\Eloquent\Model;
 
 class Taxonomy extends Model

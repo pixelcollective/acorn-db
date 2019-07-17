@@ -1,0 +1,35 @@
+{
+  "name": "tiny-pixel/acorn-models",
+  "version": "0.0.2",
+  "type": "package",
+  "license": "MIT",
+  "description": "Eloquent database support for Acorn projects",
+  "authors": [
+    {
+      "name": "Kelly Mears",
+      "email": "kelly@tinypixel.dev"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "acorn",
+    "sage",
+    "eloquent"
+  ],
+  "support": {
+    "issues": "https://github.com/pixelcollective/acorn-models/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "TinyPixel\\Models\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.3"
+  },
+  "extra": {
+    "acorn": {
+      "providers": ["TinyPixel\\Models\\Providers\\DatabaseServiceProvider"]
+    }
+  }
+}

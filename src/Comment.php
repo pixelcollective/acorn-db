@@ -1,8 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace TinyPixel\Models;
 
-use \App\Models\Traits\HasMeta;
+use \TinyPixel\Models\{
+    Post,
+    User,
+    Comment\Meta as CommentMeta,
+    Traits\HasMeta
+};
+
 use \Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -18,17 +24,17 @@ class Comment extends Model
 
     public function post()
     {
-        return $this->belongsTo(\App\Models\Post::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function meta()
     {
-        return $this->hasMany(\App\Models\Comment\Meta::class, 'comment_id')
+        return $this->hasMany(CommentMeta::class, 'comment_id')
                     ->select(['comment_id', 'meta_key', 'meta_value']);
     }
 
     public function user()
     {
-        return $this->hasOne(\App\Models\User::class, 'ID', 'user_id');
+        return $this->hasOne(User::class, 'ID', 'user_id');
     }
 }

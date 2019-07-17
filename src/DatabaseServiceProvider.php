@@ -1,17 +1,26 @@
 <?php
 
-namespace App\Providers;
+namespace TinyPixel\Models\Providers;
 
-use Illuminate\Database\DatabaseManager;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\{
+    DatabaseManager,
+    Eloquent\Model,
+    Eloquent\QueueEntityResolver,
+    Connectors\ConnectionFactory,
+};
+
 use Illuminate\Contracts\Queue\EntityResolver;
-use Illuminate\Database\Connectors\ConnectionFactory;
-use Illuminate\Database\Eloquent\QueueEntityResolver;
-
 use \Roots\Acorn\ServiceProvider;
+
+use function \Roots\config_path;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
+   /**
+     * Register any application services.
+     *
+     * @return void
+     */
     public function register()
     {
         Model::clearBootedModels();
@@ -33,12 +42,21 @@ class DatabaseServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(EntityResolver::class, function () {
-            return new QueueEntityResolver;
+            return new QueueEntityResolver();
         });
     }
 
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . "/config/database.php" => config_path('database.php'),
+        ]);
+
         Model::setConnectionResolver($this->app['db']);
         Model::setEventDispatcher($this->app['events']);
     }

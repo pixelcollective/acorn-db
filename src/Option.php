@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace TinyPixel\Models;
 
-use \App\Models\Helpers\WordPress;
+use \TinyPixel\Models\Helpers\WordPress;
 use \Illuminate\Database\Eloquent\Model;
 
 class Option extends Model

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TinyPixel\Models;
 
 class Attachment extends Post
 {
