@@ -39,7 +39,8 @@ function published()
     return Post::ofType('post')
                 ->ofStatus('publish')
                 ->with('meta')
-                ->with('author');
+                ->with('author')
+                ->get();
 }
 
  /**
