@@ -1,6 +1,6 @@
 # Acorn Models
 
-Provides Acorn projects with a Eloquent Models for WordPress data.
+Provides Acorn projects with Eloquent Models for WordPress data.
 
 ## Requirements
 
