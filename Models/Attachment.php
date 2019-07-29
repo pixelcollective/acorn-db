@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-class Attachment extends Post
+use TinyPixel\AcornModels\Models\Attachment as AttachmentModel;
+
+class Attachment extends AttachmentModel
 {
-    public function post()
-    {
-        return $this->belongsTo(Post::class, 'post_parent', 'ID');
-    }
+    //
 }

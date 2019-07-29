@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Traits;
+namespace TinyPixel\AcornModels\Models\Traits;
 
-use App\Models\Helpers\WordPress;
+use TinyPixel\AcornModels\Models\Helpers\WordPress;
 
 trait HasMeta
 {

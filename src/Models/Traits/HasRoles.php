@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits;
+namespace TinyPixel\AcornModels\Models\Traits;
 
 trait HasRoles
 {

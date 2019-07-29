@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Model;
+use TinyPixel\AcornModels\Models\Links as LinkModel;
 
-class Links extends Model
+class Links extends LinkModel
 {
-    protected $table      = 'links';
-    protected $primaryKey = 'link_id';
-    public $timestamps    = false;
+    //
 }

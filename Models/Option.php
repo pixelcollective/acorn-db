@@ -2,26 +2,9 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Model;
+use TinyPixel\AcornModels\Models\Option as OptionModel;
 
-class Option extends Model
+class Option extends OptionModel
 {
-    protected $table      = 'options';
-    protected $primaryKey = 'option_id';
-    public    $timestamps    = false;
-
-    public static function getValue($key = '')
-    {
-        $value = '';
-
-        if ($key) {
-            $value = self::where('option_name', '=', $key)->value('option_value');
-        }
-
-        if (WordPress::isSerialized($value)) {
-            $value = unserialize($value);
-        }
-
-        return $value;
-    }
+    //
 }
