@@ -20,8 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "TinyPixel\\AcornModels\\": "src/",
-      "Sofa\\Eloquence\\": "src/"
+      "TinyPixel\\AcornModels\\": "src/"
     },
     "scripts": [
       "src/helpers.php"
