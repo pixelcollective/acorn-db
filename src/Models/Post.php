@@ -36,18 +36,18 @@ class Post extends BaseModel
 
     protected $maps = [
         'id'        => 'ID',
-        'date'      => 'date',
-        'date_gmt'  => 'date_gmt',
+        'date'      => 'post_date',
+        'date_gmt'  => 'post_date_gmt',
         'title'     => 'post_title',
         'status'    => 'post_status',
         'modified'  => 'post_modified',
         'parent'    => 'post_parent',
-        'guid'      => 'guid',
-        'type'      => 'post',
+        'type'      => 'post_type',
         'mime_type' => 'post_mime_type',
         'content'   => 'post_content',
         'excerpt'   => 'post_excerpt',
         'comments'  => 'comment_count',
+        'password'  => 'post_password',
     ];
 
     public function author()
