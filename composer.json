@@ -1,6 +1,5 @@
 {
   "name": "tiny-pixel/acorn-models",
-  "version": "0.0.2",
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
@@ -21,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "TinyPixel\\Models\\": "src/"
+      "TinyPixel\\AcornModels\\": "src/"
     },
     "scripts": [
       "src/helpers.php"
@@ -32,7 +31,7 @@
   },
   "extra": {
     "acorn": {
-      "providers": ["TinyPixel\\Models\\Providers\\DatabaseServiceProvider"]
+      "providers": ["TinyPixel\\AcornModels\\DatabaseServiceProvider"]
     }
   }
 }

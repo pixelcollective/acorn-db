@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornModels\Providers;
+namespace TinyPixel\AcornModels;
 
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
@@ -61,12 +61,14 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . "/config/database.php" => config_path('database.php'),
-            __DIR__ . "/Models"              => base_path('app/Models'),
-        ]);
-
         Model::setConnectionResolver($this->app['db']);
         Model::setEventDispatcher($this->app['events']);
+
+        $namespace = $this->app->getNamespace();
+
+        $this->publishes([
+            __DIR__ . "/../config/database.php" => config_path('database.php'),
+            __DIR__ . '/../Models'              => base_path($namespace . '/Models'),
+        ]);
     }
 }
