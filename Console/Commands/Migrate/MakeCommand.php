@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Migrate;
 
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Database\Migrations\MigrationCreator;
 
-use Roots\Acorn\Console\Commands\Command;
+use App\Console\Commands\Migrate\BaseCommand;
 use function Roots\base_path;
 
-class MigrateMakeCommand extends Command
+class MakeCommand extends BaseCommand
 {
     /**
      * The console command name.
