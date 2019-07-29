@@ -65,11 +65,12 @@ class DatabaseServiceProvider extends ServiceProvider
         Model::setConnectionResolver($this->app['db']);
         Model::setEventDispatcher($this->app['events']);
 
-        $namespace = $this->app->getNamespace();
+        $appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
 
         $this->publishes([
-            __DIR__ . "/../config/database.php" => config_path('database.php'),
-            __DIR__ . '/../Models'              => base_path(substr(strtolower($namespace), 0, -1) . '/Models'),
+            __DIR__ . "/../Console"             => base_path("$appDir/Console"),
+            __DIR__ . '/../config/database.php' => config_path('database.php'),
+            __DIR__ . '/../Models'              => base_path("{$appDir}/Models"),
         ]);
     }
 }
