@@ -26,17 +26,14 @@ class Post extends BaseModel
 {
     use HasMeta;
 
-    const CREATED_AT = 'post_date';
-    const UPDATED_AT = 'post_modified';
-
+    const CREATED_AT      = 'post_date';
+    const UPDATED_AT      = 'post_modified';
     public $timestamps    = false;
+
     protected $table      = 'posts';
     protected $primaryKey = 'ID';
     protected $post_type  = null;
 
-    /**
-     * Alias
-     */
     protected $maps = [
         'id'        => 'ID',
         'date'      => 'date',
@@ -53,32 +50,17 @@ class Post extends BaseModel
         'comments'  => 'comment_count',
     ];
 
-    /**
-     * Author
-     *
-     * @return User (collection)
-     */
     public function author()
     {
         return $this->hasOne(User::class, 'ID', 'post_author');
     }
 
-    /**
-     * Meta
-     *
-     * @return Meta (collection)
-     */
     public function meta()
     {
         return $this->hasMany(PostMeta::class, 'post_id')
                     ->select(['post_id', 'meta_key', 'meta_value']);
     }
 
-    /**
-     * Terms
-     *
-     * @return Taxonomy (collection)
-     */
     public function terms()
     {
         return $this->hasManyThrough(
