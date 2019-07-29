@@ -1,13 +1,7 @@
 <?php
 
-namespace TinyPixel\Models\Helpers;
-
-class WordPressHelper
-{
-    /**
-     * Checks if data is serialized
-     */
-    public static function isSerialized($data, $strict = true)
+if(!function_exists(isSerialized())) {
+    function isSerialized($data, $strict = true)
     {
         if (!is_string($data)) {
             return false;
@@ -61,7 +55,6 @@ class WordPressHelper
                     return false;
                 }
 
-            // or else fall through
             case 'a':
                 // fallthrough
 

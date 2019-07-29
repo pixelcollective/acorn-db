@@ -1,11 +1,9 @@
 <?php
 
-namespace TinyPixel\Models;
+namespace App\Models;
 
-use \TinyPixel\Models\{
-    Traits\HasMeta,
-    TermMeta as TermMeta,
-};
+use App\Models\Traits\HasMeta;
+use App\Models\TermMeta as TermMeta;
 
 use \Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +11,7 @@ class Term extends Model
 {
     use HasMeta;
 
-    protected $table = 'terms';
+    protected $table      = 'terms';
     protected $primaryKey = 'term_id';
 
     public function meta()

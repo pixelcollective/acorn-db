@@ -1,15 +1,14 @@
 <?php
 
-namespace TinyPixel\Models;
+namespace App\Models;
 
-use \TinyPixel\Models\Helpers\WordPress;
 use \Illuminate\Database\Eloquent\Model;
 
 class Option extends Model
 {
     protected $table      = 'options';
     protected $primaryKey = 'option_id';
-    public $timestamps    = false;
+    public    $timestamps    = false;
 
     public static function getValue($key = '')
     {

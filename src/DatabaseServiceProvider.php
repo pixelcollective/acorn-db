@@ -1,19 +1,27 @@
 <?php
 
-namespace TinyPixel\Models\Providers;
+namespace TinyPixel\AcornModels\Providers;
 
-use Illuminate\Database\{
-    DatabaseManager,
-    Eloquent\Model,
-    Eloquent\QueueEntityResolver,
-    Connectors\ConnectionFactory,
-};
-
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\QueueEntityResolver;
+use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Contracts\Queue\EntityResolver;
-use \Roots\Acorn\ServiceProvider;
 
+use \Roots\Acorn\ServiceProvider;
+use function \Roots\base_path;
 use function \Roots\config_path;
 
+/**
+ * Database service provider
+ *
+ * @author  Kelly Mears <kelly@tinypixel.dev>
+ * @license MIT
+ * @since   1.0.0
+ *
+ * @package    wordpress
+ * @subpackage AcornDatabase
+ */
 class DatabaseServiceProvider extends ServiceProvider
 {
    /**
@@ -55,6 +63,7 @@ class DatabaseServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . "/config/database.php" => config_path('database.php'),
+            __DIR__ . "/Models"              => base_path('app/Models'),
         ]);
 
         Model::setConnectionResolver($this->app['db']);

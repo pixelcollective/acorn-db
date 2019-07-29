@@ -22,7 +22,10 @@
   "autoload": {
     "psr-4": {
       "TinyPixel\\Models\\": "src/"
-    }
+    },
+    "scripts": [
+      "src/helpers.php"
+    ]
   },
   "require": {
     "php": ">=7.3"

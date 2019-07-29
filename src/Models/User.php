@@ -1,16 +1,14 @@
 <?php
 
-namespace TinyPixel\Models;
-
-use \TinyPixel\Models\{
-    Traits\HasMeta,
-    Traits\HasRoles,
-    Post,
-    Comment,
-    User\Meta as UserMeta,
-};
+namespace App\Models;
 
 use \Illuminate\Database\Eloquent\Model;
+
+use App\Models\Traits\HasMeta;
+use App\Models\Traits\HasRoles;
+use App\Models\Post;
+use App\Models\Comment;
+use App\Models\User\Meta as UserMeta;
 
 class User extends Model
 {
@@ -23,9 +21,9 @@ class User extends Model
     const CREATED_AT = 'user_registered';
 
     /**
-     * Posts: Has Many
+     * A user has many posts
      *
-     * @return object User Posts
+     * @return object
      */
     public function posts()
     {
@@ -37,9 +35,9 @@ class User extends Model
     }
 
     /**
-     * Comments: Has Many
+     * A user has many comments
      *
-     * @return object User comments
+     * @return object
      */
     public function comments()
     {
@@ -47,9 +45,9 @@ class User extends Model
     }
 
     /**
-     * Meta: Has Many
+     * A user has many usermeta attributes
      *
-     * @return object User meta
+     * @return object
      */
     public function meta()
     {

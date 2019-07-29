@@ -1,13 +1,11 @@
 <?php
 
-namespace TinyPixel\Models;
+namespace App\Models;
 
-use \TinyPixel\Models\{
-    Post,
-    User,
-    Comment\Meta as CommentMeta,
-    Traits\HasMeta
-};
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment\Meta as CommentMeta;
+use App\Models\Traits\HasMeta;
 
 use \Illuminate\Database\Eloquent\Model;
 

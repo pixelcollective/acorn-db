@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\Models\Traits;
+namespace App\Models\Traits;
 
-use \TinyPixel\Models\Helpers\WordPress;
+use App\Models\Helpers\WordPress;
 
 trait HasMeta
 {
@@ -30,9 +30,6 @@ trait HasMeta
         return $this;
     }
 
-    /**
-     * Deletes all meta for this object with given key
-     */
     public function deleteMeta($meta_key = false)
     {
         if ($meta_key) {

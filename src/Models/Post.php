@@ -1,16 +1,14 @@
 <?php
 
-namespace TinyPixel\Models;
+namespace App\Models;
 
-use \TinyPixel\Models\{
-    User,
-    Attachment,
-    Comment,
-    Post\Meta as PostMeta,
-    Term\Taxonomy as TermTaxonomy,
-    Term\Relationships as TermRelationships,
-    Traits\HasMeta,
-};
+use App\Models\User;
+use App\Models\Attachment;
+use App\Models\Comment;
+use App\Models\Post\Meta as PostMeta;
+use App\Models\Term\Taxonomy as TermTaxonomy;
+use App\Models\Term\Relationships as TermRelationships;
+use App\Models\Traits\HasMeta;
 
 use \Illuminate\Database\Eloquent\Model;
 

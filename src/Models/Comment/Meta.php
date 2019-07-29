@@ -1,8 +1,9 @@
 <?php
 
-namespace TinyPixel\Models\Comment;
+namespace App\Models\Comment;
 
-use \TinyPixel\Models\Comment;
+use App\Models\Comment;
+
 use \Illuminate\Database\Eloquent\Model;
 
 class Meta extends Model
