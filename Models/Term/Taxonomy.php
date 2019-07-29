@@ -1,10 +1,8 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Term;
+namespace App\Models\Taxonomy;
 
-use TinyPixel\AcornModels\Models\Term;
-
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\AcornModels\Models\Term\Taxonomy as TaxonomyModel;
 
 class Taxonomy extends BaseModel
 {

@@ -1,12 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Post;
+namespace App\Models\Post;
 
-use TinyPixel\AcornModels\Models\Post;
+use TinyPixel\AcornModels\Models\Post\Meta as PostMetaModel;
 
-use TinyPixel\AcornModels\Models\BaseModel;
-
-class Meta extends BaseModel
+class Meta extends PostMetaModel
 {
     protected $table      = 'postmeta';
     public $timestamps    = false;

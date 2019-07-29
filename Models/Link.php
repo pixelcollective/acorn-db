@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Models\Links as LinkModel;
+use TinyPixel\AcornModels\Models\Links as LinksModel;
 
-class Links extends LinkModel
+class Links extends LinksModel
 {
     //
 }

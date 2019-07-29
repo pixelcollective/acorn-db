@@ -1,8 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornModels;
-
-include __DIR__ . '/../../vendor/autoload.php';
+namespace TinyPixel\AcornModels\Models;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;

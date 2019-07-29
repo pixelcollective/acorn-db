@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Contracts\Queue\EntityResolver;
+use Sofa\Eloquence\ServiceProvider as Eloquence;
 
 use \Roots\Acorn\ServiceProvider;
 use function \Roots\base_path;

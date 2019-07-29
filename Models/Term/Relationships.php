@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Term;
+namespace App\Models\Relationships;
 
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\AcornModels\Models\Term\Relationships as RelationshipsModel;
 
-class Relationships extends BaseModel
+class Relationships extends RelationshipsModel
 {
     protected $table = 'term_relationships';
     protected $primaryKey = 'term_taxonomy_id';

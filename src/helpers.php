@@ -1,6 +1,6 @@
 <?php
 
-if(!function_exists(isSerialized())) {
+if (!function_exists(isSerialized())) {
     function isSerialized($data, $strict = true)
     {
         if (!is_string($data)) {

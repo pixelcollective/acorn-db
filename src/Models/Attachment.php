@@ -2,7 +2,9 @@
 
 namespace TinyPixel\AcornModels\Models;
 
-class Attachment extends Post
+use TinyPixel\AcornModels\Models\BaseModel;
+
+class Attachment extends BaseModel
 {
     public function post()
     {

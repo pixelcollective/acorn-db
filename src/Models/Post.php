@@ -8,7 +8,6 @@ use TinyPixel\AcornModels\Models\Comment;
 use TinyPixel\AcornModels\Models\Post\Meta as PostMeta;
 use TinyPixel\AcornModels\Models\Term\Taxonomy as TermTaxonomy;
 use TinyPixel\AcornModels\Models\Term\Relationships as TermRelationships;
-
 use TinyPixel\AcornModels\Models\Traits\HasMeta;
 use TinyPixel\AcornModels\Models\BaseModel;
 
@@ -116,17 +115,17 @@ class Post extends BaseModel
         return $query->where('post_type', $type);
     }
 
-    public function scopeStatus($query)
+    public function scopeStatus($query, $status = null)
     {
-        return $query->where('post_status', $query);
+        return $query->where('post_status', $status);
     }
 
-    public function scopePublished()
+    public function scopePublished($query)
     {
         return $query->where('post_status', 'publish');
     }
 
-    public function scopeDraft()
+    public function scopeDraft($query)
     {
         return $query->where('post_status', 'draft');
     }

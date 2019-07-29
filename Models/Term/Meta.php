@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Term;
+namespace App\Models\Term;
 
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\AcornModels\Models\Term\Meta as TermMetaModel;
 
-class Meta extends BaseModel
+class Meta extends TermMetaModel
 {
     protected $table      = 'term_meta';
     protected $primaryKey = 'meta_id';

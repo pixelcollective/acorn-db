@@ -1,12 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Comment;
+namespace App\Models\Comment;
 
-use TinyPixel\AcornModels\Models\Comment;
+use TinyPixel\AcornModels\Models\Comment\Meta as CommentMetaModel;
 
-use TinyPixel\AcornModels\Models\BaseModel;
-
-class Meta extends BaseModel
+class Meta extends CommentMetaModel
 {
     protected $table   = 'commentmeta';
     public $timestamps = false;
