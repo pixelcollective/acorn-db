@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Comment\Meta as CommentMeta;
 use App\Models\Traits\HasMeta;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Comment extends Model
 {

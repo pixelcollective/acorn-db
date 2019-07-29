@@ -2,7 +2,7 @@
 
 namespace App\Models\Term;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Meta extends Model
 {

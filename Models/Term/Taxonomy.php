@@ -4,7 +4,7 @@ namespace App\Models\Term;
 
 use App\Models\Term;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Taxonomy extends Model
 {

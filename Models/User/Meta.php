@@ -4,7 +4,7 @@ namespace App\Models\User;
 
 use App\Models\User;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Meta extends Model
 {

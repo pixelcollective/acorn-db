@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use \Illuminate\Database\Eloquent\Model;
-
 use App\Models\Traits\HasMeta;
 use App\Models\Traits\HasRoles;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\User\Meta as UserMeta;
+
+use TinyPixel\AcornModels\Model;
 
 class User extends Model
 {

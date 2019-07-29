@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\Traits\HasMeta;
 use App\Models\TermMeta as TermMeta;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Term extends Model
 {

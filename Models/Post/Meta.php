@@ -4,7 +4,7 @@ namespace App\Models\Post;
 
 use App\Models\Post;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Meta extends Model
 {

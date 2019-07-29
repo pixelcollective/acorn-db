@@ -4,7 +4,7 @@ namespace App\Models\Comment;
 
 use App\Models\Comment;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Meta extends Model
 {

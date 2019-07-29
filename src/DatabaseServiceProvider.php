@@ -68,7 +68,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . "/../config/database.php" => config_path('database.php'),
-            __DIR__ . '/../Models'              => base_path($namespace . '/Models'),
+            __DIR__ . '/../Models'              => base_path(substr(strtolower($namespace), 0, -1) . '/Models'),
         ]);
     }
 }

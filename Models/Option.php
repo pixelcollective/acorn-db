@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use \Illuminate\Database\Eloquent\Model;
+use TinyPixel\AcornModels\Model;
 
 class Option extends Model
 {
