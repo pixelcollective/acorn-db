@@ -2,7 +2,7 @@
 
 namespace App\Models\Comment;
 
-use TinyPixel\AcornModels\Models\Comment\Meta as CommentMetaModel;
+use TinyPixel\Acorn\Database\Models\Models\Comment\Meta as CommentMetaModel;
 
 class Meta extends CommentMetaModel
 {

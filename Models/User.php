@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Models\User as UserModel;
+use TinyPixel\Acorn\Database\Models\User as UserModel;
 
 class User extends UserModel
 {

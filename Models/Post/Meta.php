@@ -2,7 +2,7 @@
 
 namespace App\Models\Post;
 
-use TinyPixel\AcornModels\Models\Post\Meta as PostMetaModel;
+use TinyPixel\Acorn\Database\Models\Post\Meta as PostMetaModel;
 
 class Meta extends PostMetaModel
 {

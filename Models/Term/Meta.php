@@ -2,7 +2,7 @@
 
 namespace App\Models\Term;
 
-use TinyPixel\AcornModels\Models\Term\Meta as TermMetaModel;
+use TinyPixel\Acorn\Database\Models\Term\Meta as TermMetaModel;
 
 class Meta extends TermMetaModel
 {

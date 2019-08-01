@@ -2,7 +2,7 @@
 
 namespace App\Models\Relationships;
 
-use TinyPixel\AcornModels\Models\Term\Relationships as RelationshipsModel;
+use TinyPixel\Acorn\Database\Models\Term\Relationships as RelationshipsModel;
 
 class Relationships extends RelationshipsModel
 {

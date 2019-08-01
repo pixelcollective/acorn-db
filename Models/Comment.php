@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Models\Comment as CommentModel;
+use TinyPixel\Acorn\Database\Models\Comment as CommentModel;
 
 class Comment extends CommentModel
 {

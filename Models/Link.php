@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Models\Links as LinksModel;
+use TinyPixel\Acorn\Database\Models\Links as LinksModel;
 
 class Links extends LinksModel
 {

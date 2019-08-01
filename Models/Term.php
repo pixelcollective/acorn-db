@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Models\Term as TermModel;
+use TinyPixel\Acorn\Database\Models\Term as TermModel;
 
 class Term extends TermModel
 {

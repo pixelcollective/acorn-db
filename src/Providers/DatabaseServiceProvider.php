@@ -40,6 +40,7 @@ class DatabaseServiceProvider extends ServiceProvider
         $this->bindDatabase();
 
         $this->registerCommandsFromDir(__DIR__, '/Console/Commands/Migrate');
+        $this->registerCommandsFromDir(__DIR__, 'Console/Commands/Seeds');
     }
 
     /**

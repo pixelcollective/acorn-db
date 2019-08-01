@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use TinyPixel\AcornModels\Models\Attachment as AttachmentModel;
+use TinyPixel\Acorn\Database\Models\Attachment as AttachmentModel;
 
 class Attachment extends AttachmentModel
 {

@@ -2,7 +2,7 @@
 
 namespace App\Models\Taxonomy;
 
-use TinyPixel\AcornModels\Models\Term\Taxonomy as TaxonomyModel;
+use TinyPixel\Acorn\Database\Models\Term\Taxonomy as TaxonomyModel;
 
 class Taxonomy extends BaseModel
 {
