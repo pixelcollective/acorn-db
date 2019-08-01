@@ -31,9 +31,8 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'db:seed
-                            {--class : The class name of the root seeder}
-                            {--database : The database connection to seed.}
+    protected $signature = 'db:seed {--class= : The class name of the root seeder}
+                            {--database= : The database connection to seed.}
                             {--force : Force the operation to run when in production}';
 
     /**

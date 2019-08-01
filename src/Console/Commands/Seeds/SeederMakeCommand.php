@@ -4,8 +4,10 @@ namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
 
 use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Console\Input\InputArgument;
 use Roots\Acorn\Console\Commands\GeneratorCommand;
-use Roots\Acorn\Console\Commands\Command;
+
+use function Roots\base_path;
 
 class SeederMakeCommand extends GeneratorCommand
 {
@@ -22,13 +24,6 @@ class SeederMakeCommand extends GeneratorCommand
      * @var string
      */
     protected $description = 'Create a new seeder class';
-
-    /**
-     * The console command signature.
-     *
-     * @var string
-     */
-    protected $signature = 'make:seeder';
 
     /**
      * The type of class being generated.
@@ -66,7 +61,6 @@ class SeederMakeCommand extends GeneratorCommand
     public function handle()
     {
         parent::handle();
-
         $this->composer->dumpAutoloads();
     }
 
@@ -88,7 +82,7 @@ class SeederMakeCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        return $this->laravel->databasePath().'/seeds/'.$name.'.php';
+        return base_path('/database/seeds/' . $this->input->getArgument('name') . '.php');
     }
 
     /**
@@ -99,6 +93,16 @@ class SeederMakeCommand extends GeneratorCommand
      */
     protected function qualifyClass($name)
     {
-        return $name;
+        return $this->input->getArgument('name');
+    }
+
+    /**
+     * Get the desired class name from the input.
+     *
+     * @return string
+     */
+    protected function getNameInput()
+    {
+        return $this->input->getArgument('name');
     }
 }
