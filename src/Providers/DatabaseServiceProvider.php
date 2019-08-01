@@ -3,6 +3,7 @@
 namespace TinyPixel\Acorn\Database\Providers;
 
 use TinyPixel\Acorn\Support\Utility;
+Use Illuminate\Support\Collection;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;

@@ -16,7 +16,7 @@
     "eloquent"
   ],
   "support": {
-    "issues": "https://github.com/pixelcollective/acorn-models/issues"
+    "issues": "https://github.com/pixelcollective/acorn-database/issues"
   },
   "autoload": {
     "psr-4": {
