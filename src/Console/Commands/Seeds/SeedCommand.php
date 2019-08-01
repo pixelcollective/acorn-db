@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Seeds;
+namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;

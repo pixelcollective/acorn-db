@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Seeds;
+namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
 
 use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
