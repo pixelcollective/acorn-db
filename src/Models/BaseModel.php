@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models;
+namespace TinyPixel\Acorn\Database\Models;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;

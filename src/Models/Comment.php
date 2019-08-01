@@ -1,13 +1,13 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models;
+namespace TinyPixel\Acorn\Database\Models;
 
-use TinyPixel\Acorn\Models\Models\Post;
-use TinyPixel\Acorn\Models\Models\User;
-use TinyPixel\Acorn\Models\Models\Comment\Meta as CommentMeta;
-use TinyPixel\Acorn\Models\Models\Traits\HasMeta;
+use TinyPixel\Acorn\Database\Models\Post;
+use TinyPixel\Acorn\Database\Models\User;
+use TinyPixel\Acorn\Database\Models\Comment\Meta as CommentMeta;
+use TinyPixel\Acorn\Database\Models\Traits\HasMeta;
 
-use TinyPixel\Acorn\Models\Models\BaseModel;
+use TinyPixel\Acorn\Database\Models\BaseModel;
 
 class Comment extends BaseModel
 {

@@ -1,5 +1,5 @@
 {
-  "name": "tiny-pixel/acorn-models",
+  "name": "tiny-pixel/acorn-database",
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "TinyPixel\\Acorn\\Models\\": "src/"
+      "TinyPixel\\Acorn\\Database\\": "src/"
     }
   },
   "require": {
@@ -32,7 +32,7 @@
     "acorn": {
       "providers": [
         "Sofa\\Eloquence\\BaseServiceProvider",
-        "TinyPixel\\Acorn\\Models\\Providers\\DatabaseServiceProvider"
+        "TinyPixel\\Acorn\\Database\\Providers\\DatabaseServiceProvider"
       ]
     }
   }

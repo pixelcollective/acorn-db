@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models\Traits;
+namespace TinyPixel\Acorn\Database\Models\Traits;
 
 use TinyPixel\Acorn\Support\Utility;
 

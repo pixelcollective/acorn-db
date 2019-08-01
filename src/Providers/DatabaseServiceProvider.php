@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Providers;
+namespace TinyPixel\Acorn\Database\Providers;
 
 use TinyPixel\Acorn\Support\Utility;
 use Illuminate\Database\DatabaseManager;

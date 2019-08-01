@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models\Term;
+namespace TinyPixel\Acorn\Database\Models\Term;
 
-use TinyPixel\Acorn\Models\Models\BaseModel;
+use TinyPixel\Acorn\Database\Models\BaseModel;
 
 class Meta extends BaseModel
 {

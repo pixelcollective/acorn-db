@@ -1,9 +1,9 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models;
+namespace TinyPixel\Acorn\Database\Models;
 
 use TinyPixel\Acorn\Support\Utility;
-use TinyPixel\Acorn\Models\Models\BaseModel;
+use TinyPixel\Acorn\Database\Models\BaseModel;
 
 class Option extends BaseModel
 {

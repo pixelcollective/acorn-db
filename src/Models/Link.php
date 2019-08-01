@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models;
+namespace TinyPixel\Acorn\Database\Models;
 
-use TinyPixel\Acorn\Models\Models\BaseModel;
+use TinyPixel\Acorn\Database\Models\BaseModel;
 
 class Links extends BaseModel
 {

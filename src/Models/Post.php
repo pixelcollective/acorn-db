@@ -1,15 +1,15 @@
 <?php
 
-namespace TinyPixel\Acorn\Models\Models;
+namespace TinyPixel\Acorn\Database\Models;
 
-use TinyPixel\Acorn\Models\Models\User;
-use TinyPixel\Acorn\Models\Models\Attachment;
-use TinyPixel\Acorn\Models\Models\Comment;
-use TinyPixel\Acorn\Models\Models\Traits\HasMeta;
-use TinyPixel\Acorn\Models\Models\Post\Meta as PostMeta;
-use TinyPixel\Acorn\Models\Models\Term\Taxonomy as TermTaxonomy;
-use TinyPixel\Acorn\Models\Models\Term\Relationships as TermRelationships;
-use TinyPixel\Acorn\Models\Models\BaseModel;
+use TinyPixel\Acorn\Database\Models\User;
+use TinyPixel\Acorn\Database\Models\Attachment;
+use TinyPixel\Acorn\Database\Models\Comment;
+use TinyPixel\Acorn\Database\Models\Traits\HasMeta;
+use TinyPixel\Acorn\Database\Models\Post\Meta as PostMeta;
+use TinyPixel\Acorn\Database\Models\Term\Taxonomy as TermTaxonomy;
+use TinyPixel\Acorn\Database\Models\Term\Relationships as TermRelationships;
+use TinyPixel\Acorn\Database\Models\BaseModel;
 
 /**
  * Post Model
@@ -17,7 +17,7 @@ use TinyPixel\Acorn\Models\Models\BaseModel;
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
  * @since      1.0.0
- * @see        TinyPixel\Acorn\Models\Models\Post
+ * @see        TinyPixel\Acorn\Database\Models\Post
  *
  * @package    WordPress
  * @subpackage Acorn\Models
