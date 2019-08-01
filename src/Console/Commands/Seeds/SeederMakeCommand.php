@@ -4,7 +4,7 @@ namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
 
 use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Console\GeneratorCommand;
+use Roots\Acorn\Console\Commands\GeneratorCommand;
 use Roots\Acorn\Console\Commands\Command;
 
 class SeederMakeCommand extends GeneratorCommand
