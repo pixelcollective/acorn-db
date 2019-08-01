@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Console\Commands\Migrate;
+namespace TinyPixel\Acorn\Models\Console\Commands\Migrate;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 
-use App\Console\Commands\Migrate\BaseCommand;
+use TinyPixel\Acorn\Models\Console\Commands\Migrate\BaseCommand;
 
 class StatusCommand extends BaseCommand
 {

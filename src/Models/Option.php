@@ -1,8 +1,9 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models;
+namespace TinyPixel\Acorn\Models\Models;
 
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\Acorn\Support\Utility;
+use TinyPixel\Acorn\Models\Models\BaseModel;
 
 class Option extends BaseModel
 {
@@ -18,7 +19,7 @@ class Option extends BaseModel
             $value = self::where('option_name', '=', $key)->value('option_value');
         }
 
-        if (WordPress::isSerialized($value)) {
+        if (Utility::isSerialized($value)) {
             $value = unserialize($value);
         }
 

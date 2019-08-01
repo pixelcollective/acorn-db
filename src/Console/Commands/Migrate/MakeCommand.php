@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Console\Commands\Migrate;
+namespace TinyPixel\Acorn\Models\Console\Commands\Migrate;
 
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Database\Migrations\MigrationCreator;
 
-use App\Console\Commands\Migrate\BaseCommand;
+use TinyPixel\Acorn\Models\Console\Commands\Migrate\BaseCommand;
 use function Roots\base_path;
 
 class MakeCommand extends BaseCommand

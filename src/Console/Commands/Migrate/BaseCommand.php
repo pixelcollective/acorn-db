@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Migrate;
+namespace TinyPixel\Acorn\Models\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
 use Roots\Acorn\Console\Commands\Command;

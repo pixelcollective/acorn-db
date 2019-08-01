@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Traits;
+namespace TinyPixel\Acorn\Models\Models\Traits;
 
-use TinyPixel\AcornModels\Models\Helpers\WordPress;
+use TinyPixel\Acorn\Support\Utility;
 
 trait HasMeta
 {
@@ -13,7 +13,7 @@ trait HasMeta
         if ($meta_key) {
             $meta_value = $this->meta()->where('meta_key', $meta_key)->pluck('meta_value')->first();
 
-            if (WordPress::isSerialized($meta_value)) {
+            if (Utility::isSerialized($meta_value)) {
                 $meta_value = unserialize($meta_value);
             }
         }

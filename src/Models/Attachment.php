@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models;
+namespace TinyPixel\Acorn\Models\Models;
 
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\Acorn\Models\Models\BaseModel;
 
 class Attachment extends BaseModel
 {

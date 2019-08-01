@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Console\Commands\Migrate;
+namespace TinyPixel\Acorn\Models\Console\Commands\Migrate;
 
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 
-use App\Console\Commands\Migrate\BaseCommand;
+use TinyPixel\Acorn\Models\Console\Commands\Migrate\BaseCommand;
 
 class MigrateCommand extends BaseCommand
 {

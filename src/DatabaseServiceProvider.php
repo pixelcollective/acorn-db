@@ -1,18 +1,19 @@
 <?php
 
-namespace TinyPixel\AcornModels;
+namespace TinyPixel\Acorn\Models;
 
+use TinyPixel\Acorn\Support\Utility;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Contracts\Queue\EntityResolver;
-use Sofa\Eloquence\ServiceProvider as Eloquence;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
+use Sofa\Eloquence\ServiceProvider as Eloquence;
+use Roots\Acorn\ServiceProvider;
 
-use \Roots\Acorn\ServiceProvider;
-use function \Roots\base_path;
-use function \Roots\config_path;
+use function Roots\base_path;
+use function Roots\config_path;
 
 /**
  * Database service provider
@@ -22,7 +23,7 @@ use function \Roots\config_path;
  * @since   1.0.0
  *
  * @package    wordpress
- * @subpackage AcornDatabase
+ * @subpackage Acorn\Models
  */
 class DatabaseServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,39 @@ class DatabaseServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
+    {
+        $this->namespace = __NAMESPACE__;
+
+        $this->bindDatabase();
+
+        $this->registerCommandsFromDir(__DIR__, '/Console/Commands/Migrate');
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Model::setConnectionResolver($this->app['db']);
+
+        Model::setEventDispatcher($this->app['events']);
+
+        $this->appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
+
+        $this->publishes([
+            __DIR__ . '/../config/database.php' => config_path('database.php'),
+            __DIR__ . '/../Models'              => base_path("{$this->appDir}/Models"),
+        ]);
+    }
+
+    /**
+     * Bind database to container
+     *
+     * @return void
+     */
+    protected function bindDatabase()
     {
         Model::clearBootedModels();
 
@@ -55,25 +89,33 @@ class DatabaseServiceProvider extends ServiceProvider
             return new QueueEntityResolver();
         });
 
-        $this->app->bindIf(MigrationRepositoryInterface::class, 'migration.repository');
+        $this->app->bindIf(
+            MigrationRepositoryInterface::class,
+            'migration.repository'
+        );
     }
 
     /**
-     * Bootstrap any application services.
+     * Register commands from directory
      *
+     * @param  string $base
+     * @param  string $dir
      * @return void
      */
-    public function boot()
+    protected function registerCommandsFromDir(string $base, string $dir)
     {
-        Model::setConnectionResolver($this->app['db']);
-        Model::setEventDispatcher($this->app['events']);
+        $this->commands = Collection::make();
 
-        $appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
+        $definitions = Collection::make(glob("{$base}/{$dir}/*.php"));
 
-        $this->publishes([
-            __DIR__ . "/../Console"             => base_path("$appDir/Console"),
-            __DIR__ . '/../config/database.php' => config_path('database.php'),
-            __DIR__ . '/../Models'              => base_path("{$appDir}/Models"),
-        ]);
+        $definitions->each(function ($file) use ($dir) {
+            $namespace = $this->namespace . Utility::pathToNamespace($dir);
+            $className = basename($file, '.php');
+            $this->commands->push("{$namespace}\\{$className}");
+        });
+
+        $this->commands->each(function ($command) {
+            $this->commands($command);
+        });
     }
 }

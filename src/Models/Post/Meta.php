@@ -1,10 +1,9 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Post;
+namespace TinyPixel\Acorn\Models\Models\Post;
 
-use TinyPixel\AcornModels\Models\Post;
-
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\Acorn\Models\Models\Post;
+use TinyPixel\Acorn\Models\Models\BaseModel;
 
 class Meta extends BaseModel
 {

@@ -1,11 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models;
+namespace TinyPixel\Acorn\Models\Models;
 
-use TinyPixel\AcornModels\Models\TermMeta as TermMeta;
-
-use TinyPixel\AcornModels\Models\Traits\HasMeta;
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\Acorn\Models\Models\TermMeta as TermMeta;
+use TinyPixel\Acorn\Models\Models\Traits\HasMeta;
+use TinyPixel\Acorn\Models\Models\BaseModel;
 
 class Term extends BaseModel
 {

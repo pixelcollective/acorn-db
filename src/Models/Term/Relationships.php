@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\AcornModels\Models\Term;
+namespace TinyPixel\Acorn\Models\Models\Term;
 
-use TinyPixel\AcornModels\Models\BaseModel;
+use TinyPixel\Acorn\Models\Models\BaseModel;
 
 class Relationships extends BaseModel
 {

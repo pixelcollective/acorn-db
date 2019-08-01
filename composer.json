@@ -20,21 +20,19 @@
   },
   "autoload": {
     "psr-4": {
-      "TinyPixel\\AcornModels\\": "src/"
-    },
-    "scripts": [
-      "src/helpers.php"
-    ]
+      "TinyPixel\\Acorn\\Models\\": "src/"
+    }
   },
   "require": {
     "php": ">=7.3",
+    "tiny-pixel/acorn-support": "dev-master",
     "sofa/eloquence": "^5.6"
   },
   "extra": {
     "acorn": {
       "providers": [
         "Sofa\\Eloquence\\BaseServiceProvider",
-        "TinyPixel\\AcornModels\\DatabaseServiceProvider"
+        "TinyPixel\\Acorn\\Models\\DatabaseServiceProvider"
       ]
     }
   }

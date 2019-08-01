@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Console\Commands\Migrate;
+namespace TinyPixel\Acorn\Models\Console\Commands\Migrate;
 
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 
-use App\Console\Commands\Migrate\BaseCommand;
+use Roots\Acorn\Application;
+use TinyPixel\Acorn\Models\Console\Commands\Migrate\BaseCommand;
 
-class RollbackCommand extends BaseCommand
+class ResetCommand extends BaseCommand
 {
     use ConfirmableTrait;
 
@@ -17,14 +18,14 @@ class RollbackCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'migrate:rollback';
+    protected $name = 'migrate:reset';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Rollback the last database migration';
+    protected $description = 'Rollback all database migrations';
 
     /**
      * The migrator instance.
@@ -39,12 +40,11 @@ class RollbackCommand extends BaseCommand
      * @param  \Illuminate\Database\Migrations\Migrator  $migrator
      * @return void
      */
-    public function __construct(\Roots\Acorn\Application $app)
+    public function __construct(Application $app)
     {
         parent::__construct();
         $this->app = $app;
         $this->migrator = $this->app['migrator'];
-
     }
 
     /**
@@ -58,12 +58,15 @@ class RollbackCommand extends BaseCommand
             return;
         }
         $this->migrator->setConnection($this->option('database'));
-        $this->migrator->setOutput($this->output)->rollback(
+        // First, we'll make sure that the migration table actually exists before we
+        // start trying to rollback and re-run all of the migrations. If it's not
+        // present we'll just bail out with an info message for the developers.
+        if (! $this->migrator->repositoryExists()) {
+            return $this->comment('Migration table not found.');
+        }
+        $this->migrator->setOutput($this->output)->reset(
             $this->getMigrationPaths(),
-            [
-                'pretend' => $this->option('pretend'),
-                'step' => (int) $this->option('step'),
-            ]
+            $this->option('pretend')
         );
     }
 
@@ -80,7 +83,6 @@ class RollbackCommand extends BaseCommand
             ['path', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The path(s) to the migrations files to be executed'],
             ['realpath', null, InputOption::VALUE_NONE, 'Indicate any provided migration file paths are pre-resolved absolute paths'],
             ['pretend', null, InputOption::VALUE_NONE, 'Dump the SQL queries that would be run'],
-            ['step', null, InputOption::VALUE_OPTIONAL, 'The number of migrations to be reverted'],
         ];
     }
 }
