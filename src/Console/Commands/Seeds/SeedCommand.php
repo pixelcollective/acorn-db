@@ -27,6 +27,16 @@ class SeedCommand extends Command
     protected $description = 'Seed the database with records';
 
     /**
+     * The console command signature.
+     *
+     * @var string
+     */
+    protected $signature = 'db:seed
+                            {--class : The class name of the root seeder}
+                            {--database : The database connection to seed.}
+                            {--force : Force the operation to run when in production}';
+
+    /**
      * The connection resolver instance.
      *
      * @var \Illuminate\Database\ConnectionResolverInterface
