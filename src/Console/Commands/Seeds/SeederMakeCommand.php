@@ -24,6 +24,13 @@ class SeederMakeCommand extends GeneratorCommand
     protected $description = 'Create a new seeder class';
 
     /**
+     * The console command signature.
+     *
+     * @var string
+     */
+    protected $signature = 'make:seeder';
+
+    /**
      * The type of class being generated.
      *
      * @var string
