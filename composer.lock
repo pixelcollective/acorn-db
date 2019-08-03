@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "977b63e5889e6fab9808f5af7b67d32c",
+    "content-hash": "8431f3d4dcb2aebb4b1dce7c15766662",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1064,51 +1064,12 @@
                 "standards"
             ],
             "time": "2019-06-13T11:15:36+00:00"
-        },
-        {
-            "name": "tiny-pixel/acorn-support",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../acorn-support",
-                "reference": "5f06c792d28caea4f697cce3516fa6fe845320db"
-            },
-            "require": {
-                "php": ">=7.3"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "TinyPixel\\Acorn\\Support\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kelly Mears",
-                    "email": "kelly@tinypixel.dev"
-                }
-            ],
-            "description": "Supports and utilities for building with Acorn",
-            "keywords": [
-                "acorn",
-                "roots",
-                "support",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/pixelcollective/acorn-support/issues"
-            }
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "tiny-pixel/acorn-support": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

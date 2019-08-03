@@ -2,9 +2,10 @@
 
 namespace TinyPixel\Acorn\Database\Providers;
 
-use TinyPixel\Acorn\Support\Utility;
+use function Roots\base_path;
+use function Roots\config_path;
+use Faker\Factory;
 Use Illuminate\Support\Collection;
-use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
 use Illuminate\Database\Connectors\ConnectionFactory;
@@ -13,10 +14,6 @@ use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 use Sofa\Eloquence\ServiceProvider as Eloquence;
 use Roots\Acorn\ServiceProvider;
-use Faker\Factory;
-
-use function Roots\base_path;
-use function Roots\config_path;
 
 /**
  * Database service provider
@@ -30,6 +27,23 @@ use function Roots\config_path;
  */
 class DatabaseServiceProvider extends ServiceProvider
 {
+    /**
+     * Acorn Commands
+     *
+     * @var array
+     */
+    public $commands = [
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\InstallCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\MakeCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\MigrateCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\RefreshCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\ResetCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\RollbackCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\StatusCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Seeds\SeedCommand',
+        'TinyPixel\Acorn\Database\Console\Commands\Seeds\SeederMakeCommand',
+    ];
+
    /**
      * Register any application services.
      *
@@ -37,17 +51,27 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->namespace = __NAMESPACE__;
-
         Model::clearBootedModels();
 
-        $this->bindInterfaces();
+        $this->app->bindIf(
+            MigrationRepositoryInterface::class,
+            'migration.repository'
+        );
 
-        $this->registerConnectionServices();
+        $this->app->singleton(FakerGenerator::class, function ($app) {
+            return FakerFactory::create($app['config']->get('app.faker_locale', 'en_US'));
+        });
 
-        $this->registerEloquentFactory();
+        $this->app->singleton(EloquentFactory::class, function ($app) {
+            return EloquentFactory::construct(
+                $app->make(FakerGenerator::class),
+                $this->app->databasePath('factories')
+            );
+        });
 
-        $this->registerQueueableEntityResolver();
+        $this->app->singleton(EntityResolver::class, function () {
+            return new QueueEntityResolver;
+        });
     }
 
     /**
@@ -61,127 +85,13 @@ class DatabaseServiceProvider extends ServiceProvider
 
         Model::setEventDispatcher($this->app['events']);
 
-        $this->registerPublishables();
-
-        $this->registerSeedersFrom(base_path('database/seeds'));
-    }
-
-    /**
-     * Register the primary database bindings.
-     *
-     * @return void
-     */
-    protected function registerConnectionServices()
-    {
-        // The connection factory is used to create the actual connection instances on
-        // the database. We will inject the factory into the manager so that it may
-        // make the connections while they are actually needed and not of before.
-        $this->app->singleton('db.factory', function ($app) {
-            return new ConnectionFactory($app);
-        });
-
-        // The database manager is used to resolve various connections, since multiple
-        // connections might be managed. It also implements the connection resolver
-        // interface which may be used by other components requiring connections.
-        $this->app->singleton('db', function ($app) {
-            return new DatabaseManager($app, $app['db.factory']);
-        });
-
-        $this->app->bind('db.connection', function ($app) {
-            return $app['db']->connection();
-        });
-    }
-
-    /**
-     * Register the Eloquent factory instance in the container.
-     *
-     * @return void
-     */
-    protected function registerEloquentFactory()
-    {
-        $this->app->singleton(FakerGenerator::class, function ($app) {
-            return FakerFactory::create($app['config']->get('app.faker_locale', 'en_US'));
-        });
-
-        $this->app->singleton(EloquentFactory::class, function ($app) {
-            return EloquentFactory::construct(
-                $app->make(FakerGenerator::class), $this->app->databasePath('factories')
-            );
-        });
-    }
-
-    /**
-     * Register the queueable entity resolver implementation.
-     *
-     * @return void
-     */
-    protected function registerQueueableEntityResolver()
-    {
-        $this->app->singleton(EntityResolver::class, function () {
-            return new QueueEntityResolver;
-        });
-    }
-
-    /**
-     * Bind database to container
-     *
-     * @return void
-     */
-    protected function bindInterfaces()
-    {
-        $this->app->bindIf(
-            MigrationRepositoryInterface::class,
-            'migration.repository'
-        );
-
-        $this->app->bindIf(
-            ConnectionResolverInterface::class,
-            'db'
-        );
-    }
-
-    /**
-     * Register commands from directory
-     *
-     * @param  string $base
-     * @param  string $dir
-     * @return void
-     */
-    protected function registerCommandsFromDir(string $base, string $dir)
-    {
-        $this->commands = Collection::make();
-
-        $definitions = Collection::make(glob("{$base}/{$dir}/*.php"));
-
-        $definitions->each(function ($file) use ($dir) {
-            $namespace = $this->namespace . Utility::pathToNamespace($dir);
-            $className = basename($file, '.php');
-            $namespace = str_replace('Providers\\', '', $namespace);
-
-            $this->commands->push("{$namespace}\\{$className}");
-        });
-
-        $this->commands->each(function ($command) {
-            $this->commands($command);
-        });
-    }
-
-    /**
-     * Registers publishables
-     *
-     * @return void
-     */
-    protected function registerPublishables()
-    {
-        $this->appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
+        $appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
 
         $this->publishes([
-            __DIR__ . '/../config/database.php' => config_path('database.php'),
-            __DIR__ . '/../Models'              => base_path("{$this->appDir}/Models"),
+            __DIR__ . '/../Models' => base_path($appDir . '/Models'),
         ]);
 
-        $this->registerCommandsFromDir(__DIR__ . '/..', '/Console/Commands/Migrate');
-        $this->registerCommandsFromDir(__DIR__ . '/..', '/Console/Commands/Seeds');
+        $this->commands($this->commands);
     }
 
     /**
