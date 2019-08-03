@@ -17,10 +17,10 @@ use TinyPixel\Acorn\Database\Models\BaseModel;
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
  * @since      1.0.0
- * @see        TinyPixel\Acorn\Database\Models\Post
+ * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    WordPress
- * @subpackage Acorn\Models
+ * @subpackage Acorn\Database
  */
 class Post extends BaseModel
 {
