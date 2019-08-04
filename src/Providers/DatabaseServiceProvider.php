@@ -29,7 +29,7 @@ use Roots\Acorn\ServiceProvider;
 class DatabaseServiceProvider extends ServiceProvider
 {
     /**
-     * Acorn Commands
+     * CLI Commands
      *
      * @var array
      */
@@ -46,7 +46,7 @@ class DatabaseServiceProvider extends ServiceProvider
     ];
 
    /**
-     * Register any application services.
+     * Register primary Eloquent service and associated features
      *
      * @return void
      */
@@ -94,7 +94,7 @@ class DatabaseServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(EntityResolver::class, function () {
-            return new QueueEntityResolver;
+            return QueueEntityResolver::class;
         });
     }
 
@@ -111,22 +111,22 @@ class DatabaseServiceProvider extends ServiceProvider
         $appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
 
         $this->publishes([
+            __DIR__ . '/../../Models'              => base_path($appDir . '/Models'),
             __DIR__ . '/../../config/database.php' => config_path('database.php'),
-            __DIR__ . '/../../Models' => base_path($appDir . '/Models'),
         ], 'Acorn Database');
 
         $this->commands($this->commands);
     }
 
     /**
-     * Register seeders
+     * Register database seeders
      *
+     * @param  string $path
      * @return void
      */
-   protected function registerSeedersFrom($path)
+    protected function registerSeedersFrom(string $path)
     {
-        foreach (glob("$path/*.php") as $filename)
-        {
+        foreach (glob("$path/*.php") as $filename) {
             include $filename;
         }
     }
