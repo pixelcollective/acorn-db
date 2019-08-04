@@ -18,6 +18,12 @@
   "support": {
     "issues": "https://github.com/pixelcollective/acorn-database/issues"
   },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:pixelcollective/support.git"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "TinyPixel\\Acorn\\Database\\": "src/"
@@ -26,10 +32,8 @@
   "require": {
     "php": ">=7.3",
     "sofa/eloquence": "^5.6",
-    "fzaninotto/faker": "^1.8"
-  },
-  "require-dev": {
-    "tiny-pixel/php-docz": "dev-master"
+    "fzaninotto/faker": "^1.8",
+    "tiny-pixel/support": "dev-master"
   },
   "extra": {
     "acorn": {

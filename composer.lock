@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c96a8b0c596f60f999fc41a5979b3c5",
+    "content-hash": "45a7f48038654c79a23d417598404632",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1064,21 +1064,28 @@
                 "standards"
             ],
             "time": "2019-06-13T11:15:36+00:00"
-        }
-    ],
-    "packages-dev": [
+        },
         {
-            "name": "tiny-pixel/php-docz",
+            "name": "tiny-pixel/support",
             "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../php-docz",
-                "reference": "c6751725aa8a26514992080f25d024c06beab71a"
+            "source": {
+                "type": "git",
+                "url": "git@github.com:pixelcollective/support.git",
+                "reference": "c131a076d09a4ca9f0535364c34856814ee5ad5b"
             },
-            "type": "library",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pixelcollective/support/zipball/c131a076d09a4ca9f0535364c34856814ee5ad5b",
+                "reference": "c131a076d09a4ca9f0535364c34856814ee5ad5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "type": "package",
             "autoload": {
                 "psr-4": {
-                    "TinyPixel\\PHPDocZ\\": "src"
+                    "TinyPixel\\Support\\": "src/"
                 }
             },
             "license": [
@@ -1087,24 +1094,27 @@
             "authors": [
                 {
                     "name": "Kelly Mears",
-                    "email": "developers@tinypixel.dev"
+                    "email": "kelly@tinypixel.dev"
                 }
             ],
-            "description": "phpDocumentor template that generates DocZ-specific markdown",
-            "homepage": "https://github.com/pixelcollective/php-docz",
+            "description": "Internal supports and utilities",
             "keywords": [
-                "DocZ",
-                "Documentation",
-                "Markdown",
-                "PHPDoc",
-                "phpDocumentor"
-            ]
+                "support",
+                "tiny-pixel",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/pixelcollective/acorn-support/issues",
+                "source": "https://github.com/pixelcollective/support/tree/master"
+            },
+            "time": "2019-08-04T08:40:09+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tiny-pixel/php-docz": 20
+        "tiny-pixel/support": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
