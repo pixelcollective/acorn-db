@@ -106,10 +106,10 @@ class Option extends BaseModel
 
     /**
      * Return array of values
+     * @see Corcel\Corcel
      *
      * @param array $keys
      * @return array
-     * @see Corcel\Corcel
      */
     public static function asArray($keys = [])
     {
@@ -126,9 +126,9 @@ class Option extends BaseModel
 
     /**
      * Cast results as array
+     * @see Corcel\Corcel
      *
      * @return array
-     * @see Corcel\Corcel
      */
     public function toArray()
     {

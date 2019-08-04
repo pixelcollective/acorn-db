@@ -24,39 +24,6 @@ If your database is not already configured you can also jumpstart that after ins
 wp acorn vendor:publish
 ```
 
-Now anytime you would normally use `get_posts` or `WP_Query` you can instead run eloquent queries on the models:
+## Acknowledgements
 
-```php
-use TinyPixel\Models\Post;
-
-/**
- * Returns all published posts
- *
- * @return \Illuminate\Support\Collection
- */
-function published()
-{
-    return Post::ofType('post')
-                ->ofStatus('publish')
-                ->with('meta')
-                ->with('author')
-                ->get();
-}
-
- /**
-  * Returns random published posts
-  *
-  * @param int $excludePostId
-  * @return \Illuminate\Support\Collection
-  */
-function randomPosts($excludePostId = get_the_ID())
-{
-    return Post::published()
-                ->orderByRaw('RAND()')
-                ->where('id', '!=', $excludePostId)
-                ->take(3)
-                ->get();
-}
-
-// ...etc
-```
+Heavy inspiration, direction and code taken from Roots.io, Laravel, and Corcel.

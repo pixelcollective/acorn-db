@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8431f3d4dcb2aebb4b1dce7c15766662",
+    "content-hash": "7c96a8b0c596f60f999fc41a5979b3c5",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1066,10 +1066,46 @@
             "time": "2019-06-13T11:15:36+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "tiny-pixel/php-docz",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../php-docz",
+                "reference": "c6751725aa8a26514992080f25d024c06beab71a"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TinyPixel\\PHPDocZ\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kelly Mears",
+                    "email": "developers@tinypixel.dev"
+                }
+            ],
+            "description": "phpDocumentor template that generates DocZ-specific markdown",
+            "homepage": "https://github.com/pixelcollective/php-docz",
+            "keywords": [
+                "DocZ",
+                "Documentation",
+                "Markdown",
+                "PHPDoc",
+                "phpDocumentor"
+            ]
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "tiny-pixel/php-docz": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

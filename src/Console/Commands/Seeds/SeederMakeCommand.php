@@ -2,13 +2,24 @@
 
 namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
 
+use function Roots\base_path;
 use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputArgument;
 use Roots\Acorn\Console\Commands\GeneratorCommand;
 
-use function Roots\base_path;
-
+/**
+ * Seeder Make Command
+ *
+ * Usage: `wp acorn make:seeder`
+ *
+ * @package    AcornDB
+ * @subpackage Commands
+ * @version    1.0.0
+ * @since      1.0.0
+ * @author     Kelly Mears <developers@tinypixel.dev>
+ * @license    MIT
+ */
 class SeederMakeCommand extends GeneratorCommand
 {
     /**

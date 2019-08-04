@@ -8,6 +8,14 @@ use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 use Roots\Acorn\Console\Commands\Command;
 
+/**
+ * Seed Command
+ *
+ * Seeds the database with records
+ *
+ * @license MIT
+ * @since   1.0.0
+ */
 class SeedCommand extends Command
 {
     use ConfirmableTrait;

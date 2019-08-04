@@ -50,6 +50,11 @@ class Post extends BaseModel
         'password'  => 'post_password',
     ];
 
+    /**
+     * Author
+     *
+     * @return \TinyPixel\Acorn\Database\Models\Post $this
+     */
     public function author()
     {
         return $this->hasOne(User::class, 'ID', 'post_author');

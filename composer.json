@@ -28,6 +28,9 @@
     "sofa/eloquence": "^5.6",
     "fzaninotto/faker": "^1.8"
   },
+  "require-dev": {
+    "tiny-pixel/php-docz": "dev-master"
+  },
   "extra": {
     "acorn": {
       "providers": [
