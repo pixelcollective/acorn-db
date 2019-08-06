@@ -14,9 +14,9 @@ use TinyPixel\Acorn\Database\Model\Meta\Meta;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Meta\Term
- */
+ **/
 class TermMeta extends Meta
 {
     /** @var string */
@@ -35,7 +35,7 @@ class TermMeta extends Meta
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     **/
+     ***/
     protected $maps = [
         'id'    => 'term_id',
         'key'   => 'meta_key',
@@ -46,7 +46,7 @@ class TermMeta extends Meta
      * Term meta belongs to a term.
      *
      * @return BelongsTo
-     */
+     **/
     public function term(): BelongsTo
     {
         return $this->belongsTo(Term::class);

@@ -14,8 +14,8 @@ use TinyPixel\Acorn\Database\Model\WordPress;
  * @uses    Sofa\Eloquence\Eloquence
  *
  * @package    Acorn\Database
- * @subpackage Model
- */
+ * @subpackage Model\Attachment
+ **/
 class Attachment extends WordPress
 {
     /** @var string */
@@ -25,7 +25,7 @@ class Attachment extends WordPress
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     */
+     **/
     protected $maps = [
         'title'       => 'post_title',
         'url'         => 'guid',
@@ -38,7 +38,7 @@ class Attachment extends WordPress
     /**
      * Attachments belong to posts.
      * @return BelongsTo
-     */
+     **/
     public function post() : BelongsTo
     {
         return $this->belongsTo(Post::class, 'post_parent', 'ID');

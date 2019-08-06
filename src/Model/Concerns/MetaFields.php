@@ -40,7 +40,7 @@ trait MetaFields
      * An individual meta value can have many additional meta values.
      *
      * @return HasMany
-     */
+     **/
     public function meta() : HasMany
     {
         return $this->hasMany($this->getMetaClass(), $this->getMetaForeignKey());
@@ -51,7 +51,7 @@ trait MetaFields
      *
      * @return string
      * @throws EloquentException
-     */
+     **/
     protected function getMetaClass()
     {
         foreach ($this->builtInClasses as $model => $meta) {
@@ -68,7 +68,7 @@ trait MetaFields
      *
      * @return string
      * @throws EloquentException
-     */
+     **/
     protected function getMetaForeignKey(): string
     {
         foreach ($this->builtInClasses as $model => $meta) {
@@ -88,7 +88,7 @@ trait MetaFields
      * @param  mixed   $value
      * @param  string  $operator
      * @return Builder
-     */
+     **/
     public function scopeHasMeta(Builder $query, string $meta, $value = null, string $operator = '=') : Builder
     {
         if (!is_array($meta)) {
@@ -119,7 +119,7 @@ trait MetaFields
      * @param  string  $meta
      * @param  mixed   $value
      * @return Builder
-     */
+     **/
     public function scopeHasMetaLike(Builder $query, $meta, $value = null) : Builder
     {
         return $this->scopeHasMeta($query, $meta, $value, 'like');
@@ -131,7 +131,7 @@ trait MetaFields
      * @param  string $key
      * @param  mixed  $value
      * @return bool
-     */
+     **/
     public function saveMeta($key, $value = null)
     {
         if (is_array($key)) {
@@ -153,7 +153,7 @@ trait MetaFields
      * @param  string $key
      * @param  mixed $value
      * @return bool
-     */
+     **/
     private function saveOneMeta($key, $value)
     {
         $result = $this->meta()
@@ -173,7 +173,7 @@ trait MetaFields
      * @param  string $key
      * @param  mixed $value
      * @return Model|Collection
-     */
+     **/
     public function createMeta(string $key, $value = null)
     {
         if (is_array($key)) {
@@ -191,7 +191,7 @@ trait MetaFields
      * @param  string $key
      * @param  mixed $value
      * @return \Illuminate\Database\Eloquent\Model
-     */
+     **/
     private function createOneMeta($key, $value)
     {
         $meta = $this->meta()->create([
@@ -209,7 +209,7 @@ trait MetaFields
      *
      * @param string $attribute
      * @return mixed|null
-     */
+     **/
     public function getMeta(string $attribute)
     {
         if ($meta = $this->meta->{$attribute}) {
@@ -223,7 +223,7 @@ trait MetaFields
      * Alias for meta method.
      *
      * @return HasMany
-     **/
+     ***/
     public function fields() : HasMany
     {
         return $this->meta();
@@ -235,7 +235,7 @@ trait MetaFields
      * @param  string $key
      * @param  mixed  $value
      * @return bool
-     */
+     **/
     public function saveField($key, $value)
     {
         return $this->saveMeta($key, $value);
@@ -247,7 +247,7 @@ trait MetaFields
      * @param  string $key
      * @param  mixed $value
      * @return Model
-     */
+     **/
     public function createField(string $key, $value) : Model
     {
         return $this->createMeta($key, $value);

@@ -2,13 +2,13 @@
 
 namespace TinyPixel\Acorn\Database\Model;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Query\Builder;
 use TinyPixel\Acorn\Database\Model\Term;
-use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
 use TinyPixel\Acorn\Database\Model\WordPress;
+use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
 use TinyPixel\Acorn\Database\Model\Builder\TaxonomyBuilder;
 
 /**
@@ -19,9 +19,9 @@ use TinyPixel\Acorn\Database\Model\Builder\TaxonomyBuilder;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
- * @subpackage Model
- */
+ * @package    Acorn\Database
+ * @subpackage Model\Taxonomy
+ **/
 class Taxonomy extends WordPress
 {
     /** @var string */
@@ -40,7 +40,7 @@ class Taxonomy extends WordPress
      * A taxonomy is related to many term meta fields.
      *
      * @return HasMany
-     */
+     **/
     public function meta()
     {
         return $this->hasMany(TermMeta::class, 'term_id');
@@ -50,7 +50,7 @@ class Taxonomy extends WordPress
      * A taxonomy belongs to a term.
      *
      * @return BelongsTo
-     */
+     **/
     public function term()
     {
         return $this->belongsTo(Term::class, 'term_id');
@@ -60,7 +60,7 @@ class Taxonomy extends WordPress
      * A taxonomy can be parented by many taxonomies.
      *
      * @return BelongsTo
-     */
+     **/
     public function parent()
     {
         return $this->belongsTo(Taxonomy::class, 'parent');
@@ -70,11 +70,14 @@ class Taxonomy extends WordPress
      * A taxonomy belongs to many posts.
      *
      * @return BelongsToMany
-     */
+     **/
     public function posts()
     {
         return $this->belongsToMany(
-            Post::class, 'term_relationships', 'term_taxonomy_id', 'object_id'
+            Post::class,
+            'term_relationships',
+            'term_taxonomy_id',
+            'object_id'
         );
     }
 
@@ -83,7 +86,7 @@ class Taxonomy extends WordPress
      *
      * @param  Builder $query
      * @return TaxonomyBuilder
-     */
+     **/
     public function newEloquentBuilder($query) : TaxonomyBuilder
     {
         return new TaxonomyBuilder($query);
@@ -93,7 +96,7 @@ class Taxonomy extends WordPress
      * Refresh builder.
      *
      * @return TaxonomyBuilder
-     */
+     **/
     public function newQuery() : TaxonomyBuilder
     {
         return isset($this->taxonomy) && $this->taxonomy ?
@@ -106,7 +109,7 @@ class Taxonomy extends WordPress
      *
      * @param  string $key
      * @return string
-     */
+     **/
     public function __get($key) : string
     {
         if (!isset($this->$key)) {

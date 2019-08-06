@@ -8,7 +8,7 @@ use TinyPixel\Acorn\Database\Model\WordPress;
 use TinyPixel\Acorn\Database\Model\Post;
 use TinyPixel\Acorn\Database\Model\User;
 use TinyPixel\Acorn\Database\Model\Comment\CommentMeta;
-use TinyPixel\Acorn\Database\Model\Traits\HasMeta;
+use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
 
 /**
  * Comment Model
@@ -20,10 +20,10 @@ use TinyPixel\Acorn\Database\Model\Traits\HasMeta;
  *
  * @package    Acorn\Database
  * @subpackage Model\Comment
- */
+ **/
 class Comment extends WordPress
 {
-    use HasMeta;
+    use MetaFields;
 
     /** @var string */
     const CREATED_AT = 'comment_date';
@@ -47,7 +47,7 @@ class Comment extends WordPress
      * A comment belongs to a post.
      *
      * @return BelongsTo
-     */
+     **/
     public function post() : BelongsTo
     {
         return $this->belongsTo(Post::class, 'comment_post_ID');
@@ -57,7 +57,7 @@ class Comment extends WordPress
      * Alias
      *
      * @return BelongsTo
-     */
+     **/
     public function parent() : BelongsTo
     {
         return $this->original();
@@ -67,7 +67,7 @@ class Comment extends WordPress
      * A comment can be parented by another comment.
      *
      * @return BelongsTo
-     */
+     **/
     public function original() : BelongsTo
     {
         return $this->belongsTo(Comment::class, 'comment_parent');
@@ -77,7 +77,7 @@ class Comment extends WordPress
      * A comment can have many replies.
      *
      * @return HasMany
-     */
+     **/
     public function replies() : HasMany
     {
         return $this->hasMany(Comment::class, 'comment_parent');
@@ -87,7 +87,7 @@ class Comment extends WordPress
      * Comment is approved.
      *
      * @return bool
-     */
+     **/
     public function isApproved() : bool
     {
         return $this->attributes['comment_approved'] == 1;
@@ -97,7 +97,7 @@ class Comment extends WordPress
      * Comment is a reply
      *
      * @return bool
-     */
+     **/
     public function isReply() : bool
     {
         return $this->attributes['comment_parent'] > 0;
@@ -107,7 +107,7 @@ class Comment extends WordPress
      * Comment has replies.
      *
      * @return bool
-     */
+     **/
     public function hasReplies() : bool
     {
         return $this->replies->count() > 0;
@@ -118,7 +118,7 @@ class Comment extends WordPress
      *
      * @param  int $postId
      * @return Comment
-     */
+     **/
     public static function findByPostId(int $postId)
     {
         return (new static())
@@ -129,7 +129,7 @@ class Comment extends WordPress
     /**
      * @param  Builder $query
      * @return CommentBuilder
-     */
+     **/
     public function newEloquentBuilder($query)
     {
         return new CommentBuilder($query);
@@ -138,7 +138,7 @@ class Comment extends WordPress
     /**
      * @param mixed $value
      * @return void
-     */
+     **/
     public function setUpdatedAt($value)
     {
         // --

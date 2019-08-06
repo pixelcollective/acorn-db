@@ -11,16 +11,16 @@ use Illuminate\Database\Eloquent\Builder;
  * @license    MIT
  * @since      1.0.0
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Builder\Taxonomy
- **/
+ ***/
 class CommentBuilder extends Builder
 {
     /**
      * Comment has been approved.
      *
      * @return CommentBuilder
-     */
+     **/
     public function approved() : CommentBuilder
     {
         return $this->where('comment_approved', 1);

@@ -15,10 +15,10 @@ use TinyPixel\Acorn\Database\Exceptions\EloquentException;
  *
  * @package    Acorn\Database
  * @subpackage Model\Field
- */
+ **/
 class FieldManager
 {
-    /** @var mixed */
+    /** @var mixed **/
     protected $post;
 
     /**
@@ -26,7 +26,7 @@ class FieldManager
      *
      * @param  Model $post
      * @return void
-     **/
+     ***/
     public function __construct(Model $post)
     {
         $this->post = $post;
@@ -37,7 +37,7 @@ class FieldManager
      *
      * @param  string $name
      * @return mixed
-     */
+     **/
     public function __get(string $name)
     {
         $field = FieldFactory::make($name, $this->post);
@@ -52,7 +52,7 @@ class FieldManager
      * @return mixed
      * @uses   FieldFactory
      * @throws EloquentException
-     */
+     **/
     public function __call(string $name, array $arguments)
     {
         if (!isset($arguments[0])) {

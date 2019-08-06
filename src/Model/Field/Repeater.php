@@ -20,10 +20,10 @@ use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
  * @subpackage Model\Field
  * @extends    TinyPixel\Acorn\Database\Model\Field\Field
  * @implements TinyPixel\Acorn\Database\Model\Field\FieldInterface
- */
+ **/
 class Repeater extends Field implements FieldInterface
 {
-    /** @var Collection */
+    /** @var Collection **/
     protected $fields;
 
     /**
@@ -31,7 +31,7 @@ class Repeater extends Field implements FieldInterface
      *
      * @param  string $fieldName
      * @return void
-     */
+     **/
     public function process($fieldName) : void
     {
         $this->name = $fieldName;
@@ -46,7 +46,7 @@ class Repeater extends Field implements FieldInterface
      * Getter.
      *
      * @return Collection
-     */
+     **/
     public function get() : Collection
     {
         return $this->fields;
@@ -58,7 +58,7 @@ class Repeater extends Field implements FieldInterface
      * @param  string $metaKey
      * @param  string $fieldName
      * @return int
-     */
+     **/
     protected function retrieveIdFromFieldName($metaKey, $fieldName) : int
     {
         return (int) str_replace("{$fieldName}_", '', $metaKey);
@@ -71,7 +71,7 @@ class Repeater extends Field implements FieldInterface
      * @param  string $fieldName
      * @param  int    $id
      * @return string
-     */
+     **/
     protected function retrieveFieldName(string $metaKey, string $fieldName, int $id) : string
     {
         $pattern = "{$fieldName}_{$id}_";
@@ -86,7 +86,7 @@ class Repeater extends Field implements FieldInterface
      * @param Post   $post
      *
      * @return mixed
-     */
+     **/
     protected function fetchPostsMeta(string $fieldName, Post $post)
     {
         $count = (int) $this->fetchValue($fieldName);
@@ -112,7 +112,7 @@ class Repeater extends Field implements FieldInterface
      * @param  string $fieldName
      * @param  Builder $builder
      * @return mixed
-     */
+     **/
     protected function fetchFields($fieldName, Builder $builder)
     {
         $fields = [];

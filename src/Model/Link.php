@@ -4,9 +4,24 @@ namespace TinyPixel\Acorn\Database\Model;
 
 use TinyPixel\Acorn\Database\Model\WordPress;
 
-class Links extends WordPress
+/**
+ * Link
+ *
+ * @author  Kelly Mears <kelly@tinypixel.dev>
+ * @license MIT
+ * @since   1.0.0
+ *
+ * @package    Acorn\Database
+ * @subpackage Model\Link
+ **/
+class Link extends WordPress
 {
-    protected $table      = 'links';
+    /** @var string */
+    protected $table = 'links';
+
+    /** @var string */
     protected $primaryKey = 'link_id';
-    public $timestamps    = false;
+
+    /** @var bool */
+    public $timestamps = false;
 }

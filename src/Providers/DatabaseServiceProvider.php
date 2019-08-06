@@ -25,7 +25,7 @@ use Illuminate\Database\ConnectionResolverInterface;
  *
  * @package    Acorn\Database
  * @subpackage Acorn\Database
- */
+ **/
 class DatabaseServiceProvider extends ServiceProvider
 {
     /** @var array */
@@ -45,7 +45,7 @@ class DatabaseServiceProvider extends ServiceProvider
      * Register primary Eloquent service and associated features
      *
      * @return void
-     */
+     **/
     public function register() : void
     {
         Model::clearBootedModels();
@@ -88,7 +88,7 @@ class DatabaseServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      *
      * @return void
-     */
+     **/
     public function boot() : void
     {
         Model::setConnectionResolver($this->app['db']);
@@ -109,7 +109,7 @@ class DatabaseServiceProvider extends ServiceProvider
      *
      * @param  string $path
      * @return void
-     */
+     **/
     protected function registerSeedersFrom(string $path) : void
     {
         foreach (glob("$path/*.php") as $filename) {

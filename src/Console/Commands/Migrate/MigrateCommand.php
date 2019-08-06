@@ -14,7 +14,7 @@ class MigrateCommand extends BaseCommand
      * The name and signature of the console command.
      *
      * @var string
-     */
+     **/
     protected $signature = 'migrate {--database= : The database connection to use}
                 {--force : Force the operation to run when in production}
                 {--path=* : The path(s) to the migrations files to be executed}
@@ -26,20 +26,20 @@ class MigrateCommand extends BaseCommand
      * The console command description.
      *
      * @var string
-     */
+     **/
     protected $description = 'Run the database migrations';
     /**
      * The migrator instance.
      *
      * @var \Illuminate\Database\Migrations\Migrator
-     */
+     **/
     protected $migrator;
     /**
      * Create a new migration command instance.
      *
      * @param  \Illuminate\Database\Migrations\Migrator  $migrator
      * @return void
-     */
+     **/
     public function __construct()
     {
         parent::__construct();
@@ -50,7 +50,7 @@ class MigrateCommand extends BaseCommand
      * Execute the console command.
      *
      * @return void
-     */
+     **/
     public function handle()
     {
         if (! $this->confirmToProceed()) {
@@ -76,7 +76,7 @@ class MigrateCommand extends BaseCommand
      * Prepare the migration database for running.
      *
      * @return void
-     */
+     **/
     protected function prepareDatabase()
     {
         $this->migrator->setConnection($this->option('database'));

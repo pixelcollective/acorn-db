@@ -14,9 +14,9 @@ use TinyPixel\Acorn\Database\Model\Meta\Meta;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Post\Meta
- */
+ **/
 class PostMeta extends Meta
 {
     /** @var string */
@@ -38,7 +38,7 @@ class PostMeta extends Meta
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     **/
+     ***/
     protected $maps = [
         'id'    => 'post_id',
         'key'   => 'meta_key',
@@ -49,7 +49,7 @@ class PostMeta extends Meta
      * Post meta belongs to a post.
      *
      * @return BelongsTo
-     */
+     **/
     public function post() : BelongsTo
     {
         return $this->belongsTo(Post::class);

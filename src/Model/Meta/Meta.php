@@ -14,7 +14,7 @@ use TinyPixel\Acorn\Database\Exceptions\EloquentException;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Model
  */
 abstract class Meta extends WordPress
@@ -30,7 +30,7 @@ abstract class Meta extends WordPress
      *
      * @return mixed
      * @throws EloquentException
-     */
+     **/
     public function getValueAttribute()
     {
         try {
@@ -47,7 +47,7 @@ abstract class Meta extends WordPress
      *
      * @param  array $Model
      * @return MetaCollection
-     */
+     **/
     public function newCollection(array $model = [])
     {
         return new MetaCollection($model);

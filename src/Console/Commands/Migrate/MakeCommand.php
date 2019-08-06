@@ -15,14 +15,14 @@ class MakeCommand extends BaseCommand
      * The console command name.
      *
      * @var string
-     */
+     **/
     protected $name = 'migrate:make';
 
     /**
      * The console command signature.
      *
      * @var string
-     */
+     **/
     protected $signature = 'migrate:make {name : The name of your migration}
                             {table : The table to migrate.}
                             {--create : Creates table}';
@@ -31,14 +31,14 @@ class MakeCommand extends BaseCommand
      * The description of the command.
      *
      * @var string
-     */
+     **/
     protected $description = 'Create a new migration file';
 
     /**
      * The migration creator instance.
      *
      * @var \Illuminate\Database\Migrations\MigrationCreator
-     */
+     **/
     protected $creator;
 
     public function __construct(MigrationCreator $creator)
@@ -52,7 +52,7 @@ class MakeCommand extends BaseCommand
      * Execute the console command.
      *
      * @return void
-     */
+     **/
     public function handle()
     {
         // It's possible for the developer to specify the tables to modify in this
@@ -81,7 +81,7 @@ class MakeCommand extends BaseCommand
      * @param  string  $table
      * @param  bool    $create
      * @return string
-     */
+     **/
     protected function writeMigration($name, $table, $create)
     {
         $path = $this->getMigrationPath();
@@ -92,7 +92,11 @@ class MakeCommand extends BaseCommand
         $this->output->writeln("<bg=blue;fg=white;>Migration created!</>");
         $this->output->writeln("<info>Name:</info> {$name}");
         $this->output->write("<info>Table:</info> {$table}");
-        if ($create) $this->output->write(" <bg=blue;fg=white;>Note: new database table created.</>");
+
+        if ($create) {
+            $this->output->write(" <bg=blue;fg=white;>Note: new database table created.</>");
+        }
+
         $this->output->newLine();
         $this->output->writeln("<info>Directory:</info> {$path}");
         $this->output->newLine();

@@ -15,21 +15,21 @@ class RefreshCommand extends BaseCommand
      * The console command name.
      *
      * @var string
-     */
+     **/
     protected $name = 'migrate:refresh';
 
     /**
      * The console command description.
      *
      * @var string
-     */
+     **/
     protected $description = 'Reset and re-run all migrations';
 
     /**
      * Execute the console command.
      *
      * @return void
-     */
+     **/
     public function handle()
     {
         if (! $this->confirmToProceed()) {
@@ -73,7 +73,7 @@ class RefreshCommand extends BaseCommand
      * @param  string  $path
      * @param  int  $step
      * @return void
-     */
+     **/
     protected function runRollback($database, $path, $step)
     {
         $this->call('migrate:rollback', array_filter([
@@ -91,7 +91,7 @@ class RefreshCommand extends BaseCommand
      * @param  string  $database
      * @param  string  $path
      * @return void
-     */
+     **/
     protected function runReset($database, $path)
     {
         $this->call('migrate:reset', array_filter([
@@ -106,7 +106,7 @@ class RefreshCommand extends BaseCommand
      * Determine if the developer has requested database seeding.
      *
      * @return bool
-     */
+     **/
     protected function needsSeeding()
     {
         return $this->option('seed') || $this->option('seeder');
@@ -117,7 +117,7 @@ class RefreshCommand extends BaseCommand
      *
      * @param  string  $database
      * @return void
-     */
+     **/
     protected function runSeeder($database)
     {
         $this->call('db:seed', array_filter([
@@ -131,9 +131,10 @@ class RefreshCommand extends BaseCommand
      * Get the console command options.
      *
      * @return array
-     */
+     **/
     protected function getOptions()
     {
+        // phpcs:disable
         return [
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
@@ -143,5 +144,6 @@ class RefreshCommand extends BaseCommand
             ['seeder', null, InputOption::VALUE_OPTIONAL, 'The class name of the root seeder'],
             ['step', null, InputOption::VALUE_OPTIONAL, 'The number of migrations to be reverted & re-run'],
         ];
+        // phpcs:enable
     }
 }

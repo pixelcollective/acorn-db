@@ -23,13 +23,13 @@ use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
  */
 abstract class Field
 {
-    /** @var Model */
+    /** @var Model **/
     protected $post;
 
-    /** @var PostMeta */
+    /** @var PostMeta **/
     protected $postMeta;
 
-    /** @var string  */
+    /** @var string  **/
     protected $name;
 
     /** @var string */
@@ -38,14 +38,14 @@ abstract class Field
     /** @var string */
     protected $type;
 
-    /** @var mixed */
+    /** @var mixed **/
     protected $value;
 
     /**
      * Constructor.
      *
      * @param Post $post
-     */
+     **/
     public function __construct(Model $post)
     {
         $this->post = $post;
@@ -68,7 +68,7 @@ abstract class Field
      *
      * @param  string $field
      * @return array|string
-     */
+     **/
     public function fetchValue($field)
     {
         $postMeta = $this->postMeta->where($this->getKeyName(), $this->post->getKey())
@@ -91,7 +91,7 @@ abstract class Field
      *
      * @param  string $fieldName
      * @return string
-     */
+     **/
     public function fetchFieldKey($fieldName) : string
     {
         $this->name = $fieldName;
@@ -111,7 +111,7 @@ abstract class Field
      *
      * @param  string $fieldKey
      * @return string|null
-     */
+     **/
     public function fetchFieldType($fieldKey)
     {
         if ($post = Post::where(function ($query) use ($fieldKey) {
@@ -130,7 +130,7 @@ abstract class Field
      * Get the name of the key for the field.
      *
      * @return string
-     */
+     **/
     public function getKeyName() : string
     {
         switch (true) {
@@ -147,7 +147,7 @@ abstract class Field
      * Return string
      *
      * @return mixed
-     */
+     **/
     public function __toString()
     {
         return $this->get();

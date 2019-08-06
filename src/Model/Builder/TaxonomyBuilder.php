@@ -12,16 +12,16 @@ use Illuminate\Database\Eloquent\Builder;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Builder\Taxonomy
- **/
+ ***/
 class TaxonomyBuilder extends Builder
 {
     /**
      * Taxonomy is a category.
      *
      * @return TaxonomyBuilder
-     */
+     **/
     public function category() : TaxonomyBuilder
     {
         return $this->where('taxonomy', 'category');
@@ -31,7 +31,7 @@ class TaxonomyBuilder extends Builder
      * Taxonomy is a nav.
      *
      * @return TaxonomyBuilder
-     */
+     **/
     public function menu() : TaxonomyBuilder
     {
         return $this->where('taxonomy', 'nav_menu');
@@ -42,7 +42,7 @@ class TaxonomyBuilder extends Builder
      *
      * @param  string $name
      * @return TaxonomyBuilder
-     */
+     **/
     public function name($name) : TaxonomyBuilder
     {
         return $this->where('taxonomy', $name);
@@ -53,7 +53,7 @@ class TaxonomyBuilder extends Builder
      *
      * @param  string $slug
      * @return TaxonomyBuilder
-     */
+     **/
     public function slug($slug = null) : TaxonomyBuilder
     {
         if (!is_null($slug) && !empty($slug)) {
@@ -70,10 +70,9 @@ class TaxonomyBuilder extends Builder
      *
      * @param  null $slug
      * @return TaxonomyBuilder
-     */
+     **/
     public function term($slug = null) : TaxonomyBuilder
     {
         return $this->slug($slug);
     }
 }
-

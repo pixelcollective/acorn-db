@@ -18,7 +18,7 @@ use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
  * @subpackage Model\Field
  * @implements TinyPixel\Acorn\Database\Model\Field\FieldInterface
  * @extends    TinyPixel\Acorn\Database\Model\Field\Field
- */
+ **/
 class Image extends Field implements FieldInterface
 {
     /** @var int */
@@ -51,7 +51,7 @@ class Image extends Field implements FieldInterface
      * @uses   Post
      * @param  string $field
      * @return void
-     */
+     **/
     public function process(string $field) : void
     {
         $attachmentId = $this->fetchValue($field);
@@ -66,7 +66,7 @@ class Image extends Field implements FieldInterface
      * Getter.
      *
      * @return Image
-     */
+     **/
     public function get() : Image
     {
         return $this;
@@ -77,7 +77,7 @@ class Image extends Field implements FieldInterface
      *
      * @param  Post $attachment
      * @return void
-     */
+     **/
     protected function fillFields(Post $attachment) : void
     {
         $this->attachment  = $attachment;
@@ -93,7 +93,7 @@ class Image extends Field implements FieldInterface
      * @param bool   $useOriginalFallback
      *
      * @return Image
-     */
+     **/
     public function size($size, $useOriginalFallback = false) : Image
     {
         if (isset($this->sizes[$size])) {
@@ -110,7 +110,7 @@ class Image extends Field implements FieldInterface
      *
      * @param  array $data
      * @return Image
-     */
+     **/
     protected function fillThumbnailFields(array $data) : Image
     {
         $image = new static($this->post);
@@ -129,7 +129,7 @@ class Image extends Field implements FieldInterface
      *
      * @param  Post $postAttachment
      * @return array
-     */
+     **/
     protected function fetchMetadataValue(Post $postAttachment)
     {
         $meta = PostMeta::where('post_id', $postAttachment->ID)
@@ -144,7 +144,7 @@ class Image extends Field implements FieldInterface
      *
      * @param  Collection $attachments
      * @return {Collection|array}
-     */
+     **/
     protected function fetchMultipleMetadataValues(Collection $attachments)
     {
         $metadataValues = [];
@@ -165,7 +165,7 @@ class Image extends Field implements FieldInterface
      *
      * @param  array $imageData
      * @return void
-     */
+     **/
     protected function fillMetadataFields(array $imageData) : void
     {
         $this->filename = basename($imageData['file']);

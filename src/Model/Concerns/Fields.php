@@ -20,7 +20,7 @@ trait Fields
      * Get field attributes.
      *
      * @return FieldManager
-     */
+     **/
     public function getFieldAttributes() : FieldManager
     {
         return new FieldManager($this);

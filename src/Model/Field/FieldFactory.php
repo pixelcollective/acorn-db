@@ -18,14 +18,14 @@ use TinyPixel\Acorn\Database\Model\Field\Repeater;
  *
  * @package    Acorn\Database
  * @subpackage Model\Field
- */
+ **/
 class FieldFactory
 {
     /**
      * Constructor.
      *
      * @return null
-     */
+     **/
     private function __construct()
     {
         // ---
@@ -38,7 +38,7 @@ class FieldFactory
      * @param  Model $post
      * @param  null|string $type
      * @return FieldInterface|Collection|string
-     */
+     **/
     public static function make(string $name, Model $post, $type = null)
     {
         /**

@@ -15,7 +15,7 @@ use Roots\Acorn\Console\Commands\Command;
  *
  * @license MIT
  * @since   1.0.0
- */
+ **/
 class SeedCommand extends Command
 {
     use ConfirmableTrait;
@@ -24,21 +24,21 @@ class SeedCommand extends Command
      * The console command name.
      *
      * @var string
-     */
+     **/
     protected $name = 'db:seed';
 
     /**
      * The console command description.
      *
      * @var string
-     */
+     **/
     protected $description = 'Seed the database with records';
 
     /**
      * The console command signature.
      *
      * @var string
-     */
+     **/
     protected $signature = 'db:seed {--class= : The class name of the root seeder}
                             {--database= : The database connection to seed.}
                             {--force : Force the operation to run when in production}';
@@ -47,7 +47,7 @@ class SeedCommand extends Command
      * The connection resolver instance.
      *
      * @var \Illuminate\Database\ConnectionResolverInterface
-     */
+     **/
     protected $resolver;
 
     /**
@@ -55,7 +55,7 @@ class SeedCommand extends Command
      *
      * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
      * @return void
-     */
+     **/
     public function __construct(Resolver $resolver)
     {
         parent::__construct();
@@ -67,7 +67,7 @@ class SeedCommand extends Command
      * Execute the console command.
      *
      * @return void
-     */
+     **/
     public function handle()
     {
         if (! $this->confirmToProceed()) {
@@ -87,7 +87,7 @@ class SeedCommand extends Command
      * Get a seeder instance from the container.
      *
      * @return \Illuminate\Database\Seeder
-     */
+     **/
     protected function getSeeder()
     {
         $class = $this->laravel->make($this->input->getOption('class'));
@@ -99,7 +99,7 @@ class SeedCommand extends Command
      * Get the name of the database connection to use.
      *
      * @return string
-     */
+     **/
     protected function getDatabase()
     {
         $database = $this->input->getOption('database');
@@ -111,7 +111,7 @@ class SeedCommand extends Command
      * Get the console command options.
      *
      * @return array
-     */
+     **/
     protected function getOptions()
     {
         return [

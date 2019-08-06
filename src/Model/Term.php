@@ -2,10 +2,11 @@
 
 namespace TinyPixel\Acorn\Database\Model;
 
-use TinyPixel\Acorn\Database\Model\TermMeta as TermMeta;
-use TinyPixel\Acorn\Database\Model\Traits\HasMeta;
-use TinyPixel\Acorn\Database\Model\WordPress;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use TinyPixel\Acorn\Database\Model\WordPress;
+use TinyPixel\Acorn\Database\Model\TermMeta;
+use TinyPixel\Acorn\Database\Model\Traits\Fields;
+use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
 
 /**
  * Term Model
@@ -15,17 +16,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
- * @subpackage Model
- */
+ * @package    Acorn\Database
+ * @subpackage Model\Term
+ **/
 class Term extends WordPress
 {
-    use HasMeta;
+    use Fields, MetaFields;
 
     /** @var string */
-    protected $table      = 'terms';
+    protected $table = 'terms';
 
-    /** @var string  */
+    /** @var string  **/
     protected $primaryKey = 'term_id';
 
     /** @var bool */
@@ -35,7 +36,7 @@ class Term extends WordPress
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     */
+     **/
     protected $maps = [
         'id'    => 'term_id',
         'key'   => 'meta_key',
@@ -46,7 +47,7 @@ class Term extends WordPress
      * A term has many meta relations.
      *
      * @return HasMany
-     */
+     **/
     public function meta() : HasMany
     {
         return $this->hasMany(TermMeta::class, 'term_id')

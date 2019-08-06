@@ -14,9 +14,9 @@ use TinyPixel\Acorn\Database\Model\Meta\Meta;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Meta\Comment
- */
+ **/
 class CommentMeta extends Meta
 {
     /** @var string */
@@ -35,7 +35,7 @@ class CommentMeta extends Meta
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     */
+     **/
     protected $maps = [
         'id'    => 'comment_id',
         'key'   => 'meta_key',
@@ -46,7 +46,7 @@ class CommentMeta extends Meta
      * Comment meta belongs to a comment.
      *
      * @return BelongsTo
-     */
+     **/
     public function comment() : BelongsTo
     {
         return $this->belongsTo(Comment::class);

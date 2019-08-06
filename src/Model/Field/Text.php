@@ -16,7 +16,7 @@ use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
  * @subpackage Model\Field
  * @implements TinyPixel\Acorn\Database\Model\Field\FieldInterface
  * @extends    TinyPixel\Acorn\Database\Model\Field\Field
- */
+ **/
 class Text extends Field implements FieldInterface
 {
     /** @var string */
@@ -27,7 +27,7 @@ class Text extends Field implements FieldInterface
      *
      * @param  string $field
      * @return void
-     */
+     **/
     public function process($field) : void
     {
         $this->value = $this->fetchValue($field);
@@ -37,7 +37,7 @@ class Text extends Field implements FieldInterface
      * Getter.
      *
      * @return string
-     */
+     **/
     public function get() : string
     {
         return $this->value;

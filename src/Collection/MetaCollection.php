@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Collection;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Collection
- */
+ **/
 class MetaCollection extends Collection
 {
     /**
@@ -22,7 +22,7 @@ class MetaCollection extends Collection
      *
      * @param  string $key
      * @return mixed
-     */
+     **/
     public function __get($key)
     {
         if (isset($this->items) && count($this->items)) {
@@ -41,7 +41,7 @@ class MetaCollection extends Collection
      *
      * @param  string $name
      * @return bool
-     */
+     **/
     public function __isset($name)
     {
         return !is_null($this->__get($name));

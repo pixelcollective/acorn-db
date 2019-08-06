@@ -14,34 +14,24 @@ use TinyPixel\Acorn\Database\Model\WordPress;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Model
- */
+ **/
 class Option extends WordPress
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $table = 'options';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $primaryKey = 'option_id';
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     public $timestamps = false;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $appends = ['value'];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $fillable = [
         'option_name',
         'option_value',
@@ -52,7 +42,7 @@ class Option extends WordPress
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     */
+     **/
     protected $maps = [
         'id'    => 'option_id',
         'name'  => 'option_name',
@@ -60,12 +50,12 @@ class Option extends WordPress
     ];
 
     /**
-     * Add option to model
+     * Add option to model.
      *
-     * @param string $key
-     * @param mixed $value
+     * @param  string $key
+     * @param  mixed $value
      * @return Option
-     */
+     **/
     public static function add($key, $value)
     {
         return static::create([
@@ -75,11 +65,11 @@ class Option extends WordPress
     }
 
     /**
-     * Get option by name
+     * Get option by name.
      *
-     * @param string $name
+     * @param  string $name
      * @return mixed
-     */
+     **/
     public static function get($name)
     {
         if ($option = self::where('option_name', $name)->first()) {
@@ -90,13 +80,15 @@ class Option extends WordPress
     }
 
     /**
-     * Get all autoloaded options
-     */
+     * Get all autoloaded options.
+     *
+     * @return Option
+     **/
     public static function autoloaded()
     {
         return self::where('autoload', 'yes')
-            ->get()
-            ->pluck('value', 'option_name');
+                   ->get()
+                   ->pluck('value', 'option_name');
     }
 
     /**
@@ -104,7 +96,7 @@ class Option extends WordPress
      *
      * @param  string $name
      * @return mixed
-     */
+     **/
     public static function getAll() : array
     {
         return static::asArray();
@@ -113,9 +105,10 @@ class Option extends WordPress
     /**
      * Get value, even if serialized.
      *
+     * @param  string $key
      * @return mixed
-     */
-    public static function getValue($key = '')
+     **/
+    public static function getValue(string $key = '')
     {
         $value = '';
 
@@ -131,12 +124,11 @@ class Option extends WordPress
     }
 
     /**
-     * Return array of values
+     * Return arrayed values.
      *
-     * @see    Corcel\Corcel
      * @param  array $keys
      * @return array
-     */
+     **/
     public static function asArray($keys = []) : array
     {
         $query = static::query();
@@ -146,16 +138,15 @@ class Option extends WordPress
         }
 
         return $query->get()
-            ->pluck('value', 'option_name')
-            ->toArray();
+                     ->pluck('value', 'option_name')
+                     ->toArray();
     }
 
     /**
-     * Cast results as array
-     * @see Corcel\Corcel
+     * Cast results to array.
      *
      * @return array
-     */
+     **/
     public function toArray() : array
     {
         if ($this instanceof Option) {

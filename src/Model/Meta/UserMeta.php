@@ -14,9 +14,9 @@ use TinyPixel\Acorn\Database\Model\Meta\Meta;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Meta\User
- */
+ **/
 class UserMeta extends Meta
 {
     /** @var string */
@@ -38,7 +38,7 @@ class UserMeta extends Meta
      * User meta belongs to a single user.
      *
      * @return BelongsTo
-     */
+     **/
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class);

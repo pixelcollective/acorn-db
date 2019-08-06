@@ -13,9 +13,9 @@ use TinyPixel\Acorn\Database\Model\WordPress;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Model
- */
+ **/
 class TermRelationship extends WordPress
 {
     /** @var string */
@@ -34,7 +34,7 @@ class TermRelationship extends WordPress
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     */
+     **/
     public $maps = [
         'postId'     => 'object_id',
         'taxonomyId' => 'term_taxonomy_id',
@@ -44,7 +44,7 @@ class TermRelationship extends WordPress
      * A term relates to a post based on its `object_id`.
      *
      * @return BelongsTo
-     */
+     **/
     public function post() : BelongsTo
     {
         return $this->belongsTo(Post::class, 'object_id');
@@ -54,7 +54,7 @@ class TermRelationship extends WordPress
      * A term relates to a taxonomy based on its `term_taxonomy_id`.
      *
      * @return BelongsTo
-     */
+     **/
     public function taxonomy() : BelongsTo
     {
         return $this->belongsTo(Taxonomy::class, 'term_taxonomy_id');

@@ -16,9 +16,9 @@ use TinyPixel\Acorn\Database\Exceptions\EloquentException;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Meta\Thumbnail
- */
+ **/
 class ThumbnailMeta extends PostMeta
 {
     /**
@@ -33,7 +33,7 @@ class ThumbnailMeta extends PostMeta
      * A thumbnail belongs to an attachmnent.
      *
      * @return BelongsTo
-     */
+     **/
     public function attachment()
     {
         return $this->belongsTo(Attachment::class, 'meta_value');
@@ -45,7 +45,7 @@ class ThumbnailMeta extends PostMeta
      * @param string $size
      * @return array
      * @throws \Exception
-     */
+     **/
     public function size($size)
     {
         if ($size == self::SIZE_FULL) {
@@ -63,13 +63,13 @@ class ThumbnailMeta extends PostMeta
         $data = Arr::get($sizes, $size);
 
         return array_merge($data, [
-            'url' => dirname($this->attachment->url).'/'.$data['file'],
+            'url' => dirname($this->attachment->url) . '/' . $data['file'],
         ]);
     }
 
     /**
      * @return string
-     */
+     **/
     public function __toString()
     {
         return $this->attachment->guid;

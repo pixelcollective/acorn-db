@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @license    MIT
  * @since      1.0.0
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Builder\Taxonomy
- **/
+ ***/
 class PostBuilder extends Builder
 {
     /**
@@ -22,7 +22,7 @@ class PostBuilder extends Builder
      *
      * @param  string $status
      * @return PostBuilder
-     */
+     **/
     public function status($status) : PostBuilder
     {
         return $this->where('post_status', $status);
@@ -32,7 +32,7 @@ class PostBuilder extends Builder
      * Returns posts with status of 'publish'
      *
      * @return PostBuilder
-     */
+     **/
     public function published() : PostBuilder
     {
         return $this->where(function ($query) {
@@ -49,7 +49,7 @@ class PostBuilder extends Builder
      *
      * @param  string $type
      * @return PostBuilder
-     */
+     **/
     public function type($type) : PostBuilder
     {
         return $this->where('post_type', $type);
@@ -60,7 +60,7 @@ class PostBuilder extends Builder
      *
      * @param  array $types
      * @return PostBuilder
-     */
+     **/
     public function typeIn(array $types) : PostBuilder
     {
         return $this->whereIn('post_type', $types);
@@ -71,7 +71,7 @@ class PostBuilder extends Builder
      *
      * @param  string $slug
      * @return PostBuilder
-     */
+     **/
     public function slug(string $slug) : PostBuilder
     {
         return $this->where('post_name', $slug);
@@ -82,7 +82,7 @@ class PostBuilder extends Builder
      *
      * @param  string $postParentId
      * @return PostBuilder
-     */
+     **/
     public function parent(string $postParentId) : PostBuilder
     {
         return $this->where('post_parent', $postParentId);
@@ -94,7 +94,7 @@ class PostBuilder extends Builder
      * @param  string $taxonomy
      * @param  mixed $terms
      * @return PostBuilder
-     */
+     **/
     public function taxonomy(string $taxonomy, $terms) : PostBuilder
     {
         return $this->whereHas('taxonomies', function ($query) use ($taxonomy, $terms) {
@@ -112,7 +112,7 @@ class PostBuilder extends Builder
      *
      * @param  mixed $term
      * @return PostBuilder
-     */
+     **/
     public function search($term = false) : PostBuilder
     {
         /**
