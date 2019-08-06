@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @package    AcornDB
  * @subpackage Builder\Taxonomy
  * @see        Corcel\Corcel
+
  */
 class TaxonomyBuilder extends Builder
 {

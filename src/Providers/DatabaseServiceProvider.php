@@ -28,11 +28,7 @@ use Illuminate\Database\ConnectionResolverInterface;
  */
 class DatabaseServiceProvider extends ServiceProvider
 {
-    /**
-     * CLI Commands
-     *
-     * @var array
-     */
+    /** @var array */
     public $commands = [
         'TinyPixel\Acorn\Database\Console\Commands\Migrate\InstallCommand',
         'TinyPixel\Acorn\Database\Console\Commands\Migrate\MakeCommand',
@@ -50,30 +46,18 @@ class DatabaseServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register() : void
     {
         Model::clearBootedModels();
 
-        $this->app->bindIf(
-            MigrationRepositoryInterface::class,
-            'migration.repository'
-        );
+        $this->app->bindIf(MigrationRepositoryInterface::class, 'migration.repository');
 
-        $this->app->bindIf(
-            ConnectionResolverInterface::class,
-            'db'
-        );
+        $this->app->bindIf(ConnectionResolverInterface::class, 'db');
 
-        // The connection factory is used to create the actual connection instances on
-        // the database. We will inject the factory into the manager so that it may
-        // make the connections while they are actually needed and not of before.
         $this->app->singleton('db.factory', function ($app) {
             return new ConnectionFactory($app);
         });
 
-        // The database manager is used to resolve various connections, since multiple
-        // connections might be managed. It also implements the connection resolver
-        // interface which may be used by other components requiring connections.
         $this->app->singleton('db', function ($app) {
             return new DatabaseManager($app, $app['db.factory']);
         });
@@ -83,7 +67,9 @@ class DatabaseServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(FakerGenerator::class, function ($app) {
-            return FakerFactory::create($app['config']->get('app.faker_locale', 'en_US'));
+            return FakerFactory::create(
+                $app['config']->get('app.faker_locale', 'en_US')
+            );
         });
 
         $this->app->singleton(EloquentFactory::class, function ($app) {
@@ -103,7 +89,7 @@ class DatabaseServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot() : void
     {
         Model::setConnectionResolver($this->app['db']);
         Model::setEventDispatcher($this->app['events']);
@@ -111,8 +97,8 @@ class DatabaseServiceProvider extends ServiceProvider
         $appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
 
         $this->publishes([
-            __DIR__ . '/../../Models'              => base_path($appDir . '/Models'),
-            __DIR__ . '/../../config/database.php' => config_path('database.php'),
+            __DIR__ . '/../../publishes/Models'              => base_path($appDir . '/Models'),
+            __DIR__ . '/../../publishes/config/database.php' => config_path('database.php'),
         ], 'Acorn Database');
 
         $this->commands($this->commands);
@@ -124,7 +110,7 @@ class DatabaseServiceProvider extends ServiceProvider
      * @param  string $path
      * @return void
      */
-    protected function registerSeedersFrom(string $path)
+    protected function registerSeedersFrom(string $path) : void
     {
         foreach (glob("$path/*.php") as $filename) {
             include $filename;
