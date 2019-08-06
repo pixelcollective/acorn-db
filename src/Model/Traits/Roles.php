@@ -2,7 +2,17 @@
 
 namespace TinyPixel\Acorn\Database\Model\Traits;
 
-trait HasRoles
+/**
+ * Concerning user roles
+ *
+ * @author     Kelly Mears <kelly@tinypixel.dev>
+ * @license    MIT
+ * @since      1.0.0
+ *
+ * @package    Acorn\Database
+ * @subpackage Model\Traits
+ **/
+trait Roles
 {
     public function hasRole($role = '')
     {

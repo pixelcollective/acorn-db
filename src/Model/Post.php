@@ -2,16 +2,21 @@
 
 namespace TinyPixel\Acorn\Database\Model;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use TinyPixel\Acorn\Database\Model\WordPress;
 use TinyPixel\Acorn\Database\Model\User;
 use TinyPixel\Acorn\Database\Model\Attachment;
 use TinyPixel\Acorn\Database\Model\Comment;
 use TinyPixel\Acorn\Database\Model\Taxonomy;
 use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
-use TinyPixel\Acorn\Database\Model\Traits\HasMeta;
 use TinyPixel\Acorn\Database\Model\Relationship\TermRelationship;
+use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
+use TinyPixel\Acorn\Database\Model\Traits\Fields;
+use TinyPixel\Acorn\Database\Model\Builder\PostBuilder;
 
 /**
  * Post Model
@@ -26,7 +31,7 @@ use TinyPixel\Acorn\Database\Model\Relationship\TermRelationship;
  */
 class Post extends WordPress
 {
-    use HasMeta;
+    use Fields, MetaFields;
 
     /** @var string */
     const CREATED_AT = 'post_date';
@@ -66,88 +71,239 @@ class Post extends WordPress
     ];
 
     /**
-     * Post thumbnail.
+     * A post has a thumbnail.
      *
      * @return HasOne
      */
-    public function thumbnail() : HasOne
+    public function thumbnail()
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
                     ->where('meta_key', '_thumbnail_id');
     }
 
     /**
-     * A post has one author.
+     * A post belongs to many taxonomies.
      *
-     * @return Post $this
+     * @return BelongsToMany
      */
-    public function author()
+    public function taxonomies()
     {
-        return $this->hasOne(User::class, 'ID', 'post_author');
+        return $this->belongsToMany(Taxonomy::class, 'term_relationships', 'object_id', 'term_taxonomy_id');
     }
 
     /**
-     * A post is related to many meta fields.
-     */
-    public function meta()
-    {
-        return $this->hasMany(PostMeta::class, 'post_id')
-                    ->select(['post_id', 'meta_key', 'meta_value']);
-    }
-
-    /**
-     * A post has many terms found through the TermRelationship model.
+     * A post has many comments.
      *
-     * @return HasManyThrough
+     * @return HasMany
      */
-    public function terms()
-    {
-        return $this->hasManyThrough(
-            Taxonomy::class,
-            Relationship::class,
-            'object_id',
-            'term_taxonomy_id'
-        );
-    }
-
-    public function categories()
-    {
-        return $this->terms()->where('taxonomy', 'category');
-    }
-
-    public function tags()
-    {
-        return $this->terms()->where('taxonomy', 'post_tag');
-    }
-
-    public function attachments()
-    {
-        return $this->hasMany(Attachment::class, 'post_parent', 'ID')
-                    ->where('post_type', 'attachment');
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class, 'comment_post_ID');
     }
 
-    public function scopeType($query, $type = 'post')
+    /**
+     * A post belongs to an author.
+     *
+     * @return BelongsTo
+     */
+    public function author()
     {
-        return $query->where('post_type', $type);
+        return $this->belongsTo(User::class, 'post_author');
     }
 
-    public function scopeStatus($query, $status = null)
+    /**
+     * A post can be parented by another post.
+     *
+     * @return BelongsTo
+     */
+    public function parent()
     {
-        return $query->where('post_status', $status);
+        return $this->belongsTo(Post::class, 'post_parent');
     }
 
-    public function scopePublished($query)
+    /**
+     * A post can have many children.
+     *
+     * @return HasMany
+     */
+    public function children()
     {
-        return $query->where('post_status', 'publish');
+        return $this->hasMany(Post::class, 'post_parent');
     }
 
-    public function scopeDraft($query)
+    /**
+     * A post can have many attachments.
+     *
+     * @return HasMany
+     */
+    public function attachment()
     {
-        return $query->where('post_status', 'draft');
+        return $this->hasMany(Post::class, 'post_parent')
+                    ->where('post_type', 'attachment');
+    }
+
+    /**
+     * A post can have many revisions.
+     *
+     * @return HasMany
+     */
+    public function revision()
+    {
+        return $this->hasMany(Post::class, 'post_parent')
+                    ->where('post_type', 'revision');
+    }
+
+    /**
+     * Whether the post contains the term or not.
+     *
+     * @param string $taxonomy
+     * @param string $term
+     * @return bool
+     */
+    public function hasTerm($taxonomy, $term)
+    {
+        return isset($this->terms[$taxonomy]) &&
+            isset($this->terms[$taxonomy][$term]);
+    }
+
+    /**
+     * Returns the post type.
+     *
+     * @return string
+     */
+    public function getPostType() : string
+    {
+        return $this->postType;
+    }
+
+    /**
+     * Returns the post thumbnail.
+     *
+     * @return string
+     */
+    public function getImageAttribute() : string
+    {
+        if ($this->thumbnail and $this->thumbnail->attachment) {
+            return $this->thumbnail->attachment->guid;
+        }
+    }
+
+    /**
+     * Returns terms grouped by taxonomy in an associative array.
+     *
+     * @return array
+     */
+    public function getTermsAttribute() : array
+    {
+        return $this->taxonomies->groupBy(function ($taxonomy) {
+            return $taxonomy->taxonomy == 'post_tag' ? 'tag' : $taxonomy->taxonomy;
+        })->map(function ($group) {
+            return $group->mapWithKeys(function ($item) {
+                return [$item->term->slug => $item->term->name];
+            });
+        })->toArray();
+    }
+
+    /**
+     * Returns the primary term from the first taxonomy found.
+     *
+     * @return string
+     */
+    public function getMainCategoryAttribute()
+    {
+        $mainCategory = 'Uncategorized';
+
+        if (!empty($this->terms)) {
+            $taxonomies = array_values($this->terms);
+
+            if (!empty($taxonomies[0])) {
+                $terms = array_values($taxonomies[0]);
+                $mainCategory = $terms[0];
+            }
+        }
+
+        return $mainCategory;
+    }
+
+    /**
+     * Returns an array of the post keywords.
+     *
+     * @return array
+     */
+    public function getKeywordsAttribute()
+    {
+        return collect($this->terms)->map(function ($taxonomy) {
+            return collect($taxonomy)->values();
+        })->collapse()->toArray();
+    }
+
+    /**
+     * Returns a comma delimited string of the post keywords.
+     *
+     * @return string
+     */
+    public function getKeywordsStrAttribute()
+    {
+        return implode(',', (array) $this->keywords);
+    }
+
+    /**
+     * Returns the post format.
+     *
+     * @see \get_post_format
+     *      *
+     * @return bool|string
+     */
+    public function getFormat()
+    {
+        $taxonomy = $this->taxonomies()
+                         ->where('taxonomy', 'post_format')
+                         ->first();
+
+        if ($taxonomy && $taxonomy->term) {
+            return str_replace('post-format-', '', $taxonomy->term->slug);
+        }
+
+        return false;
+    }
+
+    /**
+     * Getter method.
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        $value = parent::__get($key);
+
+        if ($value === null && !property_exists($this, $key)) {
+            return $this->meta->$key;
+        }
+
+        return $value;
+    }
+
+    /**
+     * Return a new PostBuilder instance
+     *
+     * @param  Builder $query
+     * @return PostBuilder
+     */
+    public function newEloquentBuilder($query) : PostBuilder
+    {
+        return new PostBuilder($query);
+    }
+
+    /**
+     * Return a fresh PostBuilder query
+     *
+     * @return PostBuilder
+     */
+    public function newQuery()
+    {
+        return $this->postType
+                    ? parent::newQuery()->type($this->postType)
+                    : parent::newQuery();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Builder;
+namespace TinyPixel\Acorn\Database\Model\Builder;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -14,9 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
  *
  * @package    AcornDB
  * @subpackage Builder\Taxonomy
- * @see        Corcel\Corcel
-
- */
+ **/
 class TaxonomyBuilder extends Builder
 {
     /**

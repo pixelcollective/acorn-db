@@ -13,8 +13,8 @@ use TinyPixel\Acorn\Database\Model\WordPress;
  * @since   1.0.0
  * @uses    Sofa\Eloquence\Eloquence
  *
- * @package    WordPress
- * @subpackage Acorn\Database
+ * @package    Acorn\Database
+ * @subpackage Model
  */
 class Attachment extends WordPress
 {

@@ -23,7 +23,7 @@ use Illuminate\Database\ConnectionResolverInterface;
  * @license MIT
  * @since   1.0.0
  *
- * @package    wordpress
+ * @package    Acorn\Database
  * @subpackage Acorn\Database
  */
 class DatabaseServiceProvider extends ServiceProvider
