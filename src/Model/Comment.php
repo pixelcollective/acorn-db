@@ -8,7 +8,7 @@ use TinyPixel\Acorn\Database\Model\WordPress;
 use TinyPixel\Acorn\Database\Model\Post;
 use TinyPixel\Acorn\Database\Model\User;
 use TinyPixel\Acorn\Database\Model\Comment\CommentMeta;
-use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
+use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
 
 /**
  * Comment Model

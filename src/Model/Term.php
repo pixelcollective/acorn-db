@@ -5,8 +5,8 @@ namespace TinyPixel\Acorn\Database\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use TinyPixel\Acorn\Database\Model\WordPress;
 use TinyPixel\Acorn\Database\Model\TermMeta;
-use TinyPixel\Acorn\Database\Model\Traits\Fields;
-use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
+use TinyPixel\Acorn\Database\Model\Concerns\Fields;
+use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
 
 /**
  * Term Model

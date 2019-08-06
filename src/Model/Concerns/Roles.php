@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Traits;
+namespace TinyPixel\Acorn\Database\Model\Concerns;
 
 /**
  * Concerning user roles

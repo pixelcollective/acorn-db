@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Traits;
+namespace TinyPixel\Acorn\Database\Model\Concerns;
 
 use TinyPixel\Acorn\Database\Model\Field\FieldManager;
 

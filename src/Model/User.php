@@ -7,8 +7,8 @@ use TinyPixel\Acorn\Database\Model\WordPress;
 use TinyPixel\Acorn\Database\Model\Post;
 use TinyPixel\Acorn\Database\Model\Comment;
 use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
-use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
-use TinyPixel\Acorn\Database\Model\Traits\Roles;
+use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
+use TinyPixel\Acorn\Database\Model\Concerns\Roles;
 
 /**
  * User Model

@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Traits;
+namespace TinyPixel\Acorn\Database\Model\Concerns;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;

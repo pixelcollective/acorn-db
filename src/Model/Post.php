@@ -15,8 +15,8 @@ use TinyPixel\Acorn\Database\Model\Comment;
 use TinyPixel\Acorn\Database\Model\Taxonomy;
 use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
 use TinyPixel\Acorn\Database\Model\Relationship\TermRelationship;
-use TinyPixel\Acorn\Database\Model\Traits\MetaFields;
-use TinyPixel\Acorn\Database\Model\Traits\Fields;
+use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
+use TinyPixel\Acorn\Database\Model\Concerns\Fields;
 use TinyPixel\Acorn\Database\Model\Builder\PostBuilder;
 
 /**
