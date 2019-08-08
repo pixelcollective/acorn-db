@@ -4,8 +4,10 @@ namespace TinyPixel\Acorn\Database\Providers;
 
 use function Roots\base_path;
 use function Roots\config_path;
+use Roots\Acorn\ServiceProvider;
 use Faker\Factory;
-Use Illuminate\Support\Collection;
+use Sofa\Eloquence\ServiceProvider as Eloquence;
+use Illuminate\Support\Collection;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
@@ -13,8 +15,6 @@ use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Contracts\Queue\EntityResolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\ConnectionResolverInterface;
-use Sofa\Eloquence\ServiceProvider as Eloquence;
-use Roots\Acorn\ServiceProvider;
 
 /**
  * Acorn DB service provider
