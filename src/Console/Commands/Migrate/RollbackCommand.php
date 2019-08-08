@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
+namespace TinyPixel\AcornDB\Console\Commands\Migrate;
 
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 
-use TinyPixel\Acorn\Database\Console\Commands\Migrate\BaseCommand;
+use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
 
 class RollbackCommand extends BaseCommand
 {

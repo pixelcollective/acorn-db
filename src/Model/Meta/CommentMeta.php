@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Meta;
+namespace TinyPixel\AcornDB\Model\Meta;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use TinyPixel\Acorn\Database\Model\Comment;
-use TinyPixel\Acorn\Database\Model\Meta\Meta;
+use TinyPixel\AcornDB\Model\Comment;
+use TinyPixel\AcornDB\Model\Meta\Meta;
 
 /**
  * Comment Meta Model
@@ -14,7 +14,7 @@ use TinyPixel\Acorn\Database\Model\Meta\Meta;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Meta\Comment
  **/
 class CommentMeta extends Meta

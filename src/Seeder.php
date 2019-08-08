@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database;
+namespace TinyPixel\AcornDB;
 
 use InvalidArgumentException;
 use Illuminate\Support\Arr;

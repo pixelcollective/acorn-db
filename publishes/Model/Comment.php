@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use TinyPixel\Acorn\Database\Model\Comment as WordPressComment;
+use TinyPixel\AcornDB\Model\Comment as WordPressComment;
 
 class Comment extends WordPressComment
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\User;
-use TinyPixel\Acorn\Database\Model\Comment\CommentMeta;
-use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\User;
+use TinyPixel\AcornDB\Model\Comment\CommentMeta;
+use TinyPixel\AcornDB\Model\Concerns\MetaFields;
 
 /**
  * Comment Model
@@ -18,7 +18,7 @@ use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
  * @since   1.0.0
  * @uses    Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Comment
  **/
 class Comment extends WordPress

@@ -1,9 +1,9 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Relationships;
+namespace TinyPixel\AcornDB\Model\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use TinyPixel\Acorn\Database\Model\WordPress;
+use TinyPixel\AcornDB\Model\WordPress;
 
 /**
  * Term Relationship Model
@@ -13,7 +13,7 @@ use TinyPixel\Acorn\Database\Model\WordPress;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model
  **/
 class TermRelationship extends WordPress

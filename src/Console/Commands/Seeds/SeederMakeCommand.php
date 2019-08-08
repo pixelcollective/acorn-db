@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
+namespace TinyPixel\AcornDB\Console\Commands\Seeds;
 
 use function Roots\base_path;
 use Illuminate\Support\Composer;
@@ -17,7 +17,7 @@ use Roots\Acorn\Console\Commands\GeneratorCommand;
  * @license    MIT
  * @version    1.0.0
  * @since      1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Console\Commands
  **/
 class SeederMakeCommand extends GeneratorCommand

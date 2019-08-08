@@ -1,6 +1,6 @@
 <?php
 
-use \TinyPixel\Acorn\Database\Seeder;
+use \TinyPixel\AcornDB\Seeder;
 
 /*
 |--------------------------------------------------------------------------

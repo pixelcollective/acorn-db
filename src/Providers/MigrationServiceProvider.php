@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Providers;
+namespace TinyPixel\AcornDB\Providers;
 
 use Roots\Acorn\ServiceProvider;
 use Illuminate\Database\Migrations\Migrator;
@@ -16,7 +16,7 @@ use Illuminate\Database\Migrations\MigrationRepositoryInterface;
  * @license MIT
  * @since   1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Providers
  **/
 class MigrationServiceProvider extends ServiceProvider implements DeferrableProvider

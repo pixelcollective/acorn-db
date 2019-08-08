@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
 /**
  * Implementation contract for field types
@@ -9,7 +9,7 @@ namespace TinyPixel\Acorn\Database\Model\Field;
  * @license    MIT
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
  */
 interface FieldInterface

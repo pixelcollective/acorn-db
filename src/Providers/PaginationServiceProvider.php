@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Providers;
+namespace TinyPixel\AcornDB\Providers;
 
 use Roots\Acorn\ServiceProvider;
 

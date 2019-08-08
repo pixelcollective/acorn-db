@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Builder;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\Option;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Option;
 
 /**
  * Page Model
@@ -14,7 +14,7 @@ use TinyPixel\Acorn\Database\Model\Option;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Page
  ***/
 class Page extends Post

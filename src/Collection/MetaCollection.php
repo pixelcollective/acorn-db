@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Collection;
+namespace TinyPixel\AcornDB\Collection;
 
 use Illuminate\Database\Eloquent\Collection;
 
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Collection
  **/
 class MetaCollection extends Collection

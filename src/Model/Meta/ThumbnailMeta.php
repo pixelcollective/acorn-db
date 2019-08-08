@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Meta;
+namespace TinyPixel\AcornDB\Model\Meta;
 
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use TinyPixel\Acorn\Database\Model\Attachment;
-use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
-use TinyPixel\Acorn\Database\Exceptions\EloquentException;
+use TinyPixel\AcornDB\Model\Attachment;
+use TinyPixel\AcornDB\Model\Meta\PostMeta;
+use TinyPixel\AcornDB\Exceptions\EloquentException;
 
 /**
  * Thumbnail Meta Model
@@ -16,7 +16,7 @@ use TinyPixel\Acorn\Database\Exceptions\EloquentException;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Meta\Thumbnail
  **/
 class ThumbnailMeta extends PostMeta

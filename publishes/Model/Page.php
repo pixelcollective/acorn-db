@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use TinyPixel\Acorn\Database\Model\Page as WordPressPage;
+use TinyPixel\AcornDB\Model\Page as WordPressPage;
 
 class Page extends WordPressPage
 {

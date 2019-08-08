@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
+namespace TinyPixel\AcornDB\Console\Commands\Migrate;
 
-use TinyPixel\Acorn\Database\Console\Commands\Migrate\BaseCommand;
+use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
 use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputOption;
  * @license    MIT
  * @version    1.0.0
  * @since      1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Commands\Seeds
  **/
 class FreshCommand extends BaseCommand

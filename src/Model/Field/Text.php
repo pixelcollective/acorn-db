@@ -1,9 +1,9 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
-use TinyPixel\Acorn\Database\Model\Field\Field;
-use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
+use TinyPixel\AcornDB\Model\Field\Field;
+use TinyPixel\AcornDB\Model\Field\FieldInterface;
 
 /**
  * Text Field
@@ -12,10 +12,10 @@ use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
  * @license    MIT
  * @since      1.0.0
  * @version    1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
- * @implements TinyPixel\Acorn\Database\Model\Field\FieldInterface
- * @extends    TinyPixel\Acorn\Database\Model\Field\Field
+ * @implements TinyPixel\AcornDB\Model\Field\FieldInterface
+ * @extends    TinyPixel\AcornDB\Model\Field\Field
  **/
 class Text extends Field implements FieldInterface
 {

@@ -1,7 +1,7 @@
 <?php
 
 use App\Model\Post;
-use TinyPixel\Acorn\Database\Seeder;
+use TinyPixel\AcornDB\Seeder;
 
 class PostSeeder extends Seeder
 {

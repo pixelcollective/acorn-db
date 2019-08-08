@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
 use Illuminate\Support\Collection;
-use TinyPixel\Acorn\Database\Model\Model;
-use TinyPixel\Acorn\Database\Model\Field\Text;
-use TinyPixel\Acorn\Database\Model\Field\Image;
-use TinyPixel\Acorn\Database\Model\Field\Repeater;
+use TinyPixel\AcornDB\Model\Model;
+use TinyPixel\AcornDB\Model\Field\Text;
+use TinyPixel\AcornDB\Model\Field\Image;
+use TinyPixel\AcornDB\Model\Field\Repeater;
 
 /**
  * Field factory
@@ -16,7 +16,7 @@ use TinyPixel\Acorn\Database\Model\Field\Repeater;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
  **/
 class FieldFactory

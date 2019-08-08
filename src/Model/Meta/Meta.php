@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Meta;
+namespace TinyPixel\AcornDB\Model\Meta;
 
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Collection\MetaCollection;
-use TinyPixel\Acorn\Database\Exceptions\EloquentException;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Collection\MetaCollection;
+use TinyPixel\AcornDB\Exceptions\EloquentException;
 
 /**
  * Meta Model
@@ -14,7 +14,7 @@ use TinyPixel\Acorn\Database\Exceptions\EloquentException;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model
  */
 abstract class Meta extends WordPress

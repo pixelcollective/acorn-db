@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use TinyPixel\Acorn\Database\Model\Term as WordPressTerm;
+use TinyPixel\AcornDB\Model\Term as WordPressTerm;
 
 class Term extends WordPressTerm
 {

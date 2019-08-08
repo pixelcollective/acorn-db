@@ -1,11 +1,11 @@
 <?php
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
 use Illuminate\Database\Eloquent\Collection;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
-use TinyPixel\Acorn\Database\Model\Field\Field;
-use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Meta\PostMeta;
+use TinyPixel\AcornDB\Model\Field\Field;
+use TinyPixel\AcornDB\Model\Field\FieldInterface;
 
 /**
  * Image Field
@@ -14,10 +14,10 @@ use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
  * @license    MIT
  * @since      1.0.0
  * @version    1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
- * @implements TinyPixel\Acorn\Database\Model\Field\FieldInterface
- * @extends    TinyPixel\Acorn\Database\Model\Field\Field
+ * @implements TinyPixel\AcornDB\Model\Field\FieldInterface
+ * @extends    TinyPixel\AcornDB\Model\Field\Field
  **/
 class Image extends Field implements FieldInterface
 {

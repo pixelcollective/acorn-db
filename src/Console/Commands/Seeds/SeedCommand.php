@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
+namespace TinyPixel\AcornDB\Console\Commands\Seeds;
 
 use Roots\Acorn\Application;
 use Roots\Acorn\Console\Commands\Command;
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @license    MIT
  * @version    1.0.0
  * @since      1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Commands\Seeds
  **/
 class SeedCommand extends Command {

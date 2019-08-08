@@ -1,14 +1,14 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\Comment;
-use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
-use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
-use TinyPixel\Acorn\Database\Model\Concerns\Roles;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Comment;
+use TinyPixel\AcornDB\Model\Meta\UserMeta;
+use TinyPixel\AcornDB\Model\Concerns\MetaFields;
+use TinyPixel\AcornDB\Model\Concerns\Roles;
 
 /**
  * User Model
@@ -18,7 +18,7 @@ use TinyPixel\Acorn\Database\Model\Concerns\Roles;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\User
  **/
 class User extends WordPress

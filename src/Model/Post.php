@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Model\User;
-use TinyPixel\Acorn\Database\Model\Attachment;
-use TinyPixel\Acorn\Database\Model\Comment;
-use TinyPixel\Acorn\Database\Model\Taxonomy;
-use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
-use TinyPixel\Acorn\Database\Model\Relationship\TermRelationship;
-use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
-use TinyPixel\Acorn\Database\Model\Concerns\Fields;
-use TinyPixel\Acorn\Database\Model\Concerns\Timestamps;
-use TinyPixel\Acorn\Database\Model\Builder\PostBuilder;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\User;
+use TinyPixel\AcornDB\Model\Attachment;
+use TinyPixel\AcornDB\Model\Comment;
+use TinyPixel\AcornDB\Model\Taxonomy;
+use TinyPixel\AcornDB\Model\Meta\PostMeta;
+use TinyPixel\AcornDB\Model\Relationship\TermRelationship;
+use TinyPixel\AcornDB\Model\Concerns\MetaFields;
+use TinyPixel\AcornDB\Model\Concerns\Fields;
+use TinyPixel\AcornDB\Model\Concerns\Timestamps;
+use TinyPixel\AcornDB\Model\Builder\PostBuilder;
 
 /**
  * Post Model
@@ -28,7 +28,7 @@ use TinyPixel\Acorn\Database\Model\Builder\PostBuilder;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Post
  */
 class Post extends WordPress

@@ -1,19 +1,19 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Providers;
+namespace TinyPixel\AcornDB\Providers;
 
 use Roots\Acorn\ServiceProvider;
 use Faker\Factory as FakerFactory;
 use Faker\Generator as Faker;
 use Illuminate\Support\Collection;
 use Illuminate\Database\DatabaseManager;
-use TinyPixel\Acorn\Database\Factory as EloquentFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Contracts\Queue\EntityResolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\ConnectionResolverInterface;
+use TinyPixel\AcornDB\Factory as EloquentFactory;
 
 /**
  * Database service provider
@@ -22,7 +22,7 @@ use Illuminate\Database\ConnectionResolverInterface;
  * @license MIT
  * @since   1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Providers
  **/
 class DatabaseServiceProvider extends ServiceProvider
@@ -35,6 +35,7 @@ class DatabaseServiceProvider extends ServiceProvider
     public function register() : void
     {
         Model::clearBootedModels();
+
         $this->app->bindIf(MigrationRepositoryInterface::class);
 
         $this->registerConnectionServices();
@@ -42,7 +43,6 @@ class DatabaseServiceProvider extends ServiceProvider
         $this->registerEloquentFactory();
 
         $this->registerQueueableEntityResolver();
-
     }
 
     /**

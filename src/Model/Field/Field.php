@@ -1,14 +1,14 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
-use TinyPixel\Acorn\Database\Model\Model;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\Term;
-use TinyPixel\Acorn\Database\Model\User;
-use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
-use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
-use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
+use TinyPixel\AcornDB\Model\Model;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Term;
+use TinyPixel\AcornDB\Model\User;
+use TinyPixel\AcornDB\Model\Meta\PostMeta;
+use TinyPixel\AcornDB\Model\Meta\TermMeta;
+use TinyPixel\AcornDB\Model\Meta\UserMeta;
 
 /**
  * Abstract Field
@@ -18,7 +18,7 @@ use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
  */
 abstract class Field

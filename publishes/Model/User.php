@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use TinyPixel\Acorn\Database\Model\User as WordPressUser;
+use TinyPixel\AcornDB\Model\User as WordPressUser;
 
 class User extends WordPressUser
 {

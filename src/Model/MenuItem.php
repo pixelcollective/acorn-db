@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Support\Arr;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\Page;
-use TinyPixel\Acorn\Database\Model\Link;
-use TinyPixel\Acorn\Database\Model\Taxonomy;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Page;
+use TinyPixel\AcornDB\Model\Link;
+use TinyPixel\AcornDB\Model\Taxonomy;
 
 /**
  * Menu Item Model
@@ -15,7 +15,7 @@ use TinyPixel\Acorn\Database\Model\Taxonomy;
  * @license MIT
  * @since   1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\MenuItem
  **/
 class MenuItem extends Post

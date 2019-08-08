@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Concerns;
+namespace TinyPixel\AcornDB\Model\Concerns;
 
 /**
  * Concerning user roles
@@ -9,7 +9,7 @@ namespace TinyPixel\Acorn\Database\Model\Concerns;
  * @license    MIT
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Concerns
  **/
 trait Roles

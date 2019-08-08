@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Concerns;
+namespace TinyPixel\AcornDB\Model\Concerns;
 
 /**
  * Concerning timestamps
@@ -10,7 +10,7 @@ namespace TinyPixel\Acorn\Database\Model\Concerns;
  * @version    1.0.0
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Concerns
  */
 trait Timestamps

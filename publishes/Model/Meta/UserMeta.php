@@ -2,7 +2,7 @@
 
 namespace App\Model\Meta;
 
-use TinyPixel\Acorn\Database\Model\Meta\UserMeta as WordPressUserMeta;
+use TinyPixel\AcornDB\Model\Meta\UserMeta as WordPressUserMeta;
 
 class UserMeta extends WordPressUserMeta
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\WordPress
  **/
 class WordPress extends Model

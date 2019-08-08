@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Concerns;
+namespace TinyPixel\AcornDB\Model\Concerns;
 
-use TinyPixel\Acorn\Database\Model\Field\FieldManager;
+use TinyPixel\AcornDB\Model\Field\FieldManager;
 
 /**
  * Concerning fields.
@@ -12,7 +12,7 @@ use TinyPixel\Acorn\Database\Model\Field\FieldManager;
  * @version    1.0.0
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Concerns
  **/
 trait Fields

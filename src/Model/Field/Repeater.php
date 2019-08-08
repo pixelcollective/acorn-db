@@ -1,13 +1,13 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
-use TinyPixel\Acorn\Database\Model\Field\Field;
-use TinyPixel\Acorn\Database\Model\Field\FieldInterface;
-use TinyPixel\Acorn\Database\Model\Model\Post;
-use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
+use TinyPixel\AcornDB\Model\Field\Field;
+use TinyPixel\AcornDB\Model\Field\FieldInterface;
+use TinyPixel\AcornDB\Model\Model\Post;
+use TinyPixel\AcornDB\Model\Meta\TermMeta;
 
 /**
  * Repeater Field
@@ -16,10 +16,10 @@ use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
  * @license    MIT
  * @since      1.0.0
  * @version    1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
- * @extends    TinyPixel\Acorn\Database\Model\Field\Field
- * @implements TinyPixel\Acorn\Database\Model\Field\FieldInterface
+ * @extends    TinyPixel\AcornDB\Model\Field\Field
+ * @implements TinyPixel\AcornDB\Model\Field\FieldInterface
  **/
 class Repeater extends Field implements FieldInterface
 {

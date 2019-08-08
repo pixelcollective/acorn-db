@@ -1,11 +1,11 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use TinyPixel\Acorn\Database\Model\MenuItem;
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Model\Taxonomy;
+use TinyPixel\AcornDB\Model\MenuItem;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Taxonomy;
 
 /**
  * Menu Model
@@ -15,7 +15,7 @@ use TinyPixel\Acorn\Database\Model\Taxonomy;
  * @since   1.0.0
  * @uses    Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Menu
  **/
 class Menu extends Taxonomy

@@ -1,10 +1,11 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Providers;
+namespace TinyPixel\AcornDB\Providers;
 
 use Roots\Acorn\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Faker\Generator as FakerGenerator;
+use TinyPixel\Support\Util;
 
 /**
  * Acorn database service provider
@@ -13,7 +14,7 @@ use Faker\Generator as FakerGenerator;
  * @license MIT
  * @since   1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Providers
  **/
 class PackageServiceProvider extends ServiceProvider
@@ -24,18 +25,25 @@ class PackageServiceProvider extends ServiceProvider
      * @var array
      */
     public $commands = [
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\FreshCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\InstallCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\MakeCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\MigrateCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\RefreshCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\ResetCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\RollbackCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\StatusCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Seeds\SeedCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Seeds\SeederMakeCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Factories\FactoryMakeCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\FreshCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\InstallCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\MakeCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\MigrateCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\RefreshCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\ResetCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\RollbackCommand',
+        'TinyPixel\AcornDB\Console\Commands\Migrate\StatusCommand',
+        'TinyPixel\AcornDB\Console\Commands\Seeds\SeedCommand',
+        'TinyPixel\AcornDB\Console\Commands\Seeds\SeederMakeCommand',
+        'TinyPixel\AcornDB\Console\Commands\Factories\FactoryMakeCommand',
     ];
+
+    public function register()
+    {
+        $this->app->bind('tinypixel.util', function ($app) {
+            return Util::getInstance()->container['util'];
+        });
+    }
 
     public function boot()
     {

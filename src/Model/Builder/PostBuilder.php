@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Builder;
+namespace TinyPixel\AcornDB\Model\Builder;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @license    MIT
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Builder\Taxonomy
  ***/
 class PostBuilder extends Builder

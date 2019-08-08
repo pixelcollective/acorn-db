@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Exceptions;
+namespace TinyPixel\AcornDB\Exceptions;
 
 use Exception;
 use Log;
@@ -13,7 +13,7 @@ use Log;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Exceptions
  **/
 class EloquentException extends Exception

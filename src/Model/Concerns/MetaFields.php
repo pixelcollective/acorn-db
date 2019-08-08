@@ -1,20 +1,20 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Concerns;
+namespace TinyPixel\AcornDB\Model\Concerns;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\Acorn\Database\Model\Comment;
-use TinyPixel\Acorn\Database\Model\Post;
-use TinyPixel\Acorn\Database\Model\Term;
-use TinyPixel\Acorn\Database\Model\User;
-use TinyPixel\Acorn\Database\Model\Meta\CommentMeta;
-use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
-use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
-use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
-use TinyPixel\Acorn\Database\Exception\EloquentException;
+use TinyPixel\AcornDB\Model\Comment;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Term;
+use TinyPixel\AcornDB\Model\User;
+use TinyPixel\AcornDB\Model\Meta\CommentMeta;
+use TinyPixel\AcornDB\Model\Meta\PostMeta;
+use TinyPixel\AcornDB\Model\Meta\TermMeta;
+use TinyPixel\AcornDB\Model\Meta\UserMeta;
+use TinyPixel\AcornDB\Exceptions\EloquentException;
 
 /**
  * Concerning meta fields.
@@ -24,7 +24,7 @@ use TinyPixel\Acorn\Database\Exception\EloquentException;
  * @version    1.0.0
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Concerns
  */
 trait MetaFields

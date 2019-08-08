@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model\Field;
+namespace TinyPixel\AcornDB\Model\Field;
 
-use TinyPixel\Acorn\Database\Model\Model;
-use TinyPixel\Acorn\Database\Model\Field\FieldFactory;
-use TinyPixel\Acorn\Database\Exceptions\EloquentException;
+use TinyPixel\AcornDB\Model\Model;
+use TinyPixel\AcornDB\Model\Field\FieldFactory;
+use TinyPixel\AcornDB\Exceptions\EloquentException;
 
 /**
  * Field Manager
@@ -13,7 +13,7 @@ use TinyPixel\Acorn\Database\Exceptions\EloquentException;
  * @license    MIT
  * @since      1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Field
  **/
 class FieldManager

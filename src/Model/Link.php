@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
-use TinyPixel\Acorn\Database\Model\WordPress;
+use TinyPixel\AcornDB\Model\WordPress;
 
 /**
  * Link
@@ -11,7 +11,7 @@ use TinyPixel\Acorn\Database\Model\WordPress;
  * @license MIT
  * @since   1.0.0
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Link
  **/
 class Link extends WordPress

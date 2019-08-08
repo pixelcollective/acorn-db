@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
+namespace TinyPixel\AcornDB\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
 use Illuminate\Console\Command;
@@ -12,7 +12,7 @@ use Illuminate\Console\Command;
  * @license    MIT
  * @version    1.0.0
  * @since      1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Commands\Seeds
  **/
 class BaseCommand extends Command

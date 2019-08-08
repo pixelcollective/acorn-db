@@ -26,7 +26,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "TinyPixel\\Acorn\\Database\\": "src/"
+      "TinyPixel\\AcornDB\\": "src/"
     }
   },
   "require": {
@@ -40,10 +40,10 @@
     "acorn": {
       "providers": [
         "Sofa\\Eloquence\\BaseServiceProvider",
-        "TinyPixel\\Acorn\\Database\\Providers\\PaginationServiceProvider",
-        "TinyPixel\\Acorn\\Database\\Providers\\DatabaseServiceProvider",
-        "TinyPixel\\Acorn\\Database\\Providers\\MigrationServiceProvider",
-        "TinyPixel\\Acorn\\Database\\Providers\\PackageServiceProvider"
+        "TinyPixel\\AcornDB\\Providers\\PaginationServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\DatabaseServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\MigrationServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider"
       ]
     }
   },

@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Console\Commands\Factories;
+namespace TinyPixel\AcornDB\Console\Commands\Factories;
 
 use function Roots\base_path;
 use Roots\Acorn\Application;
@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
  * @license    MIT
  * @version    1.0.0
  * @since      1.0.0
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Console\Commands
  */
 class FactoryMakeCommand extends GeneratorCommand

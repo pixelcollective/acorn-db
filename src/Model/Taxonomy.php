@@ -1,15 +1,15 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use TinyPixel\Acorn\Database\Model\Term;
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
-use TinyPixel\Acorn\Database\Model\Builder\TaxonomyBuilder;
+use TinyPixel\AcornDB\Model\Term;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Meta\TermMeta;
+use TinyPixel\AcornDB\Model\Builder\TaxonomyBuilder;
 
 /**
  * Taxonomy Model
@@ -19,7 +19,7 @@ use TinyPixel\Acorn\Database\Model\Builder\TaxonomyBuilder;
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Taxonomy
  **/
 class Taxonomy extends WordPress

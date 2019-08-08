@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\Acorn\Database\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\Acorn\Database\Model\WordPress;
-use TinyPixel\Acorn\Database\Model\TermMeta;
-use TinyPixel\Acorn\Database\Model\Concerns\Fields;
-use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
+use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\TermMeta;
+use TinyPixel\AcornDB\Model\Concerns\Fields;
+use TinyPixel\AcornDB\Model\Concerns\MetaFields;
 
 /**
  * Term Eloquent Model
@@ -15,9 +15,9 @@ use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
  * @license    MIT
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
- * @see        TinyPixel\Acorn\Database\Model\WordPress
+ * @see        TinyPixel\AcornDB\Model\WordPress
  *
- * @package    Acorn\Database
+ * @package    AcornDB
  * @subpackage Model\Term
  **/
 class Term extends WordPress
