@@ -9,12 +9,13 @@ use TinyPixel\Acorn\Database\Model\Concerns\Fields;
 use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
 
 /**
- * Term Model
+ * Term Eloquent Model
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
  * @since      1.0.0
  * @uses       Sofa\Eloquence\Eloquence
+ * @see        TinyPixel\Acorn\Database\Model\WordPress
  *
  * @package    Acorn\Database
  * @subpackage Model\Term
@@ -23,19 +24,27 @@ class Term extends WordPress
 {
     use Fields, MetaFields;
 
-    /** @var string */
+    /**
+     * Table name
+     *
+     * @var string
+     */
     protected $table = 'terms';
 
-    /** @var string  **/
+    /**
+     * Primary key
+     *
+     * @var string
+     */
     protected $primaryKey = 'term_id';
 
-    /** @var bool */
-    public $timestamps = false;
-
     /**
-     * @var array
+     * Eloquent database mapping
+     *
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
+     *
+     * @var array
      **/
     protected $maps = [
         'id'    => 'term_id',

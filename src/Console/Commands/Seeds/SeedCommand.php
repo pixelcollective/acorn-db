@@ -2,36 +2,40 @@
 
 namespace TinyPixel\Acorn\Database\Console\Commands\Seeds;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\ConnectionResolverInterface as Resolver;
-use Illuminate\Console\ConfirmableTrait;
-use Symfony\Component\Console\Input\InputOption;
+use Roots\Acorn\Application;
 use Roots\Acorn\Console\Commands\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Database\ConnectionResolverInterface as Resolver;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * Seed Command
+ * Console Command: Seed
  *
  * Seeds the database with records
  *
- * @license MIT
- * @since   1.0.0
+ * @author     Kelly Mears <developers@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
+ * @package    Acorn\Database
+ * @subpackage Commands\Seeds
  **/
-class SeedCommand extends Command
-{
+class SeedCommand extends Command {
     use ConfirmableTrait;
 
     /**
      * The console command name.
      *
      * @var string
-     **/
+     */
     protected $name = 'db:seed';
 
     /**
      * The console command description.
      *
      * @var string
-     **/
+     */
     protected $description = 'Seed the database with records';
 
     /**
@@ -39,15 +43,15 @@ class SeedCommand extends Command
      *
      * @var string
      **/
-    protected $signature = 'db:seed {--class= : The class name of the root seeder}
-                            {--database= : The database connection to seed.}
+    protected $signature = 'db:seed {class : The class name of the root seeder}
+                            {--database : The database connection to seed.}
                             {--force : Force the operation to run when in production}';
 
     /**
      * The connection resolver instance.
      *
      * @var \Illuminate\Database\ConnectionResolverInterface
-     **/
+     */
     protected $resolver;
 
     /**
@@ -55,7 +59,7 @@ class SeedCommand extends Command
      *
      * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
      * @return void
-     **/
+     */
     public function __construct(Resolver $resolver)
     {
         parent::__construct();
@@ -67,7 +71,7 @@ class SeedCommand extends Command
      * Execute the console command.
      *
      * @return void
-     **/
+     */
     public function handle()
     {
         if (! $this->confirmToProceed()) {
@@ -87,10 +91,10 @@ class SeedCommand extends Command
      * Get a seeder instance from the container.
      *
      * @return \Illuminate\Database\Seeder
-     **/
+     */
     protected function getSeeder()
     {
-        $class = $this->laravel->make($this->input->getOption('class'));
+        $class = $this->laravel->make($this->input->getArgument('class'));
 
         return $class->setContainer($this->laravel)->setCommand($this);
     }
@@ -99,7 +103,7 @@ class SeedCommand extends Command
      * Get the name of the database connection to use.
      *
      * @return string
-     **/
+     */
     protected function getDatabase()
     {
         $database = $this->input->getOption('database');
@@ -111,7 +115,7 @@ class SeedCommand extends Command
      * Get the console command options.
      *
      * @return array
-     **/
+     */
     protected function getOptions()
     {
         return [

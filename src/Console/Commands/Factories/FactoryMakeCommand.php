@@ -1,22 +1,25 @@
 <?php
 
-namespace Illuminate\Database\Console\Factories;
+namespace TinyPixel\Acorn\Database\Console\Commands\Factories;
 
+use function Roots\base_path;
 use Roots\Acorn\Application;
-use Symfony\Component\Console\Input\InputOption;
 use Roots\Acorn\Console\Commands\GeneratorCommand;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Support\Str;
 
 /**
- * Factory Make Command
+ * Console Command: Factory Make
  *
- * Usage: `wp acorn make:seeder`
+ * Usage: `wp acorn make:factory`
  *
- * @package    AcornDB
- * @subpackage Commands
- * @version    1.0.0
- * @since      1.0.0
  * @author     Kelly Mears <developers@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
+ * @package    Acorn\Database
+ * @subpackage Console\Commands
  */
 class FactoryMakeCommand extends GeneratorCommand
 {
@@ -59,8 +62,8 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function buildClass($name)
     {
-        $namespaceModel = $this->input->getOption('model')
-                        ? $this->qualifyClass($this->input->getOption('model'))
+        $namespaceModel = $this->option('model')
+                        ? $this->qualifyClass($this->option('model'))
                         : trim($this->rootNamespace(), '\\') . '\\Model';
 
         $model = class_basename($namespaceModel);
@@ -92,7 +95,7 @@ class FactoryMakeCommand extends GeneratorCommand
             $this->argument('name')
         );
 
-        return $this->laravel->databasePath() . "/factories/{$name}.php";
+        return base_path("/database/factories/{$name}Factory.php");
     }
 
     /**

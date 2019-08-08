@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a905662dcf6b18dec42ce21a74ab2b83",
+    "content-hash": "bf406e103763b26a4bde3738f82b4d14",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -273,6 +273,51 @@
             "time": "2019-08-06T14:57:14+00:00"
         },
         {
+            "name": "illuminate/pagination",
+            "version": "v5.8.31",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/pagination.git",
+                "reference": "391134bc87a47b3dfe5cf60df73e5e0080aec220"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/pagination/zipball/391134bc87a47b3dfe5cf60df73e5e0080aec220",
+                "reference": "391134bc87a47b3dfe5cf60df73e5e0080aec220",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/contracts": "5.8.*",
+                "illuminate/support": "5.8.*",
+                "php": "^7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Pagination\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Pagination package.",
+            "homepage": "https://laravel.com",
+            "time": "2019-03-18T14:45:00+00:00"
+        },
+        {
             "name": "illuminate/support",
             "version": "v5.8.31",
             "source": {
@@ -335,16 +380,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.22.1",
+            "version": "2.22.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "f572ec37cf37e192e851197a5867d041ab404785"
+                "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f572ec37cf37e192e851197a5867d041ab404785",
-                "reference": "f572ec37cf37e192e851197a5867d041ab404785",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
+                "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
                 "shasum": ""
             },
             "require": {
@@ -398,7 +443,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-08-06T18:57:53+00:00"
+            "time": "2019-08-07T12:36:44+00:00"
         },
         {
             "name": "psr/container",
@@ -532,9 +577,9 @@
             "authors": [
                 {
                     "name": "Jarek Tkaczyk",
+                    "role": "Developer",
                     "email": "jarek@softonsofa.com",
-                    "homepage": "http://softonsofa.com/",
-                    "role": "Developer"
+                    "homepage": "http://softonsofa.com/"
                 }
             ],
             "description": "Flexible Searchable, Mappable, Metable, Validation and more extensions for Laravel Eloquent ORM.",
@@ -700,9 +745,9 @@
             "authors": [
                 {
                     "name": "Jarek Tkaczyk",
+                    "role": "Developer",
                     "email": "jarek@softonsofa.com",
-                    "homepage": "https://softonsofa.com/",
-                    "role": "Developer"
+                    "homepage": "https://softonsofa.com/"
                 }
             ],
             "description": "Flexible Searchable, Mappable, Metable, Validation and more extensions for Laravel Eloquent ORM.",
@@ -759,9 +804,9 @@
             "authors": [
                 {
                     "name": "Jarek Tkaczyk",
+                    "role": "Developer",
                     "email": "jarek@softonsofa.com",
-                    "homepage": "https://softonsofa.com/",
-                    "role": "Developer"
+                    "homepage": "https://softonsofa.com/"
                 }
             ],
             "description": "Flexible Searchable, Mappable, Metable, Validation and more extensions for Laravel Eloquent ORM.",
@@ -811,9 +856,9 @@
             "authors": [
                 {
                     "name": "Jarek Tkaczyk",
+                    "role": "Developer",
                     "email": "jarek@softonsofa.com",
-                    "homepage": "https://softonsofa.com/",
-                    "role": "Developer"
+                    "homepage": "https://softonsofa.com/"
                 }
             ],
             "description": "Flexible Searchable, Mappable, Metable, Validation and more extensions for Laravel Eloquent ORM.",
@@ -1274,16 +1319,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "19d83539245aaacb59470828919182411061841f"
+                "reference": "4aff517a1c6bb5c36fa09733d4cea089f529de6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/19d83539245aaacb59470828919182411061841f",
-                "reference": "19d83539245aaacb59470828919182411061841f",
+                "url": "https://api.github.com/repos/nette/di/zipball/4aff517a1c6bb5c36fa09733d4cea089f529de6d",
+                "reference": "4aff517a1c6bb5c36fa09733d4cea089f529de6d",
                 "shasum": ""
             },
             "require": {
@@ -1343,7 +1388,7 @@
                 "nette",
                 "static"
             ],
-            "time": "2019-04-03T19:35:46+00:00"
+            "time": "2019-08-07T12:11:33+00:00"
         },
         {
             "name": "nette/finder",

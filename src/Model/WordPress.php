@@ -20,4 +20,11 @@ use Illuminate\Database\Eloquent\Model;
 class WordPress extends Model
 {
     use Eloquence, Mappable;
+
+    /**
+     * Disable illuminate timestamp behavior
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }

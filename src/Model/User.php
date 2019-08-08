@@ -2,7 +2,7 @@
 
 namespace TinyPixel\Acorn\Database\Model;
 
-use Illuminate\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use TinyPixel\Acorn\Database\Model\WordPress;
 use TinyPixel\Acorn\Database\Model\Post;
 use TinyPixel\Acorn\Database\Model\Comment;

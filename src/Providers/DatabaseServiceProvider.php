@@ -2,13 +2,12 @@
 
 namespace TinyPixel\Acorn\Database\Providers;
 
-use function Roots\base_path;
-use function Roots\config_path;
 use Roots\Acorn\ServiceProvider;
-use Faker\Factory;
-use Sofa\Eloquence\ServiceProvider as Eloquence;
+use Faker\Factory as FakerFactory;
+use Faker\Generator as Faker;
 use Illuminate\Support\Collection;
 use Illuminate\Database\DatabaseManager;
+use TinyPixel\Acorn\Database\Factory as EloquentFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
 use Illuminate\Database\Connectors\ConnectionFactory;
@@ -17,30 +16,17 @@ use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 
 /**
- * Acorn DB service provider
+ * Database service provider
  *
  * @author  Kelly Mears <kelly@tinypixel.dev>
  * @license MIT
  * @since   1.0.0
  *
  * @package    Acorn\Database
- * @subpackage Acorn\Database
+ * @subpackage Providers
  **/
 class DatabaseServiceProvider extends ServiceProvider
 {
-    /** @var array */
-    public $commands = [
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\InstallCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\MakeCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\MigrateCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\RefreshCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\ResetCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\RollbackCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Migrate\StatusCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Seeds\SeedCommand',
-        'TinyPixel\Acorn\Database\Console\Commands\Seeds\SeederMakeCommand',
-    ];
-
    /**
      * Register primary Eloquent service and associated features
      *
@@ -49,15 +35,35 @@ class DatabaseServiceProvider extends ServiceProvider
     public function register() : void
     {
         Model::clearBootedModels();
+        $this->app->bindIf(MigrationRepositoryInterface::class);
 
-        $this->app->bindIf(MigrationRepositoryInterface::class, 'migration.repository');
+        $this->registerConnectionServices();
 
+        $this->registerEloquentFactory();
+
+        $this->registerQueueableEntityResolver();
+
+    }
+
+    /**
+     * Register the primary database bindings.
+     *
+     * @return void
+     */
+    protected function registerConnectionServices()
+    {
         $this->app->bindIf(ConnectionResolverInterface::class, 'db');
 
+        // The connection factory is used to create the actual connection instances on
+        // the database. We will inject the factory into the manager so that it may
+        // make the connections while they are actually needed and not of before.
         $this->app->singleton('db.factory', function ($app) {
             return new ConnectionFactory($app);
         });
 
+        // The database manager is used to resolve various connections, since multiple
+        // connections might be managed. It also implements the connection resolver
+        // interface which may be used by other components requiring connections.
         $this->app->singleton('db', function ($app) {
             return new DatabaseManager($app, $app['db.factory']);
         });
@@ -65,22 +71,36 @@ class DatabaseServiceProvider extends ServiceProvider
         $this->app->bind('db.connection', function ($app) {
             return $app['db']->connection();
         });
+    }
 
+    /**
+     * Register the Eloquent factory instance in the container.
+     *
+     * @return void
+     */
+    protected function registerEloquentFactory()
+    {
         $this->app->singleton(FakerGenerator::class, function ($app) {
-            return FakerFactory::create(
-                $app['config']->get('app.faker_locale', 'en_US')
-            );
+            return FakerFactory::create($app['config']->get('app.faker_locale', 'en_US'));
         });
 
-        $this->app->singleton(EloquentFactory::class, function ($app) {
+        $this->app->singleton('db.eloquentFactory', function ($app) {
             return EloquentFactory::construct(
                 $app->make(FakerGenerator::class),
-                $this->app->databasePath('factories')
+                $this->app->databasePath('factories'),
             );
         });
+    }
 
+    /**
+     * Register the queueable entity resolver implementation.
+     *
+     * @return void
+     */
+    protected function registerQueueableEntityResolver()
+    {
         $this->app->singleton(EntityResolver::class, function () {
-            return QueueEntityResolver::class;
+            return new QueueEntityResolver;
         });
     }
 
@@ -92,28 +112,7 @@ class DatabaseServiceProvider extends ServiceProvider
     public function boot() : void
     {
         Model::setConnectionResolver($this->app['db']);
+
         Model::setEventDispatcher($this->app['events']);
-
-        $appDir = substr(strtolower($this->app->getNamespace()), 0, -1);
-
-        $this->publishes([
-            __DIR__ . '/../../publishes/Models'              => base_path($appDir . '/Models'),
-            __DIR__ . '/../../publishes/config/database.php' => config_path('database.php'),
-        ], 'Acorn Database');
-
-        $this->commands($this->commands);
-    }
-
-    /**
-     * Register database seeders
-     *
-     * @param  string $path
-     * @return void
-     **/
-    protected function registerSeedersFrom(string $path) : void
-    {
-        foreach (glob("$path/*.php") as $filename) {
-            include $filename;
-        }
     }
 }

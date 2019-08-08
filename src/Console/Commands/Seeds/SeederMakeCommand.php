@@ -9,16 +9,16 @@ use Symfony\Component\Console\Input\InputArgument;
 use Roots\Acorn\Console\Commands\GeneratorCommand;
 
 /**
- * Seeder Make Command
+ * Console Command: Seeder Make
  *
  * Usage: `wp acorn make:seeder`
  *
- * @package    Acorn\Database
- * @subpackage Commands
- * @version    1.0.0
- * @since      1.0.0
  * @author     Kelly Mears <developers@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
+ * @package    Acorn\Database
+ * @subpackage Console\Commands
  **/
 class SeederMakeCommand extends GeneratorCommand
 {

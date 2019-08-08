@@ -33,13 +33,17 @@
     "php": ">=7.3",
     "sofa/eloquence": "^5.6",
     "fzaninotto/faker": "^1.8",
-    "tiny-pixel/support": "dev-master"
+    "tiny-pixel/support": "dev-master",
+    "illuminate/pagination": "^5.8"
   },
   "extra": {
     "acorn": {
       "providers": [
         "Sofa\\Eloquence\\BaseServiceProvider",
-        "TinyPixel\\Acorn\\Database\\Providers\\DatabaseServiceProvider"
+        "TinyPixel\\Acorn\\Database\\Providers\\PaginationServiceProvider",
+        "TinyPixel\\Acorn\\Database\\Providers\\DatabaseServiceProvider",
+        "TinyPixel\\Acorn\\Database\\Providers\\MigrationServiceProvider",
+        "TinyPixel\\Acorn\\Database\\Providers\\PackageServiceProvider"
       ]
     }
   },

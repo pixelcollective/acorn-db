@@ -2,6 +2,7 @@
 
 namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
 
+use function Roots\app;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 
@@ -43,8 +44,8 @@ class MigrateCommand extends BaseCommand
     public function __construct()
     {
         parent::__construct();
-
-        $this->migrator = $this->app['migrator'];
+        $this->app = app();
+        $this->migrator = $this->app->make('migrator');
     }
     /**
      * Execute the console command.
