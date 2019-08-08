@@ -3,11 +3,30 @@
 namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
-use Roots\Acorn\Console\Commands\Command;
+use Illuminate\Console\Command;
 
+/**
+ * Migration base command.
+ *
+ * @author     Kelly Mears <developers@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
+ * @package    Acorn\Database
+ * @subpackage Commands\Seeds
+ **/
 class BaseCommand extends Command
 {
-    protected $name = ' ';
+    /**
+     * Instantiate the Acorn container.
+     *
+     * @param  Application $app
+     * @return void
+     */
+    protected function app(Application $app) : void
+    {
+        $this->app = $app;
+    }
 
     /**
      * Get all of the migration paths.
@@ -24,11 +43,11 @@ class BaseCommand extends Command
                 return !$this->usingRealPath() ? $this->laravel->basePath() . DIRECTORY_SEPARATOR . $path : $path;
             })->all();
         }
-        return array_merge(
-            $this->migrator->paths(),
-            [$this->getMigrationPath()]
-        );
+        return array_merge($this->migrator->paths(), [
+            $this->getMigrationPath()
+        ]);
     }
+
     /**
      * Determine if the given path(s) are pre-resolved "real" paths.
      *
@@ -38,6 +57,7 @@ class BaseCommand extends Command
     {
         return $this->input->hasOption('realpath') && $this->option('realpath');
     }
+
     /**
      * Get the path to the migration directory.
      *

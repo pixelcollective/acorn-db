@@ -10,7 +10,7 @@ namespace TinyPixel\Acorn\Database\Model\Concerns;
  * @since      1.0.0
  *
  * @package    Acorn\Database
- * @subpackage Model\Traits
+ * @subpackage Model\Concerns
  **/
 trait Roles
 {

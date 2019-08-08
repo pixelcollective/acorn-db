@@ -24,6 +24,7 @@ class PackageServiceProvider extends ServiceProvider
      * @var array
      */
     public $commands = [
+        'TinyPixel\Acorn\Database\Console\Commands\Migrate\FreshCommand',
         'TinyPixel\Acorn\Database\Console\Commands\Migrate\InstallCommand',
         'TinyPixel\Acorn\Database\Console\Commands\Migrate\MakeCommand',
         'TinyPixel\Acorn\Database\Console\Commands\Migrate\MigrateCommand',

@@ -17,6 +17,7 @@ use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
 use TinyPixel\Acorn\Database\Model\Relationship\TermRelationship;
 use TinyPixel\Acorn\Database\Model\Concerns\MetaFields;
 use TinyPixel\Acorn\Database\Model\Concerns\Fields;
+use TinyPixel\Acorn\Database\Model\Concerns\Timestamps;
 use TinyPixel\Acorn\Database\Model\Builder\PostBuilder;
 
 /**
@@ -29,31 +30,44 @@ use TinyPixel\Acorn\Database\Model\Builder\PostBuilder;
  *
  * @package    Acorn\Database
  * @subpackage Model\Post
- **/
+ */
 class Post extends WordPress
 {
-    use Fields, MetaFields;
+    use Fields, MetaFields, Timestamps;
 
-    /** @var string */
+    /**
+     * Specify `created_at` column
+     *
+     * @var string
+     */
     const CREATED_AT = 'post_date';
 
-    /** @var string */
+    /**
+     * Specify `updated_at` column
+     *
+     * @var string
+     */
     const UPDATED_AT = 'post_modified';
 
-    /** @var bool */
-    public $timestamps = false;
-
-    /** @var string */
+    /**
+     * Specify table name.
+     *
+     * @var string
+     */
     protected $table = 'posts';
 
-    /** @var string */
+    /**
+     * Specify primary key.
+     *
+     * @var string
+     */
     protected $primaryKey = 'ID';
 
     /**
      * @var array
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     **/
+     */
     protected $maps = [
         'id'        => 'ID',
         'date'      => 'post_date',
@@ -72,10 +86,50 @@ class Post extends WordPress
     ];
 
     /**
+     * Getter method.
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        $value = parent::__get($key);
+
+        if ($value === null && !property_exists($this, $key)) {
+            return $this->meta->$key;
+        }
+
+        return $value;
+    }
+
+    /**
+     * Return a fresh PostBuilder query
+     *
+     * @return PostBuilder
+     */
+    public function newQuery()
+    {
+        return $this->postType ?
+                parent::newQuery()->type($this->postType) :
+                parent::newQuery();
+    }
+
+    /**
+     * Return a new PostBuilder instance
+     *
+     * @param  Builder $query
+     * @return PostBuilder
+     */
+    public function newEloquentBuilder($query) : PostBuilder
+    {
+        return new PostBuilder($query);
+    }
+
+    /**
      * A post has a thumbnail.
      *
      * @return HasOne
-     **/
+     */
     public function thumbnail() : HasOne
     {
         return $this->hasOne(ThumbnailMeta::class, 'post_id')
@@ -86,7 +140,7 @@ class Post extends WordPress
      * A post belongs to many taxonomies.
      *
      * @return BelongsToMany
-     **/
+     */
     public function taxonomies() : BelongsToMany
     {
         return $this->belongsToMany(
@@ -101,7 +155,7 @@ class Post extends WordPress
      * A post has many comments.
      *
      * @return HasMany
-     **/
+     */
     public function comments() : HasMany
     {
         return $this->hasMany(Comment::class, 'comment_post_ID');
@@ -111,7 +165,7 @@ class Post extends WordPress
      * A post belongs to an author.
      *
      * @return BelongsTo
-     **/
+     */
     public function author() : BelongsTo
     {
         return $this->belongsTo(User::class, 'post_author');
@@ -121,7 +175,7 @@ class Post extends WordPress
      * A post can be parented by another post.
      *
      * @return BelongsTo
-     **/
+     */
     public function parent() : BelongsTo
     {
         return $this->belongsTo(Post::class, 'post_parent');
@@ -131,7 +185,7 @@ class Post extends WordPress
      * A post can have many children.
      *
      * @return HasMany
-     **/
+     */
     public function children() : HasMany
     {
         return $this->hasMany(Post::class, 'post_parent');
@@ -141,7 +195,7 @@ class Post extends WordPress
      * A post can have many attachments.
      *
      * @return HasMany
-     **/
+     */
     public function attachment() : HasMany
     {
         return $this->hasMany(Post::class, 'post_parent')
@@ -152,7 +206,7 @@ class Post extends WordPress
      * A post can have many revisions.
      *
      * @return HasMany
-     **/
+     */
     public function revision() : HasMany
     {
         return $this->hasMany(Post::class, 'post_parent')
@@ -165,7 +219,7 @@ class Post extends WordPress
      * @param string $taxonomy
      * @param string $term
      * @return bool
-     **/
+     */
     public function hasTerm($taxonomy, $term) : bool
     {
         return isset($this->terms[$taxonomy]) &&
@@ -176,7 +230,7 @@ class Post extends WordPress
      * Returns the post type.
      *
      * @return string
-     **/
+     */
     public function getPostType() : string
     {
         return $this->postType;
@@ -186,7 +240,7 @@ class Post extends WordPress
      * Returns the post thumbnail.
      *
      * @return string
-     **/
+     */
     public function getImageAttribute() : string
     {
         if ($this->thumbnail and $this->thumbnail->attachment) {
@@ -198,11 +252,12 @@ class Post extends WordPress
      * Returns terms grouped by taxonomy in an associative array.
      *
      * @return array
-     **/
+     */
     public function getTermsAttribute() : array
     {
         return $this->taxonomies->groupBy(function ($taxonomy) {
-            return $taxonomy->taxonomy == 'post_tag' ? 'tag' : $taxonomy->taxonomy;
+            return $taxonomy->taxonomy == 'post_tag' ?
+                'tag' : $taxonomy->taxonomy;
         })->map(function ($group) {
             return $group->mapWithKeys(function ($item) {
                 return [$item->term->slug => $item->term->name];
@@ -214,7 +269,7 @@ class Post extends WordPress
      * Returns the primary term from the first taxonomy found.
      *
      * @return string
-     **/
+     */
     public function getMainCategoryAttribute()
     {
         $mainCategory = 'Uncategorized';
@@ -235,7 +290,7 @@ class Post extends WordPress
      * Returns an array of the post keywords.
      *
      * @return array
-     **/
+     */
     public function getKeywordsAttribute()
     {
         return collect($this->terms)->map(function ($taxonomy) {
@@ -247,7 +302,7 @@ class Post extends WordPress
      * Returns a comma delimited string of the post keywords.
      *
      * @return string
-     **/
+     */
     public function getKeywordsStrAttribute()
     {
         return implode(',', (array) $this->keywords);
@@ -260,7 +315,7 @@ class Post extends WordPress
      * @link https://codex.wordpress.org/Function_Reference/get_post_format
      *
      * @return bool|string
-     **/
+     */
     public function getFormat()
     {
         $taxonomy = $this->taxonomies()
@@ -272,45 +327,5 @@ class Post extends WordPress
         }
 
         return false;
-    }
-
-    /**
-     * Getter method.
-     *
-     * @param  string $key
-     * @return mixed
-     **/
-    public function __get($key)
-    {
-        $value = parent::__get($key);
-
-        if ($value === null && !property_exists($this, $key)) {
-            return $this->meta->$key;
-        }
-
-        return $value;
-    }
-
-    /**
-     * Return a new PostBuilder instance
-     *
-     * @param  Builder $query
-     * @return PostBuilder
-     **/
-    public function newEloquentBuilder($query) : PostBuilder
-    {
-        return new PostBuilder($query);
-    }
-
-    /**
-     * Return a fresh PostBuilder query
-     *
-     * @return PostBuilder
-     **/
-    public function newQuery()
-    {
-        return $this->postType
-                    ? parent::newQuery()->type($this->postType)
-                    : parent::newQuery();
     }
 }

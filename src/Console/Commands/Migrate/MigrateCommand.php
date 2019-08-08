@@ -5,12 +5,26 @@ namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
 use function Roots\app;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
-
 use TinyPixel\Acorn\Database\Console\Commands\Migrate\BaseCommand;
 
+/**
+ * Console command: migrate
+ *
+ * Run the database migrations
+ *
+ * Usage: `wp acorn migrate`
+ *
+ * @author     Kelly Mears <developers@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
+ * @package    Acorn\Database
+ * @subpackage Console\Commands
+ **/
 class MigrateCommand extends BaseCommand
 {
     use ConfirmableTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -23,18 +37,21 @@ class MigrateCommand extends BaseCommand
                 {--pretend : Dump the SQL queries that would be run}
                 {--seed : Indicates if the seed task should be re-run}
                 {--step : Force the migrations to be run so they can be rolled back individually}';
+
     /**
      * The console command description.
      *
      * @var string
      **/
     protected $description = 'Run the database migrations';
+
     /**
      * The migrator instance.
      *
      * @var \Illuminate\Database\Migrations\Migrator
      **/
     protected $migrator;
+
     /**
      * Create a new migration command instance.
      *
@@ -47,6 +64,7 @@ class MigrateCommand extends BaseCommand
         $this->app = app();
         $this->migrator = $this->app->make('migrator');
     }
+
     /**
      * Execute the console command.
      *
@@ -57,6 +75,7 @@ class MigrateCommand extends BaseCommand
         if (! $this->confirmToProceed()) {
             return;
         }
+
         $this->prepareDatabase();
         // Next, we will check to see if a path option has been defined. If it has
         // we will use the path relative to the root of this installation folder
@@ -66,6 +85,7 @@ class MigrateCommand extends BaseCommand
                     'pretend' => $this->option('pretend'),
                     'step' => $this->option('step'),
                 ]);
+
         // Finally, if the "seed" option has been given, we will re-run the database
         // seed task to re-populate the database, which is convenient when adding
         // a migration and a seed at the same time, as it is only this command.
@@ -73,6 +93,7 @@ class MigrateCommand extends BaseCommand
             $this->call('db:seed', ['--force' => true]);
         }
     }
+
     /**
      * Prepare the migration database for running.
      *

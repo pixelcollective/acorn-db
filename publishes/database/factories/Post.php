@@ -1,37 +1,41 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-
 use App\Model\Post;
 use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
 | Post Factory
 |--------------------------------------------------------------------------
 |
-| Factories provide a convenient way to generate new model
-| instances for testing / seeding your application's database.
+| Manually specifying the attributes for each model seed is
+| cumbersome. Factories provide a convenient way to generate new model
+| instances for scaffolding or testing your application's database.
+|
+| Within the Closure, which serves as the factory definition, you may
+| return the default test values of all attributes on the model. The Closure
+| will receive an instance of the Faker PHP library, which allows you to
+| conveniently generate various kinds of random data for testing.
+|
+| @link https://laravel.com/docs/5.8/database-testing#writing-factories
+| @link https://github.com/fzaninotto/Faker#formatters
 |
 */
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        'post_title'            => $faker->title(),
-        'post_excerpt'          => $faker->sentence(),
-        'post_content'          => $faker->paragraph(),
-        'post_date'             => Carbon::now()->toDateTimeString(),
-        'post_date_gmt'         => Carbon::now('gmt')->toDateTimeString(),
-        'post_modified'         => Carbon::now()->toDateTimeString(),
-        'post_modified_gmt'     => Carbon::now('gmt')->toDateTimeString(),
+        'title'                 => $faker->sentence(),
+        'excerpt'               => $faker->sentence() . $faker->sentence(),
+        'content'               => $faker->paragraph(),
         'post_author'           => 1,
+        'post_name'             => $faker->slug(),
+        'date'                  => Carbon::now()->toDateTimeString(),
+        'post_date_gmt'         => Carbon::now('gmt')->toDateTimeString(),
+        'modified'              => Carbon::now()->toDateTimeString(),
+        'post_modified_gmt'     => Carbon::now('gmt')->toDateTimeString(),
+        'post_content_filtered' => '',
         'to_ping'               => '',
         'pinged'                => '',
-        'post_content_filtered' => '',
-        'post_name'             => $faker->slug(),
     ];
-});
-
-$factory->afterMaking(App\Model\Post::class, function ($post, $faker) {
-    $post->save(factory(App\Model\Comment::class)->make());
 });

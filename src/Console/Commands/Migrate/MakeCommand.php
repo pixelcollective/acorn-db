@@ -2,13 +2,24 @@
 
 namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
 
+use function Roots\base_path;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Database\Migrations\MigrationCreator;
-
 use TinyPixel\Acorn\Database\Console\Commands\Migrate\BaseCommand;
-use function Roots\base_path;
 
+/**
+ * Console Command: make:migration
+ *
+ * Usage: `wp acorn make:seeder`
+ *
+ * @author     Kelly Mears <developers@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
+ * @package    Acorn\Database
+ * @subpackage Console\Commands
+ **/
 class MakeCommand extends BaseCommand
 {
     /**
@@ -16,14 +27,14 @@ class MakeCommand extends BaseCommand
      *
      * @var string
      **/
-    protected $name = 'migrate:make';
+    protected $name = 'make:migration';
 
     /**
      * The console command signature.
      *
      * @var string
      **/
-    protected $signature = 'migrate:make {name : The name of your migration}
+    protected $signature = 'make:migration {name : The name of your migration}
                             {table : The table to migrate.}
                             {--create : Creates table}';
 
@@ -55,9 +66,6 @@ class MakeCommand extends BaseCommand
      **/
     public function handle()
     {
-        // It's possible for the developer to specify the tables to modify in this
-        // schema operation. The developer may also specify if this table needs
-        // to be freshly created so we can create the appropriate migrations.
         $name = $this->argument('name');
 
         $table = $this->argument('table');
@@ -68,9 +76,6 @@ class MakeCommand extends BaseCommand
             $table = $create;
         }
 
-        // Now we are ready to write the migration out to disk. Once we've written
-        // the migration out, we will dump-autoload for the entire framework to
-        // make sure that the migrations are registered by the class loaders.
         $this->writeMigration($name, $table, $create);
     }
 

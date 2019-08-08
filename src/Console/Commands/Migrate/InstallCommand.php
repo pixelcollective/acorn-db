@@ -2,9 +2,9 @@
 
 namespace TinyPixel\Acorn\Database\Console\Commands\Migrate;
 
+use Roots\Acorn\Application;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
-use Roots\Acorn\Application;
 use TinyPixel\Acorn\Database\Console\Commands\Migrate\BaseCommand;
 
 class InstallCommand extends BaseCommand

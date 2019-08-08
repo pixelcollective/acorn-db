@@ -9,10 +9,11 @@ use TinyPixel\Acorn\Database\Model\Field\FieldManager;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
  *
  * @package    Acorn\Database
- * @subpackage Model\Traits
+ * @subpackage Model\Concerns
  **/
 trait Fields
 {

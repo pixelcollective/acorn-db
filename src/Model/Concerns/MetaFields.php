@@ -6,7 +6,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\Acorn\Database\Exception\EloquentException;
 use TinyPixel\Acorn\Database\Model\Comment;
 use TinyPixel\Acorn\Database\Model\Post;
 use TinyPixel\Acorn\Database\Model\Term;
@@ -15,20 +14,26 @@ use TinyPixel\Acorn\Database\Model\Meta\CommentMeta;
 use TinyPixel\Acorn\Database\Model\Meta\PostMeta;
 use TinyPixel\Acorn\Database\Model\Meta\TermMeta;
 use TinyPixel\Acorn\Database\Model\Meta\UserMeta;
+use TinyPixel\Acorn\Database\Exception\EloquentException;
 
 /**
  * Concerning meta fields.
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
  *
  * @package    Acorn\Database
- * @subpackage Model\Traits
- **/
+ * @subpackage Model\Concerns
+ */
 trait MetaFields
 {
-    /** @var array */
+    /**
+     * Core WordPress meta field maps
+     *
+     * @var array
+     */
     protected $builtInClasses = [
         Post::class    => PostMeta::class,
         Term::class    => TermMeta::class,
@@ -43,7 +48,10 @@ trait MetaFields
      **/
     public function meta() : HasMany
     {
-        return $this->hasMany($this->getMetaClass(), $this->getMetaForeignKey());
+        return $this->hasMany(
+            $this->getMetaClass(),
+            $this->getMetaForeignKey()
+        );
     }
 
     /**
@@ -60,7 +68,10 @@ trait MetaFields
             }
         }
 
-        throw new EloquentException(sprintf('%s is not an extension of a known model', static::class));
+        throw new EloquentException(sprintf(
+            '%s is not an extension of a known model',
+            static::class
+        ));
     }
 
     /**
@@ -77,7 +88,10 @@ trait MetaFields
             }
         }
 
-        throw new EloquentException(sprintf('%s is not an extension of a known model', static::class));
+        throw new EloquentException(sprintf(
+            '%s is not an extension of a known model',
+            static::class
+        ));
     }
 
     /**
@@ -96,17 +110,20 @@ trait MetaFields
         }
 
         foreach ($meta as $key => $value) {
-            $query->whereHas('meta', function (Builder $query) use ($key, $value, $operator) {
-                if (!is_string($key)) {
-                    return $query->where('meta_key', $operator, $value);
+            $query->whereHas(
+                'meta',
+                function (Builder $query) use ($key, $value, $operator) {
+                    if (!is_string($key)) {
+                        return $query->where('meta_key', $operator, $value);
+                    }
+
+                    $query->where('meta_key', $operator, $key);
+
+                    return !is_null($value) ?
+                            $query->where('meta_value', $operator, $value) :
+                            $query;
                 }
-
-                $query->where('meta_key', $operator, $key);
-
-                return ! is_null($value)
-                       ? $query->where('meta_value', $operator, $value)
-                       : $query;
-            });
+            );
         }
 
         return $query;
@@ -120,7 +137,7 @@ trait MetaFields
      * @param  mixed   $value
      * @return Builder
      **/
-    public function scopeHasMetaLike(Builder $query, $meta, $value = null) : Builder
+    public function scopeHasMetaLike(Builder $query, string $meta, $value = null) : Builder
     {
         return $this->scopeHasMeta($query, $meta, $value, 'like');
     }
@@ -156,8 +173,7 @@ trait MetaFields
      **/
     private function saveOneMeta($key, $value)
     {
-        $result = $this->meta()
-                       ->where('meta_key', $key)
+        $result = $this->meta()->where('meta_key', $key)
                        ->firstOrNew(['meta_key' => $key])
                        ->fill(['meta_value' => $value])
                        ->save();
@@ -190,7 +206,7 @@ trait MetaFields
      *
      * @param  string $key
      * @param  mixed $value
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      **/
     private function createOneMeta($key, $value)
     {
