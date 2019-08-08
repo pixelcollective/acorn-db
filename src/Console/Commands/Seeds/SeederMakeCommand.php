@@ -13,41 +13,41 @@ use Roots\Acorn\Console\Commands\GeneratorCommand;
  *
  * Usage: `wp acorn make:seeder`
  *
- * @package    AcornDB
+ * @package    Acorn\Database
  * @subpackage Commands
  * @version    1.0.0
  * @since      1.0.0
  * @author     Kelly Mears <developers@tinypixel.dev>
  * @license    MIT
- */
+ **/
 class SeederMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
-     */
+     **/
     protected $name = 'make:seeder';
 
     /**
      * The console command description.
      *
      * @var string
-     */
+     **/
     protected $description = 'Create a new seeder class';
 
     /**
      * The type of class being generated.
      *
      * @var string
-     */
+     **/
     protected $type = 'Seeder';
 
     /**
      * The Composer instance.
      *
      * @var \Illuminate\Support\Composer
-     */
+     **/
     protected $composer;
 
     /**
@@ -56,7 +56,7 @@ class SeederMakeCommand extends GeneratorCommand
      * @param  \Illuminate\Filesystem\Filesystem  $files
      * @param  \Illuminate\Support\Composer  $composer
      * @return void
-     */
+     **/
     public function __construct(Filesystem $files, Composer $composer)
     {
         parent::__construct($files);
@@ -68,7 +68,7 @@ class SeederMakeCommand extends GeneratorCommand
      * Execute the console command.
      *
      * @return void
-     */
+     **/
     public function handle()
     {
         parent::handle();
@@ -79,7 +79,7 @@ class SeederMakeCommand extends GeneratorCommand
      * Get the stub file for the generator.
      *
      * @return string
-     */
+     **/
     protected function getStub()
     {
         return __DIR__ . '/stubs/seeder.stub';
@@ -90,7 +90,7 @@ class SeederMakeCommand extends GeneratorCommand
      *
      * @param  string  $name
      * @return string
-     */
+     **/
     protected function getPath($name)
     {
         return base_path('/database/seeds/' . $this->input->getArgument('name') . '.php');
@@ -101,7 +101,7 @@ class SeederMakeCommand extends GeneratorCommand
      *
      * @param  string  $name
      * @return string
-     */
+     **/
     protected function qualifyClass($name)
     {
         return $this->input->getArgument('name');
@@ -111,7 +111,7 @@ class SeederMakeCommand extends GeneratorCommand
      * Get the desired class name from the input.
      *
      * @return string
-     */
+     **/
     protected function getNameInput()
     {
         return $this->input->getArgument('name');

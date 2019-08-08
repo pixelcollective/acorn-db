@@ -13,21 +13,21 @@ class InstallCommand extends BaseCommand
      * The console command name.
      *
      * @var string
-     */
+     **/
     protected $name = 'migrate:install';
 
     /**
      * The console command description.
      *
      * @var string
-     */
+     **/
     protected $description = 'Create the migration repository';
 
     /**
      * The repository instance.
      *
      * @var \Illuminate\Database\Migrations\MigrationRepositoryInterface
-     */
+     **/
     protected $repository;
 
     /**
@@ -35,7 +35,7 @@ class InstallCommand extends BaseCommand
      *
      * @param  \Illuminate\Database\Migrations\MigrationRepositoryInterface  $repository
      * @return void
-     */
+     **/
     public function __construct(Application $app)
     {
         parent::__construct();
@@ -46,7 +46,7 @@ class InstallCommand extends BaseCommand
      * Execute the console command.
      *
      * @return void
-     */
+     **/
     public function handle()
     {
         $this->repository->setSource($this->input->getOption('database'));
@@ -59,7 +59,7 @@ class InstallCommand extends BaseCommand
      * Get the console command options.
      *
      * @return array
-     */
+     **/
     protected function getOptions()
     {
         return [
