@@ -11,20 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
- * @subpackage Model\WordPress
- **/
+ * @subpackage Model
+ */
 class WordPress extends Model
 {
     use Eloquence, Mappable;
-
-    /**
-     * Disable illuminate timestamp behavior
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 }

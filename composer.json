@@ -1,5 +1,5 @@
 {
-  "name": "tiny-pixel/acorn-database",
+  "name": "tiny-pixel/acorn-db",
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
@@ -16,7 +16,7 @@
     "eloquent"
   ],
   "support": {
-    "issues": "https://github.com/pixelcollective/acorn-database/issues"
+    "issues": "https://github.com/pixelcollective/acorn-db/issues"
   },
   "repositories": [
     {

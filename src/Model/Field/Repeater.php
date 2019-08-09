@@ -14,16 +14,19 @@ use TinyPixel\AcornDB\Model\Meta\TermMeta;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
- * @since      1.0.0
  * @version    1.0.0
+ * @since      1.0.0
+ *
  * @package    AcornDB
  * @subpackage Model\Field
- * @extends    TinyPixel\AcornDB\Model\Field\Field
- * @implements TinyPixel\AcornDB\Model\Field\FieldInterface
  **/
 class Repeater extends Field implements FieldInterface
 {
-    /** @var Collection **/
+    /**
+     * Fields.
+     *
+     * @var Collection
+     */
     protected $fields;
 
     /**

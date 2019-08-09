@@ -3,29 +3,36 @@
 namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Post;
 
 /**
  * Attachment Model
  *
- * @author  Kelly Mears <kelly@tinypixel.dev>
- * @license MIT
- * @since   1.0.0
- * @uses    Sofa\Eloquence\Eloquence
+ * @author     Kelly Mears <kelly@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
  *
  * @package    AcornDB
- * @subpackage Model\Attachment
+ * @subpackage Model
  **/
-class Attachment extends WordPress
+class Attachment extends Post
 {
-    /** @var string */
+    /**
+     * Specify a posttype.
+     *
+     * @var string
+     **/
     protected $postType = 'attachment';
 
     /**
-     * @var array
+     * Alias column names.
+     *
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     **/
+     *
+     * @var array
+     */
     protected $maps = [
         'title'       => 'post_title',
         'url'         => 'guid',
@@ -37,6 +44,7 @@ class Attachment extends WordPress
 
     /**
      * Attachments belong to posts.
+     *
      * @return BelongsTo
      **/
     public function post() : BelongsTo

@@ -14,40 +14,27 @@ use TinyPixel\AcornDB\Model\Attachment;
 use TinyPixel\AcornDB\Model\Comment;
 use TinyPixel\AcornDB\Model\Taxonomy;
 use TinyPixel\AcornDB\Model\Meta\PostMeta;
-use TinyPixel\AcornDB\Model\Relationship\TermRelationship;
+use TinyPixel\AcornDB\Model\Meta\ThumbnailMeta;
 use TinyPixel\AcornDB\Model\Concerns\MetaFields;
 use TinyPixel\AcornDB\Model\Concerns\Fields;
 use TinyPixel\AcornDB\Model\Concerns\Timestamps;
 use TinyPixel\AcornDB\Model\Builder\PostBuilder;
+use TinyPixel\AcornDB\Model\Relationship\TermRelationship;
 
 /**
  * Post Model
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
- * @subpackage Model\Post
+ * @subpackage Model
  */
 class Post extends WordPress
 {
     use Fields, MetaFields, Timestamps;
-
-    /**
-     * Specify `created_at` column
-     *
-     * @var string
-     */
-    const CREATED_AT = 'post_date';
-
-    /**
-     * Specify `updated_at` column
-     *
-     * @var string
-     */
-    const UPDATED_AT = 'post_modified';
 
     /**
      * Specify table name.
@@ -64,9 +51,26 @@ class Post extends WordPress
     protected $primaryKey = 'ID';
 
     /**
-     * @var array
+     * Specify `created_at` column.
+     *
+     * @var string
+     */
+    const CREATED_AT = 'post_date';
+
+    /**
+     * Specify `updated_at` column.
+     *
+     * @var string
+     */
+    const UPDATED_AT = 'post_modified';
+
+    /**
+     * Specify column name aliases.
+     *
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
+     *
+     * @var array
      */
     protected $maps = [
         'id'        => 'ID',
@@ -86,7 +90,7 @@ class Post extends WordPress
     ];
 
     /**
-     * Getter method.
+     * Magic getter method.
      *
      * @param  string $key
      * @return mixed
@@ -214,7 +218,7 @@ class Post extends WordPress
     }
 
     /**
-     * Whether the post contains the term or not.
+     * Return true if the post contains a specified term.
      *
      * @param string $taxonomy
      * @param string $term
@@ -227,7 +231,7 @@ class Post extends WordPress
     }
 
     /**
-     * Returns the post type.
+     * Accessor returning posttype.
      *
      * @return string
      */
@@ -237,7 +241,7 @@ class Post extends WordPress
     }
 
     /**
-     * Returns the post thumbnail.
+     * Accessor returning post thumbnail.
      *
      * @return string
      */
@@ -249,7 +253,7 @@ class Post extends WordPress
     }
 
     /**
-     * Returns terms grouped by taxonomy in an associative array.
+     * Accessor returning array of terms grouped by taxonomy.
      *
      * @return array
      */

@@ -15,8 +15,8 @@ use TinyPixel\AcornDB\Model\Meta\UserMeta;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
  * @subpackage Model\Field

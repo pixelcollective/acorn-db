@@ -16,31 +16,47 @@ use TinyPixel\AcornDB\Model\Builder\TaxonomyBuilder;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
- * @subpackage Model\Taxonomy
- **/
+ * @subpackage Model
+ */
 class Taxonomy extends WordPress
 {
-    /** @var string */
+    /**
+     * Specify table name.
+     *
+     * @var string
+     */
     protected $table = 'term_taxonomy';
 
-    /** @var string */
+    /**
+     * Specify primary key.
+     *
+     * @var string
+     */
     protected $primaryKey = 'term_taxonomy_id';
 
-    /** @var array */
+    /**
+     * Specify relationships to be eager-loaded.
+     *
+     * @var string
+     */
     protected $with = ['term'];
 
-    /** @var bool */
+    /**
+     * Disable Laravel default timestamp behavior.
+     *
+     * @var string
+     */
     public $timestamps = false;
 
     /**
      * A taxonomy is related to many term meta fields.
      *
      * @return HasMany
-     **/
+     */
     public function meta()
     {
         return $this->hasMany(TermMeta::class, 'term_id');
@@ -50,7 +66,7 @@ class Taxonomy extends WordPress
      * A taxonomy belongs to a term.
      *
      * @return BelongsTo
-     **/
+     */
     public function term()
     {
         return $this->belongsTo(Term::class, 'term_id');
@@ -60,7 +76,7 @@ class Taxonomy extends WordPress
      * A taxonomy can be parented by many taxonomies.
      *
      * @return BelongsTo
-     **/
+     */
     public function parent()
     {
         return $this->belongsTo(Taxonomy::class, 'parent');
@@ -70,7 +86,7 @@ class Taxonomy extends WordPress
      * A taxonomy belongs to many posts.
      *
      * @return BelongsToMany
-     **/
+     */
     public function posts()
     {
         return $this->belongsToMany(
@@ -86,7 +102,7 @@ class Taxonomy extends WordPress
      *
      * @param  Builder $query
      * @return TaxonomyBuilder
-     **/
+     */
     public function newEloquentBuilder($query) : TaxonomyBuilder
     {
         return new TaxonomyBuilder($query);
@@ -96,7 +112,7 @@ class Taxonomy extends WordPress
      * Refresh builder.
      *
      * @return TaxonomyBuilder
-     **/
+     */
     public function newQuery() : TaxonomyBuilder
     {
         return isset($this->taxonomy) && $this->taxonomy ?
@@ -109,7 +125,7 @@ class Taxonomy extends WordPress
      *
      * @param  string $key
      * @return string
-     **/
+     */
     public function __get($key) : string
     {
         if (!isset($this->$key)) {

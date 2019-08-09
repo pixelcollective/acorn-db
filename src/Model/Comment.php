@@ -13,13 +13,13 @@ use TinyPixel\AcornDB\Model\Concerns\MetaFields;
 /**
  * Comment Model
  *
- * @author  Kelly Mears <kelly@tinypixel.dev>
- * @license MIT
- * @since   1.0.0
- * @uses    Sofa\Eloquence\Eloquence
+ * @author     Kelly Mears <kelly@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
  *
  * @package    AcornDB
- * @subpackage Model\Comment
+ * @subpackage Model
  **/
 class Comment extends WordPress
 {

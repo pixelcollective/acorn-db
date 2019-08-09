@@ -10,20 +10,28 @@ use TinyPixel\AcornDB\Model\Taxonomy;
 /**
  * Menu Model
  *
- * @author  Kelly Mears <kelly@tinypixel.dev>
- * @license MIT
- * @since   1.0.0
- * @uses    Sofa\Eloquence\Eloquence
+ * @author     Kelly Mears <kelly@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
  *
  * @package    AcornDB
- * @subpackage Model\Menu
+ * @subpackage Model
  **/
 class Menu extends Taxonomy
 {
-    /** @var string */
+    /**
+     * Specify relationships to be eager-loaded.
+     *
+     * @var string
+     */
     protected $taxonomy = 'nav_menu';
 
-    /** @var array */
+    /**
+     * Specify relationships to be eager-loaded.
+     *
+     * @var string
+     */
     protected $with = ['term', 'items'];
 
     /**

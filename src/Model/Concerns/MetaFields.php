@@ -14,6 +14,7 @@ use TinyPixel\AcornDB\Model\Meta\CommentMeta;
 use TinyPixel\AcornDB\Model\Meta\PostMeta;
 use TinyPixel\AcornDB\Model\Meta\TermMeta;
 use TinyPixel\AcornDB\Model\Meta\UserMeta;
+use TinyPixel\AcornDB\Model\Meta\ThumbnailMeta;
 use TinyPixel\AcornDB\Exceptions\EloquentException;
 
 /**
@@ -35,10 +36,11 @@ trait MetaFields
      * @var array
      */
     protected $builtInClasses = [
-        Post::class    => PostMeta::class,
-        Term::class    => TermMeta::class,
-        User::class    => UserMeta::class,
-        Comment::class => CommentMeta::class,
+        Post::class       => PostMeta::class,
+        Term::class       => TermMeta::class,
+        User::class       => UserMeta::class,
+        Comment::class    => CommentMeta::class,
+        Attachment::class => ThumbnailMeta::class,
     ];
 
     /**

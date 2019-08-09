@@ -19,16 +19,32 @@ use TinyPixel\AcornDB\Model\Meta\Meta;
  **/
 class PostMeta extends Meta
 {
-    /** @var string */
+    /**
+     * Specify table name.
+     *
+     * @var string
+     */
     protected $table = 'postmeta';
 
-    /** @var bool */
+    /**
+     * Specify table name.
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
-    /** @var string */
+    /**
+     * Specify table primary key.
+     *
+     * @var string
+     */
     protected $primaryKey = 'meta_id';
 
-    /** @var array */
+    /**
+     * Specify column names open to mass assignment.
+     *
+     * @var array
+     */
     protected $fillable   = [
         'meta_key',
         'meta_value',

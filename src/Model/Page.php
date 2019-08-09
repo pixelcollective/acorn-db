@@ -11,12 +11,12 @@ use TinyPixel\AcornDB\Model\Option;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
- * @subpackage Model\Page
- ***/
+ * @subpackage Model
+ */
 class Page extends Post
 {
     /**
@@ -24,7 +24,7 @@ class Page extends Post
      *
      * @param Builder $query
      * @return mixed
-     ***/
+     */
     public function scopeHome(Builder $query)
     {
         $results = $query->where('ID', Option::get('page_on_front'));

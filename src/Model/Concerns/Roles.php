@@ -7,11 +7,12 @@ namespace TinyPixel\AcornDB\Model\Concerns;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
  *
  * @package    AcornDB
  * @subpackage Model\Concerns
- **/
+ */
 trait Roles
 {
     public function hasRole($role = '')

@@ -11,27 +11,48 @@ use TinyPixel\AcornDB\Model\WordPress;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
  * @subpackage Model
- **/
+ */
 class Option extends WordPress
 {
-    /** @var string */
+    /**
+     * Specify table name.
+     *
+     * @var string
+     */
     protected $table = 'options';
 
-    /** @var string */
+    /**
+     * Specify table primary key.
+     *
+     * @var string
+     */
     protected $primaryKey = 'option_id';
 
-    /** @var bool */
+    /**
+     * Disable default Eloquent timestamps.
+     *
+     * @var string
+     */
     public $timestamps = false;
 
-    /** @var array */
+    /**
+     * Specify virtual model attributes
+     * accessed with an accessor.
+     *
+     * @var array
+     */
     protected $appends = ['value'];
 
-    /** @var array */
+    /**
+     * Specify column names which can be mass assigned.
+     *
+     * @var array
+     */
     protected $fillable = [
         'option_name',
         'option_value',
@@ -39,10 +60,13 @@ class Option extends WordPress
     ];
 
     /**
-     * @var array
+     * Alias column names.
+     *
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
-     **/
+     *
+     * @var array
+     */
     protected $maps = [
         'id'    => 'option_id',
         'name'  => 'option_name',
@@ -50,12 +74,12 @@ class Option extends WordPress
     ];
 
     /**
-     * Add option to model.
+     * Add option to serialized option.
      *
      * @param  string $key
-     * @param  mixed $value
+     * @param  mixed  $value
      * @return Option
-     **/
+     */
     public static function add($key, $value)
     {
         return static::create([
@@ -69,7 +93,7 @@ class Option extends WordPress
      *
      * @param  string $name
      * @return mixed
-     **/
+     */
     public static function get($name)
     {
         if ($option = self::where('option_name', $name)->first()) {
@@ -80,11 +104,11 @@ class Option extends WordPress
     }
 
     /**
-     * Get all autoloaded options.
+     * Accessor for all autoloaded options.
      *
      * @return Option
-     **/
-    public static function autoloaded()
+     */
+    public static function getAutoloaded()
     {
         return self::where('autoload', 'yes')
                    ->get()
@@ -92,28 +116,28 @@ class Option extends WordPress
     }
 
     /**
-     * Get all options.
+     * Accessor for arrayed options.
      *
      * @param  string $name
-     * @return mixed
-     **/
+     * @return array
+     */
     public static function getAll() : array
     {
         return static::asArray();
     }
 
     /**
-     * Get value, even if serialized.
+     * Accessor for `value` attribute
      *
      * @param  string $key
      * @return mixed
-     **/
+     */
     public static function getValue(string $key = '')
     {
         $value = '';
 
         if ($key) {
-            $value = self::where('option_name', '=', $key)->value('option_value');
+            $value = self::where('name', '=', $key)->value('value');
         }
 
         if (Utility::isSerialized($value)) {
@@ -124,21 +148,21 @@ class Option extends WordPress
     }
 
     /**
-     * Return arrayed values.
+     * Return options names and values as an array.
      *
      * @param  array $keys
      * @return array
-     **/
+     */
     public static function asArray($keys = []) : array
     {
         $query = static::query();
 
         if (!empty($keys)) {
-            $query->whereIn('option_name', $keys);
+            $query->whereIn('name', $keys);
         }
 
         return $query->get()
-                     ->pluck('value', 'option_name')
+                     ->pluck('value', 'name')
                      ->toArray();
     }
 
@@ -146,7 +170,7 @@ class Option extends WordPress
      * Cast results to array.
      *
      * @return array
-     **/
+     */
     public function toArray() : array
     {
         if ($this instanceof Option) {

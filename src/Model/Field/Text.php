@@ -12,11 +12,10 @@ use TinyPixel\AcornDB\Model\Field\FieldInterface;
  * @license    MIT
  * @since      1.0.0
  * @version    1.0.0
+ *
  * @package    AcornDB
  * @subpackage Model\Field
- * @implements TinyPixel\AcornDB\Model\Field\FieldInterface
- * @extends    TinyPixel\AcornDB\Model\Field\Field
- **/
+ */
 class Text extends Field implements FieldInterface
 {
     /** @var string */
@@ -27,7 +26,7 @@ class Text extends Field implements FieldInterface
      *
      * @param  string $field
      * @return void
-     **/
+     */
     public function process($field) : void
     {
         $this->value = $this->fetchValue($field);
@@ -37,7 +36,7 @@ class Text extends Field implements FieldInterface
      * Getter.
      *
      * @return string
-     **/
+     */
     public function get() : string
     {
         return $this->value;

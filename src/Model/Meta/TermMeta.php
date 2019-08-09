@@ -19,20 +19,35 @@ use TinyPixel\AcornDB\Model\Meta\Meta;
  **/
 class TermMeta extends Meta
 {
-    /** @var string */
+    /**
+     * Specify table name.
+     *
+     * @var string
+     */
     protected $table = 'term_meta';
 
-    /** @var string */
+    /**
+     * Specify table primary key.
+     *
+     * @var string
+     */
     protected $primaryKey = 'meta_id';
 
-    /** @var array */
+    /**
+     * Fillable columns.
+     *
+     * @var string
+     */
     protected $fillable = [
         'meta_key',
         'meta_value',
     ];
 
     /**
+     * Specify column name aliases.
+     *
      * @var array
+     *
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
      ***/

@@ -11,12 +11,13 @@ use TinyPixel\AcornDB\Model\Taxonomy;
 /**
  * Menu Item Model
  *
- * @author  Kelly Mears <kelly@tinypixel.dev>
- * @license MIT
- * @since   1.0.0
+ * @author     Kelly Mears <kelly@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
  *
  * @package    AcornDB
- * @subpackage Model\MenuItem
+ * @subpackage Model
  **/
 class MenuItem extends Post
 {

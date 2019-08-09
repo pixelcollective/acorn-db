@@ -5,14 +5,15 @@ namespace TinyPixel\AcornDB\Model;
 use TinyPixel\AcornDB\Model\WordPress;
 
 /**
- * Link
+ * Link Model
  *
- * @author  Kelly Mears <kelly@tinypixel.dev>
- * @license MIT
- * @since   1.0.0
+ * @author     Kelly Mears <kelly@tinypixel.dev>
+ * @license    MIT
+ * @version    1.0.0
+ * @since      1.0.0
  *
  * @package    AcornDB
- * @subpackage Model\Link
+ * @subpackage Model
  **/
 class Link extends WordPress
 {

@@ -9,43 +9,42 @@ use TinyPixel\AcornDB\Model\Concerns\Fields;
 use TinyPixel\AcornDB\Model\Concerns\MetaFields;
 
 /**
- * Term Eloquent Model
+ * Term Model
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
- * @see        TinyPixel\AcornDB\Model\WordPress
  *
  * @package    AcornDB
- * @subpackage Model\Term
- **/
+ * @subpackage Model
+ */
 class Term extends WordPress
 {
     use Fields, MetaFields;
 
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     protected $table = 'terms';
 
     /**
-     * Primary key
+     * Primary key.
      *
      * @var string
      */
     protected $primaryKey = 'term_id';
 
     /**
-     * Eloquent database mapping
+     * Alias column names.
      *
      * @see Sofa\Eloquence\Eloquence
      * @see Sofa\Eloquence\Mappable
      *
      * @var array
-     **/
+     */
     protected $maps = [
         'id'    => 'term_id',
         'key'   => 'meta_key',
@@ -56,7 +55,7 @@ class Term extends WordPress
      * A term has many meta relations.
      *
      * @return HasMany
-     **/
+     */
     public function meta() : HasMany
     {
         return $this->hasMany(TermMeta::class, 'term_id')

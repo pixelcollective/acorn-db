@@ -11,24 +11,40 @@ use TinyPixel\AcornDB\Model\Meta\Meta;
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
  * @license    MIT
+ * @version    1.0.0
  * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
  *
  * @package    AcornDB
- * @subpackage Meta\User
- **/
+ * @subpackage Model
+ */
 class UserMeta extends Meta
 {
-    /** @var string */
+    /**
+     * Specify table name.
+     *
+     * @var string
+     */
     protected $table = 'usermeta';
 
-    /** @var bool */
-    public $timestamps = false;
-
-    /** @var string */
+    /**
+     * Specify a table primary key.
+     *
+     * @var string
+     */
     protected $primaryKey = 'umeta_id';
 
-    /** @var array */
+    /**
+     * Specify timestamps.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
+     * Specify a table primary key.
+     *
+     * @var string
+     */
     protected $fillable = [
         'meta_key',
         'meta_value',

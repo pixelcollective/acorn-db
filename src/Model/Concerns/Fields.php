@@ -14,7 +14,7 @@ use TinyPixel\AcornDB\Model\Field\FieldManager;
  *
  * @package    AcornDB
  * @subpackage Model\Concerns
- **/
+ */
 trait Fields
 {
     /**
