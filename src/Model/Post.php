@@ -1,7 +1,7 @@
 <?php
 namespace TinyPixel\Model;
 
-use TinyPixel\AcornDB\Model;
+use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\User;
 use TinyPixel\AcornDB\Model\Comment;
 use TinyPixel\AcornDB\Model\Builder\PostBuilder;

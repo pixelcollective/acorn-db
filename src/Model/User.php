@@ -1,13 +1,13 @@
 <?php
 namespace TinyPixel\Model;
 
+use TinyPixel\AcornDB\Model\Model;
+use TinyPixel\AcornDB\Model\Post;
+use TinyPixel\AcornDB\Model\Comment;
 use TinyPixel\AcornDB\Concerns\AdvancedCustomFields;
 use TinyPixel\AcornDB\Concerns\Aliases;
 use TinyPixel\AcornDB\Concerns\MetaFields;
 use TinyPixel\AcornDB\Concerns\OrderScopes;
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\Comment;
 
 /**
  * WordPress User
