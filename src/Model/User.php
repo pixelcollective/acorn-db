@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\Post;
@@ -17,7 +17,7 @@ use TinyPixel\AcornDB\Concerns\OrderScopes;
  * @author Junior Grossi <juniorgro@gmail.com>
  * @author Kelly Mears  <developers@tinypixel.dev>
  */
-class User extends Model implements Authenticatable, CanResetPassword
+class User extends Model
 {
     const CREATED_AT = 'user_registered';
     const UPDATED_AT = null;

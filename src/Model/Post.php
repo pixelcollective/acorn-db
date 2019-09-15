@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\Model;
+namespace TinyPixel\AcornDB\Model;
 
 use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\User;

@@ -1,13 +1,11 @@
 <?php
-
-namespace Corcel\Concerns;
+namespace TinyPixel\AcornDB\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Trait OrderedTrait
  *
- * @package Corcel\Traits
  * @author Junior Grossi <juniorgro@gmail.com>
  */
 trait OrderScopes

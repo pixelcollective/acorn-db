@@ -15,7 +15,6 @@ use TinyPixel\AcornDB\Model\Meta\UserMeta;
 /**
  * Trait HasMetaFields
  *
- * @package TinyPixel\AcornDB\Traits
  * @author Junior Grossi <juniorgro@gmail.com>
  */
 trait MetaFields
