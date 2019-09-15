@@ -3,7 +3,7 @@
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
-  "version": "0.0.9",
+  "version": "0.0.91",
   "authors": [
     {
       "name": "Kelly Mears",
