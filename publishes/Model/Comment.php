@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Comment as WordPressComment;
+use TinyPixel\AcornDB\Model\Comment as BaseComment;
 
-class Comment extends WordPressComment
+class Comment extends BaseComment
 {
-    // ---
+    // --
 }

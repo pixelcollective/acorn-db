@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Menu as WordPressMenu;
+use TinyPixel\AcornDB\Model\Menu as BaseMenu;
 
-class Menu extends WordPressMenu
+class Menu extends BaseMenu
 {
-    // ---
+    // --
 }

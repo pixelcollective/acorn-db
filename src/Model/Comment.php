@@ -1,125 +1,47 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\User;
-use TinyPixel\AcornDB\Model\Comment\CommentMeta;
-use TinyPixel\AcornDB\Model\Concerns\MetaFields;
+use TinyPixel\AcornDB\Model\Builder\CommentBuilder;
+use TinyPixel\AcornDB\Concerns\CustomTimestamps;
+use TinyPixel\AcornDB\Concerns\MetaFields;
 
 /**
- * Comment Model
+ * WordPress Comment
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
- **/
-class Comment extends WordPress
+ * @author Junior Grossi <juniorgro@gmail.com>
+ */
+class Comment extends Model
 {
     use MetaFields;
+    use CustomTimestamps;
 
-    /** @var string */
     const CREATED_AT = 'comment_date';
-
-    /** @var null */
     const UPDATED_AT = null;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $table = 'comments';
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $primaryKey = 'comment_ID';
 
-    /** @var array */
-    protected $fillable = [];
-
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $dates = ['comment_date'];
 
     /**
-     * A comment belongs to a post.
+     * Find a comment by post ID.
      *
-     * @return BelongsTo
-     **/
-    public function post() : BelongsTo
-    {
-        return $this->belongsTo(Post::class, 'comment_post_ID');
-    }
-
-    /**
-     * Alias
-     *
-     * @return BelongsTo
-     **/
-    public function parent() : BelongsTo
-    {
-        return $this->original();
-    }
-
-    /**
-     * A comment can be parented by another comment.
-     *
-     * @return BelongsTo
-     **/
-    public function original() : BelongsTo
-    {
-        return $this->belongsTo(Comment::class, 'comment_parent');
-    }
-
-    /**
-     * A comment can have many replies.
-     *
-     * @return HasMany
-     **/
-    public function replies() : HasMany
-    {
-        return $this->hasMany(Comment::class, 'comment_parent');
-    }
-
-    /**
-     * Comment is approved.
-     *
-     * @return bool
-     **/
-    public function isApproved() : bool
-    {
-        return $this->attributes['comment_approved'] == 1;
-    }
-
-    /**
-     * Comment is a reply
-     *
-     * @return bool
-     **/
-    public function isReply() : bool
-    {
-        return $this->attributes['comment_parent'] > 0;
-    }
-
-    /**
-     * Comment has replies.
-     *
-     * @return bool
-     **/
-    public function hasReplies() : bool
-    {
-        return $this->replies->count() > 0;
-    }
-
-    /**
-     * Get a comment using the post's id.
-     *
-     * @param  int $postId
+     * @param int $postId
      * @return Comment
-     **/
-    public static function findByPostId(int $postId)
+     */
+    public static function findByPostId($postId)
     {
         return (new static())
             ->where('comment_post_ID', $postId)
@@ -127,9 +49,65 @@ class Comment extends WordPress
     }
 
     /**
-     * @param  Builder $query
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'comment_post_ID');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->original();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function original()
+    {
+        return $this->belongsTo(Comment::class, 'comment_parent');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'comment_parent');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isApproved()
+    {
+        return $this->attributes['comment_approved'] == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isReply()
+    {
+        return $this->attributes['comment_parent'] > 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasReplies()
+    {
+        return $this->replies->count() > 0;
+    }
+
+    /**
+     * @param \Illuminate\Database\Query\Builder $query
      * @return CommentBuilder
-     **/
+     */
     public function newEloquentBuilder($query)
     {
         return new CommentBuilder($query);
@@ -138,9 +116,9 @@ class Comment extends WordPress
     /**
      * @param mixed $value
      * @return void
-     **/
+     */
     public function setUpdatedAt($value)
     {
-        // --
+        //
     }
 }

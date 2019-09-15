@@ -1,78 +1,68 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model;
 
 use Illuminate\Support\Arr;
 use TinyPixel\AcornDB\Model\Post;
 use TinyPixel\AcornDB\Model\Page;
-use TinyPixel\AcornDB\Model\Link;
+use TinyPixel\AcornDB\Model\CustomLink;
 use TinyPixel\AcornDB\Model\Taxonomy;
 
 /**
- * Menu Item Model
+ * WordPress Menu Item
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
- **/
+ * @author Junior Grossi <juniorgro@gmail.com>
+ */
 class MenuItem extends Post
 {
-    /** @var string  **/
+    /**
+     * @var string
+     */
     protected $postType = 'nav_menu_item';
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $instanceRelations = [
-        'post'     => Post::class,
-        'page'     => Page::class,
-        'link'     => Link::class,
+        'post' => Post::class,
+        'page' => Page::class,
+        'custom' => CustomLink::class,
         'category' => Taxonomy::class,
     ];
 
     /**
-     * Get parent instance type.
-     *
-     * @return Post|Page|Link|Taxonomy
-     **/
+     * @return Post|Page|CustomLink|Taxonomy
+     */
     public function parent()
     {
         if ($className = $this->getClassName()) {
-            $class = new $className();
-
-            $class->newQuery()
-                  ->find($this->meta->_menu_item_menu_item_parent);
+            return (new $className())->newQuery()
+                ->find($this->meta->_menu_item_menu_item_parent);
         }
 
         return null;
     }
 
     /**
-     * Get instance type.
-     *
-     * @return Post|Page|Link|Taxonomy
-     **/
+     * @return Post|Page|CustomLink|Taxonomy
+     */
     public function instance()
     {
         if ($className = $this->getClassName()) {
-            $class = new $className();
-
-            $class->newQuery()
-                  ->find($this->meta->_menu_item_object_id);
+            return (new $className())->newQuery()
+                ->find($this->meta->_menu_item_object_id);
         }
 
         return null;
     }
 
     /**
-     * Get classname of related instance.
-     *
      * @return string
-     **/
+     */
     protected function getClassName()
     {
-        return Arr::get($this->instanceRelations, $this->meta->_menu_item_object);
+        return Arr::get(
+            $this->instanceRelations,
+            $this->meta->_menu_item_object
+        );
     }
 }

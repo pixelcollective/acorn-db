@@ -1,55 +1,54 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model\Meta;
 
-use TinyPixel\AcornDB\Model\WordPress;
-use TinyPixel\AcornDB\Collection\MetaCollection;
-use TinyPixel\AcornDB\Exceptions\EloquentException;
+use Exception;
+use TinyPixel\AcornDB\Model\Model;
+use TinyPixel\AcornDB\Model\Collection\MetaCollection;
 
 /**
- * Meta Model
+ * Meta
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author Junior Grossi <juniorgro@gmail.com>
  */
-abstract class Meta extends WordPress
+abstract class Meta extends Model
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $primaryKey = 'meta_id';
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
     /**
-     * Get value attribute.
-     *
+     * @var array
+     */
+    protected $appends = ['value'];
+
+    /**
      * @return mixed
-     * @throws EloquentException
-     **/
+     */
     public function getValueAttribute()
     {
         try {
             $value = unserialize($this->meta_value);
+
             return $value === false && $this->meta_value !== false ?
-                $this->meta_value : $value;
-        } catch (EloquentException $ex) {
+                $this->meta_value :
+                $value;
+        } catch (Exception $ex) {
             return $this->meta_value;
         }
     }
 
     /**
-     * Create new collection instance.
-     *
-     * @param  array $Model
+     * @param array $models
      * @return MetaCollection
-     **/
-    public function newCollection(array $model = [])
+     */
+    public function newCollection(array $models = [])
     {
-        return new MetaCollection($model);
+        return new MetaCollection($models);
     }
 }

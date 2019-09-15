@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Post as WordPressPost;
+use TinyPixel\AcornDB\Model\Post as BasePost;
 
-class Post extends WordPressPost
+class Post extends BasePost
 {
-    // ---
+    // --
 }

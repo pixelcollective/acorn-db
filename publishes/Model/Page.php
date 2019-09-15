@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Page as WordPressPage;
+use TinyPixel\AcornDB\Model\Page as BasePage;
 
-class Page extends WordPressPage
+class Page extends BasePage
 {
-    // ---
+    // --
 }

@@ -50,6 +50,21 @@ return [
             'strict'         => true,
             'engine'         => null,
         ],
+
+        'base' => [
+            'driver'         => 'mysql',
+            'host'           => env('DB_HOST', defined('DB_HOST') ? DB_HOST : 'localhost'),
+            'port'           => env('DB_PORT', defined('DB_PORT') ? DB_PORT : '3306'),
+            'database'       => env('DB_NAME', defined('DB_NAME') ? DB_NAME : 'wordpress'),
+            'username'       => env('DB_USER', defined('DB_USER') ? DB_USER : 'wordpress'),
+            'password'       => env('DB_PASSWORD', defined('DB_PASSWORD') ? DB_PASSWORD : ''),
+            'unix_socket'    => env('DB_SOCKET', ''),
+            'charset'        => env('DB_CHARSET', defined('DB_CHARSET') ? DB_CHARSET : 'utf8mb4'),
+            'prefix'         => $wpdb->base_prefix,
+            'prefix_indexes' => true,
+            'strict'         => true,
+            'engine'         => null,
+        ],
     ],
 
     /*
@@ -64,5 +79,22 @@ return [
     */
 
     'migrations' => 'migrations',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Registered Custom Post Types
+    |--------------------------------------------------------------------------
+    |
+    | WordPress allows you to create your own custom post types. Corcel
+    | makes querying posts using a custom post type easier, but here you can
+    | set a list of your custom post types, and Corcel will automatically
+    | register all of them, making returning those custom classes, instead
+    | of just Post objects.
+    |
+    */
+
+    'post_types' => [
+        // 'video' => App\Models\Video::class,
+    ],
 
 ];

@@ -42,7 +42,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
      */
     public function boot()
     {
-
+        // --
     }
 
     /**

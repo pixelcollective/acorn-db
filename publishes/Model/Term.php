@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Term as WordPressTerm;
+use TinyPixel\AcornDB\Model\Term as BaseTerm;
 
-class Term extends WordPressTerm
+class Term extends BaseTerm
 {
-    // ---
+    // --
 }

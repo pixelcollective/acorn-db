@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Option as WordPressOption;
+use TinyPixel\AcornDB\Model\Option as BaseOption;
 
-class Option extends WordPressOption
+class Option extends BaseOption
 {
-    // ---
+    // --
 }

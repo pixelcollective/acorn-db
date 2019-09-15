@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\User as WordPressUser;
+use TinyPixel\AcornDB\Model\User as BaseUser;
 
-class User extends WordPressUser
+class User extends BaseUser
 {
-    // ...
+    // --
 }

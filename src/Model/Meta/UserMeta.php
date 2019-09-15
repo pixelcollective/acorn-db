@@ -2,60 +2,35 @@
 
 namespace TinyPixel\AcornDB\Model\Meta;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use TinyPixel\AcornDB\Model\User;
-use TinyPixel\AcornDB\Model\Meta\Meta;
 
 /**
- * User Meta Model
+ * Meta: User
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author Mickael Burguet <www.rundef.com>
+ * @author Junior Grossi <juniorgro@gmail.com>
  */
 class UserMeta extends Meta
 {
     /**
-     * Specify table name.
-     *
      * @var string
      */
     protected $table = 'usermeta';
 
     /**
-     * Specify a table primary key.
-     *
      * @var string
      */
     protected $primaryKey = 'umeta_id';
 
     /**
-     * Specify timestamps.
-     *
-     * @var bool
+     * @var array
      */
-    public $timestamps = false;
+    protected $fillable = ['meta_key', 'meta_value', 'user_id'];
 
     /**
-     * Specify a table primary key.
-     *
-     * @var string
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $fillable = [
-        'meta_key',
-        'meta_value',
-    ];
-
-    /**
-     * User meta belongs to a single user.
-     *
-     * @return BelongsTo
-     **/
-    public function user() : BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

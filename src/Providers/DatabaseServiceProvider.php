@@ -100,7 +100,7 @@ class DatabaseServiceProvider extends ServiceProvider
     protected function registerQueueableEntityResolver()
     {
         $this->app->singleton(EntityResolver::class, function () {
-            return new QueueEntityResolver;
+            return new QueueEntityResolver();
         });
     }
 

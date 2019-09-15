@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Model;
 
-use TinyPixel\AcornDB\Model\Taxonomy as WordPressTaxonomy;
+use TinyPixel\AcornDB\Model\Taxonomy as BaseTaxonomy;
 
-class Taxonomy extends WordPressTaxonomy
+class Taxonomy extends Model
 {
-    // ---
+    // --
 }
