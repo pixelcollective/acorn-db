@@ -32,7 +32,6 @@
   "extra": {
     "acorn": {
       "providers": [
-        "Sofa\\Eloquence\\BaseServiceProvider",
         "TinyPixel\\AcornDB\\Providers\\PaginationServiceProvider",
         "TinyPixel\\AcornDB\\Providers\\DatabaseServiceProvider",
         "TinyPixel\\AcornDB\\Providers\\MigrationServiceProvider",

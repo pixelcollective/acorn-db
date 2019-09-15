@@ -9,12 +9,6 @@ use Log;
  * Eloquent Exception
  *
  * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
- *
- * @package    AcornDB
- * @subpackage Exceptions
  **/
 class EloquentException extends Exception
 {
