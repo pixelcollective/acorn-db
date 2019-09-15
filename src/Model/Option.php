@@ -1,56 +1,33 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model;
 
-use \Exception;
-use TinyPixel\AcornDB\Utility;
-use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Model;
+use Exception;
 
 /**
- * Option Model
+ * WordPress Option
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author José CI <josec89@gmail.com>
+ * @author Junior Grossi <juniorgro@gmail.com>
  */
-class Option extends WordPress
+class Option extends Model
 {
     /**
-     * Specify table name.
-     *
      * @var string
      */
     protected $table = 'options';
 
     /**
-     * Specify table primary key.
-     *
      * @var string
      */
     protected $primaryKey = 'option_id';
 
     /**
-     * Disable default Eloquent timestamps.
-     *
-     * @var string
+     * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Specify virtual model attributes
-     * accessed with an accessor.
-     *
-     * @var array
-     */
-    protected $appends = ['value'];
-
-    /**
-     * Specify column names which can be mass assigned.
-     *
      * @var array
      */
     protected $fillable = [
@@ -60,24 +37,29 @@ class Option extends WordPress
     ];
 
     /**
-     * Alias column names.
-     *
-     * @see Sofa\Eloquence\Eloquence
-     * @see Sofa\Eloquence\Mappable
-     *
      * @var array
      */
-    protected $maps = [
-        'id'    => 'option_id',
-        'name'  => 'option_name',
-        'value' => 'option_value',
-    ];
+    protected $appends = ['value'];
 
     /**
-     * Add option to serialized option.
-     *
-     * @param  string $key
-     * @param  mixed  $value
+     * @return mixed
+     */
+    public function getValueAttribute()
+    {
+        try {
+            $value = unserialize($this->option_value);
+
+            return $value === false && $this->option_value !== false ?
+                $this->option_value :
+                $value;
+        } catch (Exception $ex) {
+            return $this->option_value;
+        }
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
      * @return Option
      */
     public static function add($key, $value)
@@ -89,9 +71,7 @@ class Option extends WordPress
     }
 
     /**
-     * Get option by name.
-     *
-     * @param  string $name
+     * @param string $name
      * @return mixed
      */
     public static function get($name)
@@ -104,74 +84,35 @@ class Option extends WordPress
     }
 
     /**
-     * Accessor for all autoloaded options.
-     *
-     * @return Option
-     */
-    public static function getAutoloaded()
-    {
-        return self::where('autoload', 'yes')
-                   ->get()
-                   ->pluck('value', 'option_name');
-    }
-
-    /**
-     * Accessor for arrayed options.
-     *
-     * @param  string $name
      * @return array
+     * @deprecated
      */
-    public static function getAll() : array
+    public static function getAll()
     {
         return static::asArray();
     }
 
     /**
-     * Accessor for `value` attribute
-     *
-     * @param  string $key
-     * @return mixed
-     */
-    public static function getValue(string $key = '')
-    {
-        $value = '';
-
-        if ($key) {
-            $value = self::where('name', '=', $key)->value('value');
-        }
-
-        if (Utility::isSerialized($value)) {
-            $value = unserialize($value);
-        }
-
-        return $value;
-    }
-
-    /**
-     * Return options names and values as an array.
-     *
-     * @param  array $keys
+     * @param array $keys
      * @return array
      */
-    public static function asArray($keys = []) : array
+    public static function asArray($keys = [])
     {
         $query = static::query();
 
         if (!empty($keys)) {
-            $query->whereIn('name', $keys);
+            $query->whereIn('option_name', $keys);
         }
 
         return $query->get()
-                     ->pluck('value', 'name')
-                     ->toArray();
+            ->pluck('value', 'option_name')
+            ->toArray();
     }
 
     /**
-     * Cast results to array.
-     *
      * @return array
      */
-    public function toArray() : array
+    public function toArray()
     {
         if ($this instanceof Option) {
             return [$this->option_name => $this->value];

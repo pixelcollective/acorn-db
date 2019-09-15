@@ -1,27 +1,19 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model\Builder;
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Comment Builder
+ * Class CommentBuilder
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Builder\Taxonomy
- ***/
+ * @author Junior Grossi <juniorgro@gmail.com>
+ */
 class CommentBuilder extends Builder
 {
     /**
-     * Comment has been approved.
-     *
      * @return CommentBuilder
-     **/
-    public function approved() : CommentBuilder
+     */
+    public function approved()
     {
         return $this->where('comment_approved', 1);
     }

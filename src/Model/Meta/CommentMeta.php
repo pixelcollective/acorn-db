@@ -1,53 +1,29 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model\Meta;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use TinyPixel\AcornDB\Model\Comment;
-use TinyPixel\AcornDB\Model\Meta\Meta;
 
 /**
- * Comment Meta Model
+ * Meta: Comment
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @since      1.0.0
- * @uses       Sofa\Eloquence\Eloquence
- *
- * @package    AcornDB
- * @subpackage Meta\Comment
- **/
+ * @author Junior Grossi <juniorgro@gmail.com>
+ */
 class CommentMeta extends Meta
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $table = 'commentmeta';
-
-    /** @var bool */
-    public $timestamps = false;
-
-    /** @var array */
-    protected $fillable = ['meta_key', 'meta_value'];
-
-    /** @var string */
-    protected $primaryKey = 'meta_id';
 
     /**
      * @var array
-     * @see Sofa\Eloquence\Eloquence
-     * @see Sofa\Eloquence\Mappable
-     **/
-    protected $maps = [
-        'id'    => 'comment_id',
-        'key'   => 'meta_key',
-        'value' => 'meta_value',
-    ];
+     */
+    protected $fillable = ['meta_key', 'meta_value', 'comment_id'];
 
     /**
-     * Comment meta belongs to a comment.
-     *
-     * @return BelongsTo
-     **/
-    public function comment() : BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function comment()
     {
         return $this->belongsTo(Comment::class);
     }

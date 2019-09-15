@@ -1,45 +1,32 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use TinyPixel\AcornDB\Model\MenuItem;
-use TinyPixel\AcornDB\Model\WordPress;
 use TinyPixel\AcornDB\Model\Taxonomy;
 
 /**
- * Menu Model
+ * Class Menu
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
- **/
+ * @package Corcel\Model
+ * @author Yoram de Langen <yoramdelangen@gmail.com>
+ * @author Junior Grossi <juniorgro@gmail.com>
+ */
 class Menu extends Taxonomy
 {
     /**
-     * Specify relationships to be eager-loaded.
-     *
      * @var string
      */
     protected $taxonomy = 'nav_menu';
 
     /**
-     * Specify relationships to be eager-loaded.
-     *
-     * @var string
+     * @var array
      */
     protected $with = ['term', 'items'];
 
     /**
-     * A menu can be parented by many menu items.
-     *
-     * @return BelongsToMany
-     **/
-    public function items() : BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function items()
     {
         return $this->belongsToMany(
             MenuItem::class,

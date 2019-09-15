@@ -1,61 +1,41 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model;
 
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\Term;
-use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Model\Taxonomy;
 use TinyPixel\AcornDB\Model\Meta\TermMeta;
 use TinyPixel\AcornDB\Model\Builder\TaxonomyBuilder;
 
 /**
- * Taxonomy Model
+ * WordPress Taxonomy
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author Junior Grossi <juniorgro@gmail.com>
  */
-class Taxonomy extends WordPress
+class Taxonomy extends Model
 {
     /**
-     * Specify table name.
-     *
      * @var string
      */
     protected $table = 'term_taxonomy';
 
     /**
-     * Specify primary key.
-     *
      * @var string
      */
     protected $primaryKey = 'term_taxonomy_id';
 
     /**
-     * Specify relationships to be eager-loaded.
-     *
-     * @var string
+     * @var array
      */
     protected $with = ['term'];
 
     /**
-     * Disable Laravel default timestamp behavior.
-     *
-     * @var string
+     * @var bool
      */
     public $timestamps = false;
 
     /**
-     * A taxonomy is related to many term meta fields.
-     *
-     * @return HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function meta()
     {
@@ -63,9 +43,7 @@ class Taxonomy extends WordPress
     }
 
     /**
-     * A taxonomy belongs to a term.
-     *
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function term()
     {
@@ -73,9 +51,7 @@ class Taxonomy extends WordPress
     }
 
     /**
-     * A taxonomy can be parented by many taxonomies.
-     *
-     * @return BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
     {
@@ -83,9 +59,7 @@ class Taxonomy extends WordPress
     }
 
     /**
-     * A taxonomy belongs to many posts.
-     *
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function posts()
     {
@@ -98,22 +72,18 @@ class Taxonomy extends WordPress
     }
 
     /**
-     * Create a new Builder instance.
-     *
-     * @param  Builder $query
+     * @param \Illuminate\Database\Query\Builder $query
      * @return TaxonomyBuilder
      */
-    public function newEloquentBuilder($query) : TaxonomyBuilder
+    public function newEloquentBuilder($query)
     {
         return new TaxonomyBuilder($query);
     }
 
     /**
-     * Refresh builder.
-     *
      * @return TaxonomyBuilder
      */
-    public function newQuery() : TaxonomyBuilder
+    public function newQuery()
     {
         return isset($this->taxonomy) && $this->taxonomy ?
             parent::newQuery()->where('taxonomy', $this->taxonomy) :
@@ -121,12 +91,12 @@ class Taxonomy extends WordPress
     }
 
     /**
-     * Return post meta data more naturally.
+     * Magic method to return the meta data like the post original fields.
      *
-     * @param  string $key
+     * @param string $key
      * @return string
      */
-    public function __get($key) : string
+    public function __get($key)
     {
         if (!isset($this->$key)) {
             if (isset($this->term->$key)) {

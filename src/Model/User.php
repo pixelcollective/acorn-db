@@ -1,105 +1,120 @@
 <?php
+namespace TinyPixel\Model;
 
-namespace TinyPixel\AcornDB\Model;
-
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\AcornDB\Model\WordPress;
+use TinyPixel\AcornDB\Concerns\AdvancedCustomFields;
+use TinyPixel\AcornDB\Concerns\Aliases;
+use TinyPixel\AcornDB\Concerns\MetaFields;
+use TinyPixel\AcornDB\Concerns\OrderScopes;
+use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\Post;
 use TinyPixel\AcornDB\Model\Comment;
-use TinyPixel\AcornDB\Model\Meta\UserMeta;
-use TinyPixel\AcornDB\Model\Concerns\MetaFields;
-use TinyPixel\AcornDB\Model\Concerns\Roles;
 
 /**
- * User Model
+ * WordPress User
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author Ashwin Sureshkumar <ashwin.sureshkumar@gmail.com>
+ * @author Mickael Burguet <www.rundef.com>
+ * @author Junior Grossi <juniorgro@gmail.com>
+ * @author Kelly Mears  <developers@tinypixel.dev>
  */
-class User extends WordPress
+class User extends Model implements Authenticatable, CanResetPassword
 {
-    use MetaFields, Roles;
+    const CREATED_AT = 'user_registered';
+    const UPDATED_AT = null;
+
+    use AdvancedCustomFields;
+    use Aliases;
+    use MetaFields;
+    use OrderScopes;
 
     /**
-     * Specify table name.
+     * Database Connection
      *
+     * User in a multisite context needs to use the base prefix,
+     * rather than the subsite prefix.
+     *
+     * @author Kelly Mears <developers@tinypixel.dev>
+     */
+    protected $connection = 'base';
+
+    /**
      * @var string
      */
     protected $table = 'users';
 
     /**
-     * Specify table primary key.
-     *
      * @var string
      */
     protected $primaryKey = 'ID';
 
     /**
-     * Disable default Eloquent timestamps.
-     *
-     * @var string
-     */
-    public $timestamps = false;
-
-    /**
-     * Map `CREATED_AT` column to WordPress standard.
-     */
-    const CREATED_AT = 'user_registered';
-
-    /**
-     * Specify table column aliases.
-     *
-     * @see Sofa\Eloquence\Eloquence
-     * @see Sofa\Eloquence\Mappable
-     *
      * @var array
      */
-    protected $maps = [
-        'login'       => 'user_login',
-        'email'       => 'user_email',
-        'slug'        => 'user_nicename',
-        'url'         => 'user_url',
-        'nickname'    => ['meta' => 'nickname'],
-        'first_name'  => ['meta' => 'first_name'],
-        'last_name'   => ['meta' => 'last_name'],
+    protected $hidden = ['user_pass'];
+
+    /**
+     * @var array
+     */
+    protected $dates = ['user_registered'];
+
+    /**
+     * @var array
+     */
+    protected $with = ['meta'];
+
+    /**
+     * @var array
+     */
+    protected static $aliases = [
+        'login' => 'user_login',
+        'email' => 'user_email',
+        'slug' => 'user_nicename',
+        'url' => 'user_url',
+        'nickname' => ['meta' => 'nickname'],
+        'first_name' => ['meta' => 'first_name'],
+        'last_name' => ['meta' => 'last_name'],
         'description' => ['meta' => 'description'],
-        'created_at'  => 'user_registered',
+        'created_at' => 'user_registered',
     ];
 
     /**
-     * A user can have many posts.
+     * The accessors to append to the model's array form.
      *
-     * @return HasMany
+     * @var array
      */
-    public function posts() : HasMany
+    protected $appends = [
+        'login',
+        'email',
+        'slug',
+        'url',
+        'nickname',
+        'first_name',
+        'last_name',
+        'avatar',
+        'created_at',
+    ];
+
+    /**
+     * @param mixed $value
+     */
+    public function setUpdatedAtAttribute($value)
+    {
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
     {
         return $this->hasMany(Post::class, 'post_author');
     }
 
     /**
-     * A user can have many comments.
-     *
-     * @return HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments() : HasMany
+    public function comments()
     {
         return $this->hasMany(Comment::class, 'user_id');
-    }
-
-    /**
-     * A user can have many usermeta attributes.
-     *
-     * @return object
-     */
-    public function meta()
-    {
-        return $this->hasMany(UserMeta::class, 'user_id')
-                    ->select(['user_id', 'meta_key', 'meta_value']);
     }
 
     /**
@@ -107,7 +122,7 @@ class User extends WordPress
      *
      * @return string
      */
-    public function getAuthIdentifierName() : string
+    public function getAuthIdentifierName()
     {
         return $this->primaryKey;
     }
@@ -127,7 +142,7 @@ class User extends WordPress
      *
      * @return string
      */
-    public function getAuthPassword() : string
+    public function getAuthPassword()
     {
         return $this->user_pass;
     }
@@ -137,7 +152,7 @@ class User extends WordPress
      *
      * @return string
      */
-    public function getRememberToken() : string
+    public function getRememberToken()
     {
         $tokenName = $this->getRememberTokenName();
 
@@ -147,10 +162,9 @@ class User extends WordPress
     /**
      * Set the token value for the "remember me" session.
      *
-     * @param  string $value
-     * @return void
+     * @param string $value
      */
-    public function setRememberToken(string $value) : void
+    public function setRememberToken($value)
     {
         $tokenName = $this->getRememberTokenName();
 
@@ -162,7 +176,7 @@ class User extends WordPress
      *
      * @return string
      */
-    public function getRememberTokenName() : string
+    public function getRememberTokenName()
     {
         return 'remember_token';
     }
@@ -172,19 +186,16 @@ class User extends WordPress
      *
      * @return string
      */
-    public function getEmailForPasswordReset() : string
+    public function getEmailForPasswordReset()
     {
         return $this->user_email;
     }
 
     /**
-     * Send password reset notification based on token value
-     *
      * @param string $token
      */
-    public function sendPasswordResetNotification($token) : string
+    public function sendPasswordResetNotification($token)
     {
-        // ---
     }
 
     /**
@@ -192,7 +203,7 @@ class User extends WordPress
      *
      * @return string
      */
-    public function getAvatarAttribute() : string
+    public function getAvatarAttribute()
     {
         $hash = !empty($this->email) ? md5(strtolower(trim($this->email))) : '';
 
@@ -206,15 +217,5 @@ class User extends WordPress
     public function setUpdatedAt($value)
     {
         //
-    }
-
-    /**
-     * Override updated at attribute setter
-     *
-     * @param mixed $value
-     */
-    public function setUpdatedAtAttribute($value)
-    {
-        // ---
     }
 }

@@ -3,6 +3,7 @@
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
+  "version": "0.0.9",
   "authors": [
     {
       "name": "Kelly Mears",
@@ -18,12 +19,6 @@
   "support": {
     "issues": "https://github.com/pixelcollective/acorn-db/issues"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:pixelcollective/support.git"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "TinyPixel\\AcornDB\\": "src/"
@@ -31,9 +26,7 @@
   },
   "require": {
     "php": ">=7.3",
-    "sofa/eloquence": "^5.6",
     "fzaninotto/faker": "^1.8",
-    "tiny-pixel/support": "dev-master",
     "illuminate/pagination": "^5.8"
   },
   "extra": {

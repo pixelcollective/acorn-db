@@ -1,46 +1,28 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model\Meta;
 
 use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use TinyPixel\AcornDB\Model\Attachment;
-use TinyPixel\AcornDB\Model\Meta\PostMeta;
-use TinyPixel\AcornDB\Exceptions\EloquentException;
 
 /**
- * Thumbnail Meta Model
+ * Meta: Thumbnail
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author Junior Grossi <juniorgro@gmail.com>
  */
 class ThumbnailMeta extends PostMeta
 {
-    /**
-     * Thumbnail sizes.
-     *
-     * @var string
-     */
     const SIZE_THUMBNAIL = 'thumbnail';
-
-    /** @var string */
-    const SIZE_MEDIUM    = 'medium';
-
-    /** @var string */
-    const SIZE_LARGE     = 'large';
-
-    /** @var string */
-    const SIZE_FULL      = 'full';
+    const SIZE_MEDIUM = 'medium';
+    const SIZE_LARGE = 'large';
+    const SIZE_FULL = 'full';
 
     /**
-     * A thumbnail belongs to an attachmnent.
-     *
-     * @return BelongsTo
+     * @var array
+     */
+    protected $with = ['attachment'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function attachment()
     {
@@ -48,10 +30,9 @@ class ThumbnailMeta extends PostMeta
     }
 
     /**
-     * Get thumbnail at a particular size.
-     *
      * @param string $size
      * @return array
+     * @throws \Exception
      */
     public function size($size)
     {
@@ -60,7 +41,6 @@ class ThumbnailMeta extends PostMeta
         }
 
         $meta = unserialize($this->attachment->meta->_wp_attachment_metadata);
-
         $sizes = Arr::get($meta, 'sizes');
 
         if (!isset($sizes[$size])) {
@@ -75,8 +55,6 @@ class ThumbnailMeta extends PostMeta
     }
 
     /**
-     * Magically return value as string
-     *
      * @return string
      */
     public function __toString()

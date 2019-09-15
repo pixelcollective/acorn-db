@@ -1,64 +1,41 @@
 <?php
-
 namespace TinyPixel\AcornDB\Model;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use TinyPixel\AcornDB\Model\WordPress;
-use TinyPixel\AcornDB\Model\TermMeta;
-use TinyPixel\AcornDB\Model\Concerns\Fields;
-use TinyPixel\AcornDB\Model\Concerns\MetaFields;
+use TinyPixel\AcornDB\Model\Model;
+use TinyPixel\AcornDB\Model\Taxonomy;
+use TinyPixel\AcornDB\Concerns\AdvancedCustomFields;
+use TinyPixel\AcornDB\Concerns\MetaFields;
 
 /**
- * Term Model
+ * WordPress Term
  *
- * @author     Kelly Mears <kelly@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- *
- * @package    AcornDB
- * @subpackage Model
+ * @author Junior Grossi <juniorgro@gmail.com>
  */
-class Term extends WordPress
+class Term extends Model
 {
-    use Fields, MetaFields;
+    use MetaFields;
+    use AdvancedCustomFields;
 
     /**
-     * Table name.
-     *
      * @var string
      */
     protected $table = 'terms';
 
     /**
-     * Primary key.
-     *
      * @var string
      */
     protected $primaryKey = 'term_id';
 
     /**
-     * Alias column names.
-     *
-     * @see Sofa\Eloquence\Eloquence
-     * @see Sofa\Eloquence\Mappable
-     *
-     * @var array
+     * @var bool
      */
-    protected $maps = [
-        'id'    => 'term_id',
-        'key'   => 'meta_key',
-        'value' => 'meta_value',
-    ];
+    public $timestamps = false;
 
     /**
-     * A term has many meta relations.
-     *
-     * @return HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function meta() : HasMany
+    public function taxonomy()
     {
-        return $this->hasMany(TermMeta::class, 'term_id')
-                    ->select(['term_id', 'meta_key', 'meta_value']);
+        return $this->hasOne(Taxonomy::class, 'term_id');
     }
 }
