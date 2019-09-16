@@ -1,6 +1,5 @@
 {
-  "name": "tiny-pixel/acorn-models",
-  "version": "0.0.2",
+  "name": "tiny-pixel/acorn-db",
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
@@ -17,22 +16,36 @@
     "eloquent"
   ],
   "support": {
-    "issues": "https://github.com/pixelcollective/acorn-models/issues"
+    "issues": "https://github.com/pixelcollective/acorn-db/issues"
   },
   "autoload": {
     "psr-4": {
-      "TinyPixel\\Models\\": "src/"
-    },
-    "scripts": [
-      "src/helpers.php"
-    ]
+      "TinyPixel\\AcornDB\\": "src/"
+    }
   },
   "require": {
-    "php": ">=7.3"
+    "php": ">=7.3",
+    "fzaninotto/faker": "^1.8",
+    "illuminate/pagination": "^5.8"
   },
   "extra": {
     "acorn": {
-      "providers": ["TinyPixel\\Models\\Providers\\DatabaseServiceProvider"]
+      "providers": [
+        "TinyPixel\\AcornDB\\Providers\\PaginationServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\DatabaseServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\MigrationServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider"
+      ]
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^0.11.12",
+    "squizlabs/php_codesniffer": "^3.4.2",
+    "roave/security-advisories": "dev-master"
+  },
+  "scripts": {
+    "lint": [
+      "phpcs --ignore=vendor,publishes --extensions=php --standard=PSR12 ."
+    ]
   }
 }
