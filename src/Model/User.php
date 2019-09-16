@@ -19,25 +19,24 @@ use TinyPixel\AcornDB\Concerns\OrderScopes;
  */
 class User extends Model
 {
-    const CREATED_AT = 'user_registered';
-    const UPDATED_AT = null;
-
     use AdvancedCustomFields;
     use Aliases;
     use MetaFields;
     use OrderScopes;
 
-    /**
-     * Database Connection
-     *
-     * User in a multisite context needs to use the base prefix,
-     * rather than the subsite prefix.
-     *
-     * @author Kelly Mears <developers@tinypixel.dev>
-     */
-    protected $connection = 'base';
+    const CREATED_AT = 'user_registered';
+    const UPDATED_AT = null;
 
     /**
+     * Override default prefix.
+     *
+     * @var bool
+     */
+    protected $baseTable = true;
+
+    /**
+     * Table name
+     *
      * @var string
      */
     protected $table = 'users';
@@ -94,6 +93,13 @@ class User extends Model
         'created_at',
     ];
 
+    protected function setPrefix()
+    {
+        global $wpdb;
+
+        $this->prefix = $wpdb->base_prefix;
+    }
+
     /**
      * @param mixed $value
      */
@@ -115,87 +121,6 @@ class User extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'user_id');
-    }
-
-    /**
-     * Get the name of the unique identifier for the user.
-     *
-     * @return string
-     */
-    public function getAuthIdentifierName()
-    {
-        return $this->primaryKey;
-    }
-
-    /**
-     * Get the unique identifier for the user.
-     *
-     * @return mixed
-     */
-    public function getAuthIdentifier()
-    {
-        return $this->attributes[$this->primaryKey];
-    }
-
-    /**
-     * Get the password for the user.
-     *
-     * @return string
-     */
-    public function getAuthPassword()
-    {
-        return $this->user_pass;
-    }
-
-    /**
-     * Get the token value for the "remember me" session.
-     *
-     * @return string
-     */
-    public function getRememberToken()
-    {
-        $tokenName = $this->getRememberTokenName();
-
-        return $this->meta->{$tokenName};
-    }
-
-    /**
-     * Set the token value for the "remember me" session.
-     *
-     * @param string $value
-     */
-    public function setRememberToken($value)
-    {
-        $tokenName = $this->getRememberTokenName();
-
-        $this->saveMeta($tokenName, $value);
-    }
-
-    /**
-     * Get the column name for the "remember me" token.
-     *
-     * @return string
-     */
-    public function getRememberTokenName()
-    {
-        return 'remember_token';
-    }
-
-    /**
-     * Get the e-mail address where password reset links are sent.
-     *
-     * @return string
-     */
-    public function getEmailForPasswordReset()
-    {
-        return $this->user_email;
-    }
-
-    /**
-     * @param string $token
-     */
-    public function sendPasswordResetNotification($token)
-    {
     }
 
     /**

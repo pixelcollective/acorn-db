@@ -29,6 +29,7 @@ class PostBuilder extends Builder
             $query->status('publish');
             $query->orWhere(function ($query) {
                 $query->status('future');
+
                 $query->where('post_date', '<=', Carbon::now()->format('Y-m-d H:i:s'));
             });
         });

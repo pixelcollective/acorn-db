@@ -3,7 +3,6 @@ namespace TinyPixel\AcornDB\Model;
 
 use TinyPixel\AcornDB\Model\Model;
 use TinyPixel\AcornDB\Model\Term;
-use TinyPixel\AcornDB\Model\Taxonomy;
 use TinyPixel\AcornDB\Model\Meta\TermMeta;
 use TinyPixel\AcornDB\Model\Builder\TaxonomyBuilder;
 
@@ -18,17 +17,14 @@ class Taxonomy extends Model
      * @var string
      */
     protected $table = 'term_taxonomy';
-
     /**
      * @var string
      */
     protected $primaryKey = 'term_taxonomy_id';
-
     /**
      * @var array
      */
     protected $with = ['term'];
-
     /**
      * @var bool
      */

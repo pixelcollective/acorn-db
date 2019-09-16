@@ -18,7 +18,7 @@ trait Aliases
         if (isset(parent::$aliases) && count(parent::$aliases)) {
             return array_merge(parent::$aliases, static::$aliases);
         }
-
+    
         return static::$aliases;
     }
 
@@ -38,19 +38,15 @@ trait Aliases
     public function getAttribute($key)
     {
         $value = parent::getAttribute($key);
-
         if ($value === null && count(static::getAliases())) {
             if ($value = Arr::get(static::getAliases(), $key)) {
                 if (is_array($value)) {
                     $meta = Arr::get($value, 'meta');
-
                     return $meta ? $this->meta->$meta : null;
                 }
-
                 return parent::getAttribute($value);
             }
         }
-
         return $value;
     }
 
@@ -66,7 +62,6 @@ trait Aliases
         if ($this->hasGetMutator($key)) {
             return parent::mutateAttribute($key, $value);
         }
-
         return $this->getAttribute($key);
     }
 }

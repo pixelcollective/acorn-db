@@ -112,7 +112,6 @@ class DatabaseServiceProvider extends ServiceProvider
     public function boot() : void
     {
         Model::setConnectionResolver($this->app['db']);
-
         Model::setEventDispatcher($this->app['events']);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace TinyPixel\AcornDB\Concerns;
 
 use TinyPixel\AcornDB\ACF\AdvancedCustomFields as BaseAdvancedCustomFields;

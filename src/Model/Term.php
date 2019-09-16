@@ -13,8 +13,8 @@ use TinyPixel\AcornDB\Concerns\MetaFields;
  */
 class Term extends Model
 {
-    use MetaFields;
     use AdvancedCustomFields;
+    use MetaFields;
 
     /**
      * @var string

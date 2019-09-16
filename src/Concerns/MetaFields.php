@@ -1,7 +1,6 @@
 <?php
 namespace TinyPixel\AcornDB\Concerns;
 
-use Illuminate\Database\Eloquent\Builder;
 use UnexpectedValueException;
 use TinyPixel\AcornDB\Model\Comment;
 use TinyPixel\AcornDB\Model\Post;
@@ -11,6 +10,7 @@ use TinyPixel\AcornDB\Model\Meta\CommentMeta;
 use TinyPixel\AcornDB\Model\Meta\PostMeta;
 use TinyPixel\AcornDB\Model\Meta\TermMeta;
 use TinyPixel\AcornDB\Model\Meta\UserMeta;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Trait HasMetaFields

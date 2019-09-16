@@ -8,10 +8,18 @@ use TinyPixel\AcornDB\Model\User;
  * Meta: User
  *
  * @author Mickael Burguet <www.rundef.com>
- * @author Junior Grossi <juniorgro@gmail.com>
+ * @author Junior Grossi   <juniorgro@gmail.com>
+ * @author Kelly Mears     <kelly@tinypixel.dev>
  */
 class UserMeta extends Meta
 {
+    /**
+     * Override default prefix.
+     *
+     * @var bool
+     */
+    protected $baseTable = true;
+
     /**
      * @var string
      */

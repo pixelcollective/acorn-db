@@ -1,13 +1,13 @@
 <?php
 namespace TinyPixel\AcornDB\Model;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 /**
  * WordPress Base Model
@@ -21,6 +21,21 @@ class Model extends Eloquent
      * @var string
      */
     protected $postType;
+
+    protected $baseTable;
+
+    public function __construct(array $attributes = [])
+    {
+        global $wpdb;
+
+        if ($this->baseTable==true) {
+            $this->table = $wpdb->base_prefix . $this->table;
+        } else {
+            $this->table = $wpdb->prefix . $this->table;
+        }
+
+        parent::__construct($attributes);
+    }
 
     /**
      * Replace the original hasMany function to forward the connection name.
