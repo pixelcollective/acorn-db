@@ -11,13 +11,15 @@ use TinyPixel\AcornDB\Model\User;
 use TinyPixel\AcornDB\Model\Comment;
 use TinyPixel\AcornDB\Model\Builder\PostBuilder;
 use TinyPixel\AcornDB\Model\Meta\ThumbnailMeta;
+use TinyPixel\AcornDB\Model\PostInterface;
+
 /**
  * WordPress Post
  *
  * @author Junior Grossi <juniorgro@gmail.com>
  * @author Mickael Burguet <www.rundef.com>
  */
-class Post extends Model
+class Post extends Model implements PostInterface
 {
     use Aliases;
     use AdvancedCustomFields;

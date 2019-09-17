@@ -1,14 +1,12 @@
 <?php
-
 namespace TinyPixel\AcornDB\ACF\Field;
 
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model;
-use TinyPixel\AcornDB\Model\Meta\PostMeta;
-use TinyPixel\AcornDB\Model\Term;
-use TinyPixel\AcornDB\Model\Meta\TermMeta;
 use TinyPixel\AcornDB\Model\User;
+use TinyPixel\AcornDB\Model\Term;
+use TinyPixel\AcornDB\Model\Meta\PostMeta;
 use TinyPixel\AcornDB\Model\Meta\UserMeta;
+use TinyPixel\AcornDB\Model\Meta\TermMeta;
+use TinyPixel\AcornDB\Model\PostInterface as Post;
 
 /**
  * Class BasicField.
@@ -57,7 +55,7 @@ abstract class BasicField
      *
      * @param Post $post
      */
-    public function __construct(Model $post)
+    public function __construct(Post $post)
     {
         $this->post = $post;
 
