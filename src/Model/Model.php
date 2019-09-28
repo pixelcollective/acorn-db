@@ -22,21 +22,6 @@ class Model extends Eloquent
      */
     protected $postType;
 
-    protected $baseTable;
-
-    public function __construct(array $attributes = [])
-    {
-        global $wpdb;
-
-        if ($this->baseTable==true) {
-            $this->table = $wpdb->base_prefix . $this->table;
-        } else {
-            $this->table = $wpdb->prefix . $this->table;
-        }
-
-        parent::__construct($attributes);
-    }
-
     /**
      * Replace the original hasMany function to forward the connection name.
      *

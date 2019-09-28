@@ -14,13 +14,6 @@ use TinyPixel\AcornDB\Model\User;
 class UserMeta extends Meta
 {
     /**
-     * Override default prefix.
-     *
-     * @var bool
-     */
-    protected $baseTable = true;
-
-    /**
      * @var string
      */
     protected $table = 'usermeta';
