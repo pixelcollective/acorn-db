@@ -35,9 +35,9 @@ abstract class Meta extends Model
         try {
             $value = unserialize($this->meta_value);
 
-            return $value === false && $this->meta_value !== false ?
-                $this->meta_value :
-                $value;
+            return $value === false && $this->meta_value !== false
+                ? $this->meta_value
+                : $value;
         } catch (Exception $ex) {
             return $this->meta_value;
         }

@@ -1,8 +1,8 @@
 <?php
 
-global $wpdb;
-
 use function Roots\env;
+
+global $wpdb;
 
 return [
 
