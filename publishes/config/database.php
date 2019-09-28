@@ -46,6 +46,7 @@ return [
             'unix_socket'    => env('DB_SOCKET', ''),
             'charset'        => env('DB_CHARSET', defined('DB_CHARSET') ? DB_CHARSET : 'utf8mb4'),
             'collation'      => env('DB_COLLATION', defined('DB_COLLATION') ? DB_COLLATION : 'utf8mb4_unicode_ci'),
+            'prefix'         => $wpdb->prefix,
             'prefix_indexes' => true,
             'strict'         => true,
             'engine'         => null,

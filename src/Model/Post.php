@@ -135,6 +135,7 @@ class Post extends Model implements PostInterface
     protected function getPostInstance(array $attributes)
     {
         $class = static::class;
+
         // Check if it should be instantiated with a custom post type class
         if (isset($attributes['post_type']) && $attributes['post_type']) {
             if (isset(static::$postTypes[$attributes['post_type']])) {

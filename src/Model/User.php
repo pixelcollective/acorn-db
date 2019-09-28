@@ -28,13 +28,6 @@ class User extends Model
     const UPDATED_AT = null;
 
     /**
-     * Override default prefix.
-     *
-     * @var bool
-     */
-    protected $baseTable = true;
-
-    /**
      * Table name
      *
      * @var string
@@ -92,13 +85,6 @@ class User extends Model
         'avatar',
         'created_at',
     ];
-
-    protected function setPrefix()
-    {
-        global $wpdb;
-
-        $this->prefix = $wpdb->base_prefix;
-    }
 
     /**
      * @param mixed $value
