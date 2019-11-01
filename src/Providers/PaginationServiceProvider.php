@@ -1,5 +1,4 @@
 <?php
-
 namespace TinyPixel\AcornDB\Providers;
 
 use Illuminate\Pagination\Paginator;
