@@ -28,8 +28,7 @@
       "providers": [
         "TinyPixel\\AcornDB\\Providers\\PaginationServiceProvider",
         "TinyPixel\\AcornDB\\Providers\\DatabaseServiceProvider",
-        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider",
-        "TinyPixel\\AcornDB\\Providers\\MigrationServiceProvider"
+        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider"
       ]
     }
   },

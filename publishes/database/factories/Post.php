@@ -1,8 +1,8 @@
 <?php
 
-use App\Model\Post;
 use Faker\Generator as Faker;
 use Carbon\Carbon;
+use TinyPixel\AcornDB\Model\Post;
 
 /*
 |--------------------------------------------------------------------------

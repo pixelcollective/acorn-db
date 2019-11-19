@@ -25,14 +25,6 @@ class PackageServiceProvider extends ServiceProvider
      * @var array
      */
     public $commands = [
-        'TinyPixel\AcornDB\Console\Commands\Migrate\FreshCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\InstallCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\MakeCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\MigrateCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\RefreshCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\ResetCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\RollbackCommand',
-        'TinyPixel\AcornDB\Console\Commands\Migrate\StatusCommand',
         'TinyPixel\AcornDB\Console\Commands\Seeds\SeedCommand',
         'TinyPixel\AcornDB\Console\Commands\Seeds\SeederMakeCommand',
         'TinyPixel\AcornDB\Console\Commands\Factories\FactoryMakeCommand',
@@ -50,10 +42,7 @@ class PackageServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../publishes/Model'               => $this->modelDirectory(),
             __DIR__ . '/../../publishes/config/database.php' => $this->app->configPath('database.php'),
-            __DIR__ . '/../../publishes/database'            => $this->app->basePath('database'),
         ], 'Acorn Database');
-
-        $this->commands($this->commands);
 
         $this->registerFrom($this->app->basePath('database/seeds'));
     }

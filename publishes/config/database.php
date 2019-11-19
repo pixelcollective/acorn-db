@@ -80,5 +80,4 @@ return [
     'post_types' => [
         //
     ]
-
 ];
