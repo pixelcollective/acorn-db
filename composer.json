@@ -9,12 +9,6 @@
       "email": "kelly@tinypixel.dev"
     }
   ],
-  "keywords": [
-    "wordpress",
-    "acorn",
-    "sage",
-    "eloquent"
-  ],
   "support": {
     "issues": "https://github.com/pixelcollective/acorn-db/issues"
   },
@@ -26,16 +20,16 @@
   "require": {
     "php": ">=7.3",
     "fzaninotto/faker": "^1.8",
-    "illuminate/database": "^5.8",
-    "illuminate/pagination": "^5.8"
+    "illuminate/database": "^6.5",
+    "illuminate/pagination": "^6.5"
   },
   "extra": {
     "acorn": {
       "providers": [
         "TinyPixel\\AcornDB\\Providers\\PaginationServiceProvider",
         "TinyPixel\\AcornDB\\Providers\\DatabaseServiceProvider",
-        "TinyPixel\\AcornDB\\Providers\\MigrationServiceProvider",
-        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider"
+        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider",
+        "TinyPixel\\AcornDB\\Providers\\MigrationServiceProvider"
       ]
     }
   },
