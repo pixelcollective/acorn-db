@@ -1,11 +1,11 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Migrate;
+namespace AcornDB\Console\Commands\Migrate;
 
 use function Roots\app;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
-use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
+use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 /**
  * Console command: migrate

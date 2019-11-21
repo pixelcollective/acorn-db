@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\AcornDB\Model\Meta;
+namespace AcornDB\Model\Meta;
 
-use TinyPixel\AcornDB\Model\User;
+use AcornDB\Model\User;
 
 /**
  * Meta: User

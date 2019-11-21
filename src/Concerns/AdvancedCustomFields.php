@@ -1,7 +1,7 @@
 <?php
-namespace TinyPixel\AcornDB\Concerns;
+namespace AcornDB\Concerns;
 
-use TinyPixel\AcornDB\ACF\AdvancedCustomFields as BaseAdvancedCustomFields;
+use AcornDB\ACF\AdvancedCustomFields as BaseAdvancedCustomFields;
 
 /**
  * Trait HasAcfFields

@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "TinyPixel\\AcornDB\\": "src/"
+      "AcornDB\\": "src/"
     }
   },
   "require": {
@@ -26,9 +26,9 @@
   "extra": {
     "acorn": {
       "providers": [
-        "TinyPixel\\AcornDB\\Providers\\PaginationServiceProvider",
-        "TinyPixel\\AcornDB\\Providers\\DatabaseServiceProvider",
-        "TinyPixel\\AcornDB\\Providers\\PackageServiceProvider"
+        "AcornDB\\Providers\\PaginationServiceProvider",
+        "AcornDB\\Providers\\DatabaseServiceProvider",
+        "AcornDB\\Providers\\PackageServiceProvider"
       ]
     }
   },

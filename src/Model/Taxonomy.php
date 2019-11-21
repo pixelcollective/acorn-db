@@ -1,10 +1,10 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\Term;
-use TinyPixel\AcornDB\Model\Meta\TermMeta;
-use TinyPixel\AcornDB\Model\Builder\TaxonomyBuilder;
+use AcornDB\Model\Model;
+use AcornDB\Model\Term;
+use AcornDB\Model\Meta\TermMeta;
+use AcornDB\Model\Builder\TaxonomyBuilder;
 
 /**
  * WordPress Taxonomy

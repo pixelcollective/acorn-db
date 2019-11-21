@@ -1,9 +1,9 @@
 <?php
-namespace TinyPixel\AcornDB\Model\Meta;
+namespace AcornDB\Model\Meta;
 
 use Exception;
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\Collection\MetaCollection;
+use AcornDB\Model\Model;
+use AcornDB\Model\Collection\MetaCollection;
 
 /**
  * Meta

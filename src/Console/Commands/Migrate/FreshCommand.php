@@ -1,8 +1,8 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Migrate;
+namespace AcornDB\Console\Commands\Migrate;
 
-use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
+use AcornDB\Console\Commands\Migrate\BaseCommand;
 use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 

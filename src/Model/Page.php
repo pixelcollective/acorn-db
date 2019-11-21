@@ -1,8 +1,8 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Builder;
-use TinyPixel\AcornDB\Model\Option;
+use AcornDB\Model\Option;
 
 /**
  * Class Page

@@ -1,10 +1,10 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\Taxonomy;
-use TinyPixel\AcornDB\Concerns\AdvancedCustomFields;
-use TinyPixel\AcornDB\Concerns\MetaFields;
+use AcornDB\Model\Model;
+use AcornDB\Model\Taxonomy;
+use AcornDB\Concerns\AdvancedCustomFields;
+use AcornDB\Concerns\MetaFields;
 
 /**
  * WordPress Term

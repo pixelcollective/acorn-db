@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Exception;
+namespace AcornDB\Exception;
 
 /**
  * Exception: Missing Field Name

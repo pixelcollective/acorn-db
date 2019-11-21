@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 use Carbon\Carbon;
-use TinyPixel\AcornDB\Model\Post;
+use AcornDB\Model\Post;
 
 /*
 |--------------------------------------------------------------------------

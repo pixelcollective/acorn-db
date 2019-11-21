@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Concerns;
+namespace AcornDB\Concerns;
 
 use Illuminate\Support\Arr;
 
@@ -18,7 +18,7 @@ trait Aliases
         if (isset(parent::$aliases) && count(parent::$aliases)) {
             return array_merge(parent::$aliases, static::$aliases);
         }
-    
+
         return static::$aliases;
     }
 

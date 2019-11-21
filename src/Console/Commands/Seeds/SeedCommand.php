@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Seeds;
+namespace AcornDB\Console\Commands\Seeds;
 
 use Roots\Acorn\Application;
 use Roots\Acorn\Console\Commands\Command;

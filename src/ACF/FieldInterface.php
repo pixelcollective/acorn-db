@@ -1,7 +1,7 @@
 <?php
-namespace TinyPixel\AcornDB\ACF;
+namespace AcornDB\ACF;
 
-use TinyPixel\AcornDB\Model\Post;
+use AcornDB\Model\Post;
 
 /**
  * Interface FieldInterface.

@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model as Eloquent;

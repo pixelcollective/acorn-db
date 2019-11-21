@@ -1,7 +1,7 @@
 <?php
-namespace TinyPixel\AcornDB\Model\Meta;
+namespace AcornDB\Model\Meta;
 
-use TinyPixel\AcornDB\Model\Term;
+use AcornDB\Model\Term;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**

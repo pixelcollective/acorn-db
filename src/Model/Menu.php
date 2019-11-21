@@ -1,8 +1,8 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Model\MenuItem;
-use TinyPixel\AcornDB\Model\Taxonomy;
+use AcornDB\Model\MenuItem;
+use AcornDB\Model\Taxonomy;
 
 /**
  * Class Menu

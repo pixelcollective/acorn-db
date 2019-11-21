@@ -1,8 +1,7 @@
 <?php
 
-namespace TinyPixel\AcornDB\Providers;
+namespace AcornDB\Providers;
 
-use Roots\Acorn\ServiceProvider;
 use Faker\Factory as FakerFactory;
 use Faker\Generator as Faker;
 use Illuminate\Support\Collection;
@@ -13,7 +12,8 @@ use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Contracts\Queue\EntityResolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\ConnectionResolverInterface;
-use TinyPixel\AcornDB\Factory as EloquentFactory;
+use AcornDB\Factory as EloquentFactory;
+use Roots\Acorn\ServiceProvider;
 
 /**
  * Database service provider

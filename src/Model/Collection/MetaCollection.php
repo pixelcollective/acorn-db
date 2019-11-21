@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornDB\Model\Collection;
+namespace AcornDB\Model\Collection;
 
 use Illuminate\Database\Eloquent\Collection;
 

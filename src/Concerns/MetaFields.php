@@ -1,15 +1,15 @@
 <?php
-namespace TinyPixel\AcornDB\Concerns;
+namespace AcornDB\Concerns;
 
 use UnexpectedValueException;
-use TinyPixel\AcornDB\Model\Comment;
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\Term;
-use TinyPixel\AcornDB\Model\User;
-use TinyPixel\AcornDB\Model\Meta\CommentMeta;
-use TinyPixel\AcornDB\Model\Meta\PostMeta;
-use TinyPixel\AcornDB\Model\Meta\TermMeta;
-use TinyPixel\AcornDB\Model\Meta\UserMeta;
+use AcornDB\Model\Comment;
+use AcornDB\Model\Post;
+use AcornDB\Model\Term;
+use AcornDB\Model\User;
+use AcornDB\Model\Meta\CommentMeta;
+use AcornDB\Model\Meta\PostMeta;
+use AcornDB\Model\Meta\TermMeta;
+use AcornDB\Model\Meta\UserMeta;
 use Illuminate\Database\Eloquent\Builder;
 
 /**

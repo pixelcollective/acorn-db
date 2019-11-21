@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Concerns;
+namespace AcornDB\Concerns;
 
 /**
  * Trait CustomTimestamps

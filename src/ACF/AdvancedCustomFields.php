@@ -1,8 +1,8 @@
 <?php
-namespace TinyPixel\AcornDB\ACF;
+namespace AcornDB\ACF;
 
-use TinyPixel\AcornDB\Exception\MissingFieldNameException;
-use TinyPixel\AcornDB\Model\PostInterface as Post;
+use AcornDB\Exception\MissingFieldNameException;
+use AcornDB\Model\PostInterface as Post;
 
 /**
  * Advanced Custom Fields

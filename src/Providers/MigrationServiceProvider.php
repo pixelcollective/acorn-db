@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Providers;
+namespace AcornDB\Providers;
 
 use Roots\Acorn\ServiceProvider;
 use Illuminate\Database\Migrations\Migrator;

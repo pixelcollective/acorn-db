@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornDB\ACF\Field;
+namespace AcornDB\ACF\Field;
 
 use Carbon\Carbon;
-use TinyPixel\AcornDB\ACF\FieldInterface;
-use TinyPixel\AcornDB\Model\Post;
+use AcornDB\ACF\FieldInterface;
+use AcornDB\Model\Post;
 
 /**
  * Class DateTime.

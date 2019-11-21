@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
 interface PostInterface
 {

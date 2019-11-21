@@ -1,11 +1,11 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Migrate;
+namespace AcornDB\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
-use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
+use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 class InstallCommand extends BaseCommand
 {

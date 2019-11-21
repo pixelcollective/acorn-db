@@ -1,10 +1,10 @@
 <?php
 
-namespace TinyPixel\AcornDB\ACF\Field;
+namespace AcornDB\ACF\Field;
 
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\Meta\PostMeta;
-use TinyPixel\AcornDB\ACF\FieldInterface;
+use AcornDB\Model\Post;
+use AcornDB\Model\Meta\PostMeta;
+use AcornDB\ACF\FieldInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 /**

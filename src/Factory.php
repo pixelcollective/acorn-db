@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB;
+namespace AcornDB;
 
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 

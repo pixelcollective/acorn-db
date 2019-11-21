@@ -1,11 +1,11 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\Builder\CommentBuilder;
-use TinyPixel\AcornDB\Concerns\CustomTimestamps;
-use TinyPixel\AcornDB\Concerns\MetaFields;
+use AcornDB\Model\Model;
+use AcornDB\Model\Post;
+use AcornDB\Model\Builder\CommentBuilder;
+use AcornDB\Concerns\CustomTimestamps;
+use AcornDB\Concerns\MetaFields;
 
 /**
  * WordPress Comment

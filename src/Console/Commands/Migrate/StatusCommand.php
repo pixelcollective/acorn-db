@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Migrate;
+namespace AcornDB\Console\Commands\Migrate;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 
-use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
+use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 class StatusCommand extends BaseCommand
 {

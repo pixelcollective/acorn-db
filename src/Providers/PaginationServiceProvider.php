@@ -1,5 +1,5 @@
 <?php
-namespace TinyPixel\AcornDB\Providers;
+namespace AcornDB\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Roots\Acorn\ServiceProvider;

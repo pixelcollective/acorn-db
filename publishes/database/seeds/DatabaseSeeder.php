@@ -1,6 +1,6 @@
 <?php
 
-use TinyPixel\AcornDB\Seeder;
+use AcornDB\Seeder;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornDB\Exception;
+namespace AcornDB\Exception;
 
 use Exception;
 use Log;

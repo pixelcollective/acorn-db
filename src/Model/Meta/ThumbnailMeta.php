@@ -1,8 +1,8 @@
 <?php
-namespace TinyPixel\AcornDB\Model\Meta;
+namespace AcornDB\Model\Meta;
 
 use Illuminate\Support\Arr;
-use TinyPixel\AcornDB\Model\Attachment;
+use AcornDB\Model\Attachment;
 
 /**
  * Meta: Thumbnail

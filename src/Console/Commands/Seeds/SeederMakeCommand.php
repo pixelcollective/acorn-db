@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Seeds;
+namespace AcornDB\Console\Commands\Seeds;
 
 use function Roots\base_path;
 use Illuminate\Support\Composer;

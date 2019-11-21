@@ -1,9 +1,9 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\Taxonomy;
+use AcornDB\Model\Model;
+use AcornDB\Model\Post;
+use AcornDB\Model\Taxonomy;
 
 /**
  * WordPress Term Relationship

@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\AcornDB\ACF\Field;
+namespace AcornDB\ACF\Field;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
-use TinyPixel\AcornDB\ACF\FieldFactory;
-use TinyPixel\AcornDB\ACF\FieldInterface;
-use TinyPixel\AcornDB\Model\Post;
+use AcornDB\ACF\FieldFactory;
+use AcornDB\ACF\FieldInterface;
+use AcornDB\Model\Post;
 
 /**
  * Class Repeater.

@@ -1,7 +1,7 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Model\Taxonomy;
+use AcornDB\Model\Taxonomy;
 
 /**
  * Tag class.

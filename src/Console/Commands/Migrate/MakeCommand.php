@@ -1,12 +1,12 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Migrate;
+namespace AcornDB\Console\Commands\Migrate;
 
 use function Roots\base_path;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Database\Migrations\MigrationCreator;
-use TinyPixel\AcornDB\Console\Commands\Migrate\BaseCommand;
+use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 /**
  * Console Command: make:migration

@@ -1,7 +1,7 @@
 <?php
-namespace TinyPixel\AcornDB\ACF\Field;
+namespace AcornDB\ACF\Field;
 
-use TinyPixel\AcornDB\ACF\FieldInterface;
+use AcornDB\ACF\FieldInterface;
 
 /**
  * Class Boolean.

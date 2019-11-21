@@ -1,17 +1,17 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Concerns\AdvancedCustomFields;
-use TinyPixel\AcornDB\Concerns\Aliases;
-use TinyPixel\AcornDB\Concerns\CustomTimestamps;
-use TinyPixel\AcornDB\Concerns\MetaFields;
-use TinyPixel\AcornDB\Concerns\OrderScopes;
-use TinyPixel\AcornDB\Model\Model;
-use TinyPixel\AcornDB\Model\User;
-use TinyPixel\AcornDB\Model\Comment;
-use TinyPixel\AcornDB\Model\Builder\PostBuilder;
-use TinyPixel\AcornDB\Model\Meta\ThumbnailMeta;
-use TinyPixel\AcornDB\Model\PostInterface;
+use AcornDB\Concerns\AdvancedCustomFields;
+use AcornDB\Concerns\Aliases;
+use AcornDB\Concerns\CustomTimestamps;
+use AcornDB\Concerns\MetaFields;
+use AcornDB\Concerns\OrderScopes;
+use AcornDB\Model\Model;
+use AcornDB\Model\User;
+use AcornDB\Model\Comment;
+use AcornDB\Model\Builder\PostBuilder;
+use AcornDB\Model\Meta\ThumbnailMeta;
+use AcornDB\Model\PostInterface;
 
 /**
  * WordPress Post

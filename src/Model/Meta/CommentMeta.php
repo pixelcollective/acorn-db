@@ -1,7 +1,7 @@
 <?php
-namespace TinyPixel\AcornDB\Model\Meta;
+namespace AcornDB\Model\Meta;
 
-use TinyPixel\AcornDB\Model\Comment;
+use AcornDB\Model\Comment;
 
 /**
  * Meta: Comment

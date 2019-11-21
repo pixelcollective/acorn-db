@@ -1,11 +1,11 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
 use Illuminate\Support\Arr;
-use TinyPixel\AcornDB\Model\Post;
-use TinyPixel\AcornDB\Model\Page;
-use TinyPixel\AcornDB\Model\CustomLink;
-use TinyPixel\AcornDB\Model\Taxonomy;
+use AcornDB\Model\Post;
+use AcornDB\Model\Page;
+use AcornDB\Model\CustomLink;
+use AcornDB\Model\Taxonomy;
 
 /**
  * WordPress Menu Item

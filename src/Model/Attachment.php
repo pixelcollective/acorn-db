@@ -1,8 +1,8 @@
 <?php
-namespace TinyPixel\AcornDB\Model;
+namespace AcornDB\Model;
 
-use TinyPixel\AcornDB\Concerns\Aliases;
-use TinyPixel\AcornDB\Model\Post;
+use AcornDB\Concerns\Aliases;
+use AcornDB\Model\Post;
 
 /**
  * WordPress Attachment

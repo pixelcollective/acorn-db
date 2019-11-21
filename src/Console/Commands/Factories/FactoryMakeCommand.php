@@ -1,6 +1,6 @@
 <?php
 
-namespace TinyPixel\AcornDB\Console\Commands\Factories;
+namespace AcornDB\Console\Commands\Factories;
 
 use function Roots\base_path;
 use Roots\Acorn\Application;
