@@ -1,5 +1,5 @@
 {
-  "name": "tiny-pixel/acorn-db",
+  "name": "bpong/acorn-db",
   "type": "package",
   "license": "MIT",
   "description": "Eloquent database support for Acorn projects",
@@ -20,8 +20,8 @@
   "require": {
     "php": ">=7.3",
     "fzaninotto/faker": "^1.8",
-    "illuminate/database": "^6.5",
-    "illuminate/pagination": "^6.5"
+    "illuminate/database": "^7.0",
+    "illuminate/pagination": "^7.0"
   },
   "extra": {
     "acorn": {
@@ -33,7 +33,7 @@
     }
   },
   "require-dev": {
-    "phpstan/phpstan": "^0.11.12",
+    "phpstan/phpstan": "^0.12.32",
     "squizlabs/php_codesniffer": "^3.4.2",
     "roave/security-advisories": "dev-master"
   },
