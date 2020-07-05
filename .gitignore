@@ -1,6 +1,8 @@
 .DS_Store
+.idea
 
 node_modules
+vendor
 
 lib/core/metadata.js
 lib/core/MetadataBlog.js
