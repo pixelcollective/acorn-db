@@ -1,17 +1,10 @@
 <?php
+
 namespace AcornDB\Model;
 
-use AcornDB\Model\Taxonomy;
+use Corcel\Model\Tag as Corcel;
 
-/**
- * Tag class.
- *
- * @author Mickael Burguet <www.rundef.com>
- */
-class Tag extends Taxonomy
+class Tag extends Corcel
 {
-    /**
-     * @var string
-     */
-    protected $taxonomy = 'post_tag';
+    // --
 }

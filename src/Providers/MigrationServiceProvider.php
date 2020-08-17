@@ -1,23 +1,27 @@
 <?php
+
 namespace AcornDB\Providers;
 
-use Roots\Acorn\ServiceProvider;
 use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
-use Illuminate\Database\Migrations\MigrationRepositoryInterface;
+use AcornDB\Console\Commands\Migrate\FreshCommand as FreshCommand;
+use AcornDB\Console\Commands\Migrate\MakeCommand as MakeCommand;
+use AcornDB\Console\Commands\Migrate\MigrateCommand as MigrateCommand;
+use AcornDB\Console\Commands\Migrate\InstallCommand as InstallCommand;
+use AcornDB\Console\Commands\Migrate\RefreshCommand as RefreshCommand;
+use AcornDB\Console\Commands\Migrate\ResetCommand as ResetCommand;
+use AcornDB\Console\Commands\Migrate\RollbackCommand as RollbackCommand;
+use AcornDB\Console\Commands\Migrate\StatusCommand as StatusCommand;
+use Roots\Acorn\ServiceProvider;
 
 /**
  * Migration service provider
  *
  * @author  Kelly Mears <kelly@tinypixel.dev>
  * @license MIT
- * @since   1.0.0
- *
- * @package    AcornDB
- * @subpackage Providers
- **/
+ */
 class MigrationServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
@@ -25,27 +29,74 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
      *
      * @return void
      */
-    public function register()
+    public function register(): void
+    {
+        $this->app->when(MigrationCreator::class)
+            ->needs('$customStubPath')
+            ->give(function ($app) {
+                return $app->basePath('stubs');
+            });
+
+        $this->registerRepository();
+
+        $this->registerMigrator();
+
+        $this->registerCreator();
+
+        $this->commands([
+            MigrateCommand::class,
+            MakeCommand::class,
+            InstallCommand::class,
+            FreshCommand::class,
+            RefreshCommand::class,
+            ResetCommand::class,
+            RollbackCommand::class,
+            StatusCommand::class,
+        ]);
+    }
+
+    /**
+     * Register the migration repository service.
+     *
+     * @return void
+     */
+    protected function registerRepository(): void
     {
         $this->app->singleton('migration.repository', function ($app) {
-            return new DatabaseMigrationRepository($app['db'], $app['config']->get('database.migrations'));
-        });
+            $table = $app['config']['database.migrations_table'];
 
-        $this->app->singleton('migrator', function ($app) {
-            return new Migrator($app['migration.repository'], $app['db'], $app['files'], $app['events']);
-        });
-
-        $this->app->singleton('migration.creator', function ($app) {
-            return new MigrationCreator($app['files']);
+            return new DatabaseMigrationRepository($app['db'], $table);
         });
     }
 
     /**
-     * Boot the service provider.
+     * Register the migrator service.
      *
      * @return void
      */
-    public function boot()
+    protected function registerMigrator(): void
     {
+        // The migrator is responsible for actually running and rollback the migration
+        // files in the application. We'll pass in our database connection resolver
+        // so the migrator can resolve any of these connections when it needs to.
+        $this->app->singleton('migrator', function ($app) {
+            $repository = $app['migration.repository'];
+
+            return new Migrator($repository, $app['db'], $app['files'], $app['events']);
+        });
+    }
+
+    /**
+     * Register the migration creator.
+     *
+     * @return void
+     */
+    protected function registerCreator(): void
+    {
+        $this->app->singleton('migration.creator', function ($app) {
+            $path = $app['config']['database.migrations_path'];
+
+            return new MigrationCreator($app['files'], $path);
+        });
     }
 }

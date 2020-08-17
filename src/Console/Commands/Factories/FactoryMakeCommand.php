@@ -3,11 +3,8 @@
 namespace AcornDB\Console\Commands\Factories;
 
 use function Roots\base_path;
-use Roots\Acorn\Application;
 use Roots\Acorn\Console\Commands\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
-use Illuminate\Support\Str;
 
 /**
  * Console Command: Factory Make
@@ -15,11 +12,6 @@ use Illuminate\Support\Str;
  * Usage: `wp acorn make:factory`
  *
  * @author     Kelly Mears <developers@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- * @package    AcornDB
- * @subpackage Console\Commands
  */
 class FactoryMakeCommand extends GeneratorCommand
 {

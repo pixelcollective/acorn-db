@@ -1,7 +1,7 @@
 <?php
 
-use AcornDB\Model\Post;
 use AcornDB\Seeder;
+use AcornDB\Model\Post;
 
 class PostSeeder extends Seeder
 {

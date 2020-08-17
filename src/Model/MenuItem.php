@@ -1,68 +1,10 @@
 <?php
+
 namespace AcornDB\Model;
 
-use Illuminate\Support\Arr;
-use AcornDB\Model\Post;
-use AcornDB\Model\Page;
-use AcornDB\Model\CustomLink;
-use AcornDB\Model\Taxonomy;
+use Corcel\Model\MenuItem as Corcel;
 
-/**
- * WordPress Menu Item
- *
- * @author Junior Grossi <juniorgro@gmail.com>
- */
-class MenuItem extends Post
+class MenuItem extends Corcel
 {
-    /**
-     * @var string
-     */
-    protected $postType = 'nav_menu_item';
-
-    /**
-     * @var array
-     */
-    protected $instanceRelations = [
-        'post' => Post::class,
-        'page' => Page::class,
-        'custom' => CustomLink::class,
-        'category' => Taxonomy::class,
-    ];
-
-    /**
-     * @return Post|Page|CustomLink|Taxonomy
-     */
-    public function parent()
-    {
-        if ($className = $this->getClassName()) {
-            return (new $className())->newQuery()
-                ->find($this->meta->_menu_item_menu_item_parent);
-        }
-
-        return null;
-    }
-
-    /**
-     * @return Post|Page|CustomLink|Taxonomy
-     */
-    public function instance()
-    {
-        if ($className = $this->getClassName()) {
-            return (new $className())->newQuery()
-                ->find($this->meta->_menu_item_object_id);
-        }
-
-        return null;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getClassName()
-    {
-        return Arr::get(
-            $this->instanceRelations,
-            $this->meta->_menu_item_object
-        );
-    }
+    // --
 }

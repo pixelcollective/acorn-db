@@ -3,7 +3,6 @@
 namespace AcornDB\Console\Commands\Migrate;
 
 use Illuminate\Console\ConfirmableTrait;
-use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 
 use AcornDB\Console\Commands\Migrate\BaseCommand;

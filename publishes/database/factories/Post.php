@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 use Carbon\Carbon;
-use AcornDB\Model\Post;
+use App\Model\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +25,13 @@ use AcornDB\Model\Post;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        'title'                 => $faker->sentence(),
-        'excerpt'               => $faker->sentence() . $faker->sentence(),
-        'content'               => $faker->paragraph(),
+        'post_title'            => $faker->sentence(),
+        'post_excerpt'          => $faker->sentence() . $faker->sentence(),
+        'post_content'          => $faker->paragraph(),
         'post_author'           => 1,
         'post_name'             => $faker->slug(),
-        'date'                  => Carbon::now()->toDateTimeString(),
+        'post_date'             => Carbon::now()->toDateTimeString(),
         'post_date_gmt'         => Carbon::now('gmt')->toDateTimeString(),
-        'modified'              => Carbon::now()->toDateTimeString(),
         'post_modified_gmt'     => Carbon::now('gmt')->toDateTimeString(),
         'post_content_filtered' => '',
         'to_ping'               => '',

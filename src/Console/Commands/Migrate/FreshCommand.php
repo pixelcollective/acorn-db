@@ -7,17 +7,11 @@ use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Acorn Command: migrate:fresh
+ * wp acorn migrate:fresh
  *
- * Seeds the database with records.
- *
- * @author     Kelly Mears <developers@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- * @package    AcornDB
- * @subpackage Commands\Seeds
- **/
+ * @author  Kelly Mears <developers@tinypixel.dev>
+ * @license MIT
+ */
 class FreshCommand extends BaseCommand
 {
     use ConfirmableTrait;

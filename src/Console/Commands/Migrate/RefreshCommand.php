@@ -4,7 +4,6 @@ namespace AcornDB\Console\Commands\Migrate;
 
 use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
-
 use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 class RefreshCommand extends BaseCommand
