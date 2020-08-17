@@ -1,30 +1,10 @@
 <?php
+
 namespace AcornDB\Model;
 
-use Illuminate\Database\Eloquent\Builder;
-use AcornDB\Model\Option;
+use Corcel\Model\Page as Corcel;
 
-/**
- * Class Page
- *
- * @package Corcel\Model
- * @author Junior Grossi <juniorgro@gmail.com>
- */
-class Page extends Post
+class Page extends Corcel
 {
-    /**
-     * @var string
-     */
-    protected $postType = 'page';
-
-    /**
-     * @param Builder $query
-     * @return mixed
-     */
-    public function scopeHome(Builder $query)
-    {
-        return $query
-            ->where('ID', '=', Option::get('page_on_front'))
-            ->limit(1);
-    }
+    // --
 }

@@ -2,21 +2,18 @@
 
 namespace AcornDB\Providers;
 
+use Auth;
+use Corcel\Corcel;
+use Corcel\Laravel\Auth\AuthUserProvider;
+use Thunder\Shortcode\Parser\RegularParser;
+use Thunder\Shortcode\ShortcodeFacade;
 use Roots\Acorn\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Faker\Generator as FakerGenerator;
-use TinyPixel\Support\Util;
 
 /**
  * Acorn database service provider
  *
- * @author  Kelly Mears <kelly@tinypixel.dev>
- * @license MIT
- * @since   1.0.0
- *
- * @package    AcornDB
- * @subpackage Providers
- **/
+ * @package AcornDB
+ */
 class PackageServiceProvider extends ServiceProvider
 {
     /**
@@ -25,34 +22,28 @@ class PackageServiceProvider extends ServiceProvider
      * @var array
      */
     public $commands = [
-        'TinyPixel\AcornDB\Console\Commands\Seeds\SeedCommand',
-        'TinyPixel\AcornDB\Console\Commands\Seeds\SeederMakeCommand',
-        'TinyPixel\AcornDB\Console\Commands\Factories\FactoryMakeCommand',
+        'AcornDB\Console\Commands\Seeds\SeedCommand',
+        'AcornDB\Console\Commands\Seeds\SeederMakeCommand',
+        'AcornDB\Console\Commands\Factories\FactoryMakeCommand',
     ];
 
     public function register()
     {
-        $this->app->bind('tinypixel.util', function ($app) {
-            return Util::getInstance()->container['util'];
+        $this->app->bind(ShortcodeFacade::class, function () {
+            return tap(new ShortcodeFacade(), function (ShortcodeFacade $facade) {
+                $parser_class = $this->app->config('corcel.shortcode_parser', RegularParser::class);
+                $facade->setParser(new $parser_class);
+            });
         });
     }
 
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../publishes/Model'               => $this->modelDirectory(),
             __DIR__ . '/../../publishes/config/database.php' => $this->app->configPath('database.php'),
         ], 'Acorn Database');
 
         $this->registerFrom($this->app->basePath('database/seeds'));
-    }
-
-    /**
-     * Return the App/Model directory
-     */
-    protected function modelDirectory()
-    {
-        return $this->app->basePath($this->appDirectory() . '/Model');
     }
 
     /**

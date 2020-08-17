@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 use Carbon\Carbon;
-use AcornDB\Model\Post;
+use Corcel\Model\Post;
 
 /*
 |--------------------------------------------------------------------------

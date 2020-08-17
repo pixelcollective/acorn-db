@@ -3,7 +3,6 @@ namespace AcornDB;
 
 use InvalidArgumentException;
 use Illuminate\Support\Arr;
-use Faker\Generator as Faker;
 use Roots\Acorn\Application as Container;
 use Roots\Acorn\Console\Commands\Command;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
@@ -135,7 +134,7 @@ abstract class Seeder
         }
 
         return isset($this->container)
-                    ? $this->container->call([$this, 'run'])
-                    : $this->run();
+            ? $this->container->call([$this, 'run'])
+            : $this->run();
     }
 }
