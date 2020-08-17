@@ -12,22 +12,6 @@ use Roots\Acorn\ServiceProvider;
 class PaginationServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'pagination');
-
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/resources/views' => $this->app->resourcePath('views/vendor/pagination'),
-            ], 'laravel-pagination');
-        }
-    }
-
-    /**
      * Register the service provider.
      *
      * @return void
@@ -52,4 +36,21 @@ class PaginationServiceProvider extends ServiceProvider
             return 1;
         });
     }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'pagination');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/resources/views' => $this->app->resourcePath('views/vendor/pagination'),
+            ], 'laravel-pagination');
+        }
+    }
+
 }

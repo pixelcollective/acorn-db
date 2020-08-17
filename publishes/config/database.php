@@ -71,13 +71,14 @@ return [
     | Post Types
     |--------------------------------------------------------------------------
     |
-    | This table keeps track of all the migrations that have already run for
-    | your application. Using this information, we can determine which of
-    | the migrations on disk haven't actually been run in the database.
+    | Add Eloquent support for custom post types by adding them to this array.
+    |
+    | Once added, you can extend the AcornDB\Model\Post class in your application
+    | and then use the model however you see fit.
     |
     */
 
     'post_types' => [
         //
-    ]
+    ],
 ];

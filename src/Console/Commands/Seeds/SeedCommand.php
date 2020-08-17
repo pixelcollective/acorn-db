@@ -2,7 +2,6 @@
 
 namespace AcornDB\Console\Commands\Seeds;
 
-use Roots\Acorn\Application;
 use Roots\Acorn\Console\Commands\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Console\ConfirmableTrait;
@@ -15,13 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  * Seeds the database with records
  *
  * @author     Kelly Mears <developers@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- * @package    AcornDB
- * @subpackage Commands\Seeds
  **/
-class SeedCommand extends Command {
+class SeedCommand extends Command
+{
     use ConfirmableTrait;
 
     /**

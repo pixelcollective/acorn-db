@@ -3,8 +3,6 @@
 namespace AcornDB\Providers;
 
 use Faker\Factory as FakerFactory;
-use Faker\Generator as Faker;
-use Illuminate\Support\Collection;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\QueueEntityResolver;
@@ -20,10 +18,6 @@ use Roots\Acorn\ServiceProvider;
  *
  * @author  Kelly Mears <kelly@tinypixel.dev>
  * @license MIT
- * @since   1.0.0
- *
- * @package    AcornDB
- * @subpackage Providers
  **/
 class DatabaseServiceProvider extends ServiceProvider
 {

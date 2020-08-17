@@ -2,11 +2,11 @@
 
 namespace AcornDB\Providers;
 
-use Auth;
-use Corcel\Corcel;
-use Corcel\Laravel\Auth\AuthUserProvider;
 use Thunder\Shortcode\Parser\RegularParser;
 use Thunder\Shortcode\ShortcodeFacade;
+use AcornDB\Console\Commands\Seeds\SeedCommand;
+use AcornDB\Console\Commands\Seeds\SeederMakeCommand;
+use AcornDB\Console\Commands\Factories\FactoryMakeCommand;
 use Roots\Acorn\ServiceProvider;
 
 /**
@@ -17,24 +17,24 @@ use Roots\Acorn\ServiceProvider;
 class PackageServiceProvider extends ServiceProvider
 {
     /**
-     * Console commands
+     * Register application services.
      *
-     * @var array
+     * @return void
      */
-    public $commands = [
-        'AcornDB\Console\Commands\Seeds\SeedCommand',
-        'AcornDB\Console\Commands\Seeds\SeederMakeCommand',
-        'AcornDB\Console\Commands\Factories\FactoryMakeCommand',
-    ];
-
     public function register()
     {
         $this->app->bind(ShortcodeFacade::class, function () {
             return tap(new ShortcodeFacade(), function (ShortcodeFacade $facade) {
-                $parser_class = $this->app->get('config')->get('corcel.shortcode_parser', RegularParser::class);
+                $parser_class = $this->app['config']->get('database.shortcode_parser', RegularParser::class);
                 $facade->setParser(new $parser_class);
             });
         });
+
+        $this->commands([
+            SeedCommand::class,
+            SeederMakeCommand::class,
+            FactoryMakeCommand::class,
+        ]);
     }
 
     public function boot()
@@ -51,7 +51,7 @@ class PackageServiceProvider extends ServiceProvider
      */
     protected function appDirectory()
     {
-        return substr(strtolower($this->app->getNamespace()), 0, -1);
+        return $this->app->basePath();
     }
 
     /**

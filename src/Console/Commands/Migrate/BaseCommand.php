@@ -3,18 +3,14 @@
 namespace AcornDB\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
-use Illuminate\Console\Command;
+use Roots\Acorn\Console\Commands\Command;
 
 /**
  * Migration base command.
  *
- * @author     Kelly Mears <developers@tinypixel.dev>
- * @license    MIT
- * @version    1.0.0
- * @since      1.0.0
- * @package    AcornDB
- * @subpackage Commands\Seeds
- **/
+ * @author  Kelly Mears <developers@tinypixel.dev>
+ * @license MIT
+ */
 class BaseCommand extends Command
 {
     /**
@@ -40,7 +36,7 @@ class BaseCommand extends Command
         // migrations may be run for any customized path from within the application.
         if ($this->input->hasOption('path') && $this->option('path')) {
             return collect($this->option('path'))->map(function ($path) {
-                return !$this->usingRealPath() ? $this->laravel->basePath() . DIRECTORY_SEPARATOR . $path : $path;
+                return !$this->usingRealPath() ? $this->app->basePath() . DIRECTORY_SEPARATOR . $path : $path;
             })->all();
         }
         return array_merge($this->migrator->paths(), [
@@ -65,6 +61,6 @@ class BaseCommand extends Command
      **/
     protected function getMigrationPath()
     {
-        return $this->laravel->databasePath() . DIRECTORY_SEPARATOR . 'migrations';
+        return $this->app['config']->get('database.migrations_path');
     }
 }

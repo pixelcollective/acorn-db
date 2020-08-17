@@ -7,21 +7,24 @@ use Roots\Acorn\Application as Container;
 use Roots\Acorn\Console\Commands\Command;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
+/**
+ * Seeder
+ *
+ * @author Kelly Mears <developers@tinypixel.dev>
+ * @license MIT
+ */
 abstract class Seeder
 {
-    /**
-     * The container instance.
-     *
-     * @var \Illuminate\Container\Container
-     */
+    /** @var Container */
     protected $container;
 
-    /**
-     * The console command instance.
-     *
-     * @var \Roots\Acorn\Console\Commands\Command
-     */
+    /** @var Command */
     protected $command;
+
+    /**
+     * Required method for implementations.
+     */
+    abstract function run();
 
     /**
      * Seed the given connection from the given path.
@@ -82,7 +85,7 @@ abstract class Seeder
     /**
      * Set the IoC container instance.
      *
-     * @param  \Illuminate\Container\Container  $container
+     * @param  Container  $container
      * @return $this
      */
     public function setContainer(Container $container)
@@ -95,8 +98,8 @@ abstract class Seeder
     /**
      * Set the console command instance.
      *
-     * @param  \Roots\Acorn\Console\Commands\Command  $command
-     * @return $this
+     * @param  Command  $command
+     * @return Seeder
      */
     public function setCommand(Command $command)
     {
@@ -124,7 +127,6 @@ abstract class Seeder
      * Run the database seeds.
      *
      * @return mixed
-     *
      * @throws \InvalidArgumentException
      */
     public function __invoke()

@@ -4,7 +4,6 @@ namespace AcornDB\Console\Commands\Migrate;
 
 use function Roots\app;
 use Illuminate\Console\ConfirmableTrait;
-use Illuminate\Database\Migrations\Migrator;
 use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 /**
@@ -53,6 +52,13 @@ class MigrateCommand extends BaseCommand
     protected $migrator;
 
     /**
+     * The IOC
+     *
+     * @var Roots\Acorn\Application
+     */
+    protected $app;
+
+    /**
      * Create a new migration command instance.
      *
      * @param  \Illuminate\Database\Migrations\Migrator  $migrator
@@ -61,8 +67,9 @@ class MigrateCommand extends BaseCommand
     public function __construct()
     {
         parent::__construct();
+
         $this->app = app();
-        $this->migrator = $this->app->make('migrator');
+        $this->migrator = $this->app['migrator'];
     }
 
     /**
@@ -92,6 +99,11 @@ class MigrateCommand extends BaseCommand
         if ($this->option('seed') && ! $this->option('pretend')) {
             $this->call('db:seed', ['--force' => true]);
         }
+    }
+
+    protected function getMigrationsPaths()
+    {
+        return $this->app['config']['database.migrations_path'];
     }
 
     /**
