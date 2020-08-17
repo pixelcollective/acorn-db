@@ -6,7 +6,6 @@ use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
-use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 
 /**
  * Migration service provider
@@ -36,7 +35,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
         });
 
         $this->app->singleton('migration.creator', function ($app) {
-            return new MigrationCreator($app['files']);
+            return new MigrationCreator($app['files'], '');
         });
     }
 
@@ -47,5 +46,6 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
      */
     public function boot()
     {
+        // --
     }
 }

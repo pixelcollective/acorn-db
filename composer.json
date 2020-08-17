@@ -33,6 +33,7 @@
       "providers": [
         "AcornDB\\Providers\\PaginationServiceProvider",
         "AcornDB\\Providers\\DatabaseServiceProvider",
+        "AcornDB\\Providers\\MigrationServiceProvider",
         "AcornDB\\Providers\\PackageServiceProvider"
       ]
     }

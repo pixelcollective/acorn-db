@@ -31,7 +31,7 @@ class PackageServiceProvider extends ServiceProvider
     {
         $this->app->bind(ShortcodeFacade::class, function () {
             return tap(new ShortcodeFacade(), function (ShortcodeFacade $facade) {
-                $parser_class = $this->app->config('corcel.shortcode_parser', RegularParser::class);
+                $parser_class = $this->app->get('config')->get('corcel.shortcode_parser', RegularParser::class);
                 $facade->setParser(new $parser_class);
             });
         });
