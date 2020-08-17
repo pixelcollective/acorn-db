@@ -4,14 +4,12 @@ namespace AcornDB\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
 use Symfony\Component\Console\Input\InputOption;
-use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use AcornDB\Console\Commands\Migrate\BaseCommand;
 
 class InstallCommand extends BaseCommand
 {
     /**
      * The console command name.
-     *
      * @var string
      **/
     protected $name = 'migrate:install';

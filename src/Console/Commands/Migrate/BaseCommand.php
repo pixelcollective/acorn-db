@@ -3,8 +3,7 @@
 namespace AcornDB\Console\Commands\Migrate;
 
 use Roots\Acorn\Application;
-use Roots\Acorn\Console\Commands\Command;
-
+use Illuminate\Console\Command;
 /**
  * Migration base command.
  *
@@ -39,6 +38,7 @@ class BaseCommand extends Command
                 return !$this->usingRealPath() ? $this->app->basePath() . DIRECTORY_SEPARATOR . $path : $path;
             })->all();
         }
+
         return array_merge($this->migrator->paths(), [
             $this->getMigrationPath()
         ]);
@@ -61,6 +61,6 @@ class BaseCommand extends Command
      **/
     protected function getMigrationPath()
     {
-        return $this->app['config']->get('database.migrations_path');
+        return $this->app['config']['database.migrations_path'];
     }
 }

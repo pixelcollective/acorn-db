@@ -6,13 +6,14 @@ use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
-use AcornDB\Console\Commands\Migrate\FreshCommand as MigrateFreshCommand;
-use AcornDB\Console\Commands\Migrate\MakeCommand as MigrateMakeCommand;
-use AcornDB\Console\Commands\Migrate\InstallCommand as MigrateInstallCommand;
-use AcornDB\Console\Commands\Migrate\RefreshCommand as MigrateRefreshCommand;
-use AcornDB\Console\Commands\Migrate\ResetCommand as MigrateResetCommand;
-use AcornDB\Console\Commands\Migrate\RollbackCommand as MigrateRollbackCommand;
-use AcornDB\Console\Commands\Migrate\StatusCommand as MigrateStatusCommand;
+use AcornDB\Console\Commands\Migrate\FreshCommand as FreshCommand;
+use AcornDB\Console\Commands\Migrate\MakeCommand as MakeCommand;
+use AcornDB\Console\Commands\Migrate\MigrateCommand as MigrateCommand;
+use AcornDB\Console\Commands\Migrate\InstallCommand as InstallCommand;
+use AcornDB\Console\Commands\Migrate\RefreshCommand as RefreshCommand;
+use AcornDB\Console\Commands\Migrate\ResetCommand as ResetCommand;
+use AcornDB\Console\Commands\Migrate\RollbackCommand as RollbackCommand;
+use AcornDB\Console\Commands\Migrate\StatusCommand as StatusCommand;
 use Roots\Acorn\ServiceProvider;
 
 /**
@@ -24,34 +25,34 @@ use Roots\Acorn\ServiceProvider;
 class MigrationServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
-     * Acorn commands
-     *
-     * @var array
-     */
-    public $commands = [
-        MigrateInstallCommand::class,
-        MigrateFreshCommand::class,
-        MigrateRefreshCommand::class,
-        MigrateMakeCommand::class,
-        MigrateResetCommand::class,
-        MigrateRollbackCommand::class,
-        MigrateStatusCommand::class,
-    ];
-
-    /**
      * Register the service provider.
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
+        $this->app->when(MigrationCreator::class)
+            ->needs('$customStubPath')
+            ->give(function ($app) {
+                return $app->basePath('stubs');
+            });
+
         $this->registerRepository();
 
         $this->registerMigrator();
 
         $this->registerCreator();
 
-        $this->commands($this->commands);
+        $this->commands([
+            MigrateCommand::class,
+            MakeCommand::class,
+            InstallCommand::class,
+            FreshCommand::class,
+            RefreshCommand::class,
+            ResetCommand::class,
+            RollbackCommand::class,
+            StatusCommand::class,
+        ]);
     }
 
     /**
@@ -73,7 +74,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
      *
      * @return void
      */
-    protected function registerMigrator()
+    protected function registerMigrator(): void
     {
         // The migrator is responsible for actually running and rollback the migration
         // files in the application. We'll pass in our database connection resolver
@@ -90,7 +91,7 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
      *
      * @return void
      */
-    protected function registerCreator()
+    protected function registerCreator(): void
     {
         $this->app->singleton('migration.creator', function ($app) {
             $path = $app['config']['database.migrations_path'];

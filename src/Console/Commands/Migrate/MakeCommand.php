@@ -4,6 +4,7 @@ namespace AcornDB\Console\Commands\Migrate;
 
 use Illuminate\Database\Migrations\MigrationCreator;
 use AcornDB\Console\Commands\Migrate\BaseCommand;
+use function Roots\app;
 
 /**
  * Console Command: make:migration
@@ -18,14 +19,14 @@ class MakeCommand extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'make:migration';
+    protected $name = 'migrate:make';
 
     /**
      * The console command signature.
      *
      * @var string
      */
-    protected $signature = 'make:migration {name : The name of your migration}
+    protected $signature = 'migrate:make {name : The name of your migration}
                             {table : The table to migrate.}
                             {--create : Creates table}';
 
@@ -105,6 +106,6 @@ class MakeCommand extends BaseCommand
      */
     protected function getMigrationPath(): string
     {
-        return $this->app['config']['database.migrations_path'];
+        return app('config')->get('database.migrations_path');
     }
 }

@@ -67,9 +67,8 @@ class MigrateCommand extends BaseCommand
     public function __construct()
     {
         parent::__construct();
-
         $this->app = app();
-        $this->migrator = $this->app['migrator'];
+        $this->migrator = $this->app->get('migrator');
     }
 
     /**
@@ -103,7 +102,7 @@ class MigrateCommand extends BaseCommand
 
     protected function getMigrationsPaths()
     {
-        return $this->app['config']['database.migrations_path'];
+        return $this->app['config']->get('database.migrations_path');
     }
 
     /**
