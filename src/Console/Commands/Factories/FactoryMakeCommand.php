@@ -3,6 +3,7 @@
 namespace AcornDB\Console\Commands\Factories;
 
 use function Roots\base_path;
+
 use Roots\Acorn\Console\Commands\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 

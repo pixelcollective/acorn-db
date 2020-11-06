@@ -21,11 +21,11 @@
   "require": {
     "php": ">=7.3",
     "fzaninotto/faker": "^1",
-    "illuminate/container": "^7",
-    "illuminate/database": "^7",
-    "illuminate/pagination": "^7",
+    "illuminate/container": "^7||^8",
+    "illuminate/database": "^7||^8",
+    "illuminate/pagination": "^7||^8",
     "symfony/console": "^5",
-    "jgrossi/corcel": "^4.0"
+    "jgrossi/corcel": "^4.0||^5.0"
   },
   "extra": {
     "acorn": {
@@ -40,7 +40,7 @@
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4.2",
     "roots/support": "dev-master",
-    "illuminate/console": "^7.25",
+    "illuminate/console": "^7.25||^8.0",
     "roots/acorn": "^1.0.9"
   },
   "scripts": {
